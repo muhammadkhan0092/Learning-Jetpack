@@ -4,22 +4,29 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -78,10 +85,25 @@ class UninstallSpecialOffer : ComponentActivity() {
                         "\$ 49 USD", fontFamily = FontFamily(Font(R.font.inter_bold)),
                         fontSize = 19.sp,
                         lineHeight = 25.sp,
+                        textAlign = TextAlign.Start,
                         modifier = Modifier.constrainAs(lifeText) {
                             top.linkTo(guidelineLifeTop)
                             start.linkTo(guidelineStart)
+                            end.linkTo(icon.start)
+                            width = Dimension.fillToConstraints
                         }
+                    )
+
+                    Image(
+                        painter = painterResource(R.drawable.ic_checkbox_checked),
+                        contentDescription = "",
+                        contentScale = ContentScale.Crop,
+                        colorFilter = null,
+                        modifier = Modifier.constrainAs(icon) {
+                            top.linkTo(lifeText.top)
+                            bottom.linkTo(lifeText.bottom)
+                            end.linkTo(parent.end,10.dp)
+                        }.width(24.dp).height(24.dp)
                     )
 
                     Text(
