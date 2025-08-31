@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.learningjetpackcompose.basic_components.ButtonComposable
 import com.example.learningjetpackcompose.basic_components.EditTextComposable
+import com.example.learningjetpackcompose.basic_components.ImageComposable
 import com.example.learningjetpackcompose.basic_components.TextComposable
 import com.example.learningjetpackcompose.ui.theme.LearningJetpackComposeTheme
 
@@ -41,6 +42,7 @@ class MainActivity : ComponentActivity() {
                 nameState.value = "Your Name is $it"
             })
             TextComposable(nameState.value)
+            ImageComposable()
         }
     }
 }
