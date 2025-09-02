@@ -17,6 +17,7 @@ import com.example.learningjetpackcompose.basic_components.ButtonComposable
 import com.example.learningjetpackcompose.basic_components.EditTextComposable
 import com.example.learningjetpackcompose.basic_components.ImageComposable
 import com.example.learningjetpackcompose.basic_components.TextComposable
+import com.example.learningjetpackcompose.side_effects.launchedEffect
 import com.example.learningjetpackcompose.ui.theme.LearningJetpackComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -25,7 +26,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             LearningJetpackComposeTheme {
-                appComposable()
+                //appComposable()
+                launchedEffect()
             }
         }
     }
