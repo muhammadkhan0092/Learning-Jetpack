@@ -16,6 +16,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.learningjetpackcompose.basic_components.ButtonComposable
 import com.example.learningjetpackcompose.basic_components.EditTextComposable
@@ -23,6 +24,7 @@ import com.example.learningjetpackcompose.basic_components.ImageComposable
 import com.example.learningjetpackcompose.basic_components.TextComposable
 import com.example.learningjetpackcompose.side_effects.DisposableEffectSimulation
 import com.example.learningjetpackcompose.side_effects.LaunchedEffectButton
+import com.example.learningjetpackcompose.side_effects.ProducedAndDerivedStateOfSimulation
 import com.example.learningjetpackcompose.side_effects.RememberCoroutineScope
 import com.example.learningjetpackcompose.side_effects.RememberUpdatedState
 import com.example.learningjetpackcompose.ui.theme.LearningJetpackComposeTheme
@@ -63,7 +65,7 @@ class MainActivity : ComponentActivity() {
         val rememberScope = rememberCoroutineScope()
         val counter = remember { mutableIntStateOf(0) }
         ConstraintLayout(modifier = Modifier.fillMaxSize(1f)){
-            val (btnOne,btnTwo,textRemember,textRememberUpdated,etDisposible) = createRefs()
+            val (btnOne,btnTwo,textRemember,textRememberUpdated,etDisposible,producedAndDerivedState) = createRefs()
             LaunchedEffectButton(
                 count.intValue,
                 {count.intValue++},
@@ -112,6 +114,13 @@ class MainActivity : ComponentActivity() {
             DisposableEffectSimulation(
                 Modifier.constrainAs(etDisposible){
                     top.linkTo(textRememberUpdated.bottom)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                }
+            )
+            ProducedAndDerivedStateOfSimulation(
+                Modifier.constrainAs(producedAndDerivedState){
+                    top.linkTo(etDisposible.bottom,20.dp)
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                 }
