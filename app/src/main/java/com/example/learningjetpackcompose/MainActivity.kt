@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -24,6 +23,7 @@ import com.example.learningjetpackcompose.basic_components.ImageComposable
 import com.example.learningjetpackcompose.basic_components.TextComposable
 import com.example.learningjetpackcompose.side_effects.LaunchedEffectButton
 import com.example.learningjetpackcompose.side_effects.RememberCoroutineScope
+import com.example.learningjetpackcompose.side_effects.RememberUpdatedState
 import com.example.learningjetpackcompose.ui.theme.LearningJetpackComposeTheme
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -62,7 +62,7 @@ class MainActivity : ComponentActivity() {
         val rememberScope = rememberCoroutineScope()
         val counter = remember { mutableIntStateOf(0) }
         ConstraintLayout(modifier = Modifier.fillMaxSize(1f)){
-            val (btnOne,btnTwo,textRemember) = createRefs()
+            val (btnOne,btnTwo,textRemember,btnRememberUpdated,textRememberUpdated) = createRefs()
             LaunchedEffectButton(
                 count.intValue,
                 {count.intValue++},
@@ -97,6 +97,13 @@ class MainActivity : ComponentActivity() {
                 },
                 Modifier.constrainAs(textRemember){
                     top.linkTo(btnTwo.bottom)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                }
+            )
+            RememberUpdatedState(
+                Modifier.constrainAs(textRememberUpdated){
+                    top.linkTo(textRemember.bottom)
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                 }
