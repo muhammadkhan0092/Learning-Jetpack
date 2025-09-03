@@ -21,6 +21,7 @@ import com.example.learningjetpackcompose.basic_components.ButtonComposable
 import com.example.learningjetpackcompose.basic_components.EditTextComposable
 import com.example.learningjetpackcompose.basic_components.ImageComposable
 import com.example.learningjetpackcompose.basic_components.TextComposable
+import com.example.learningjetpackcompose.side_effects.DisposableEffectSimulation
 import com.example.learningjetpackcompose.side_effects.LaunchedEffectButton
 import com.example.learningjetpackcompose.side_effects.RememberCoroutineScope
 import com.example.learningjetpackcompose.side_effects.RememberUpdatedState
@@ -62,7 +63,7 @@ class MainActivity : ComponentActivity() {
         val rememberScope = rememberCoroutineScope()
         val counter = remember { mutableIntStateOf(0) }
         ConstraintLayout(modifier = Modifier.fillMaxSize(1f)){
-            val (btnOne,btnTwo,textRemember,btnRememberUpdated,textRememberUpdated) = createRefs()
+            val (btnOne,btnTwo,textRemember,textRememberUpdated,etDisposible) = createRefs()
             LaunchedEffectButton(
                 count.intValue,
                 {count.intValue++},
@@ -104,6 +105,13 @@ class MainActivity : ComponentActivity() {
             RememberUpdatedState(
                 Modifier.constrainAs(textRememberUpdated){
                     top.linkTo(textRemember.bottom)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                }
+            )
+            DisposableEffectSimulation(
+                Modifier.constrainAs(etDisposible){
+                    top.linkTo(textRememberUpdated.bottom)
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                 }
