@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("com.google.dagger.hilt.android") version "2.52"
+    kotlin("kapt")
 }
 
 android {
@@ -57,4 +59,22 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation ("androidx.constraintlayout:constraintlayout-compose:1.0.1")
+
+    // ViewModel + Lifecycle for Compose
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.6")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.6")
+
+    // Navigation for Compose
+    implementation("androidx.navigation:navigation-compose:2.8.3")
+
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
+
+    // Hilt
+    implementation("com.google.dagger:hilt-android:2.52")
+    kapt("com.google.dagger:hilt-android-compiler:2.52")
+
+    // Hilt navigation for Compose
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 }
