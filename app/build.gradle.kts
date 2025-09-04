@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    id("com.google.dagger.hilt.android") version "2.52"
+    id("com.google.dagger.hilt.android")
     kotlin("kapt")
 }
 
@@ -72,9 +72,18 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
 
     // Hilt
-    implementation("com.google.dagger:hilt-android:2.52")
-    kapt("com.google.dagger:hilt-android-compiler:2.52")
-
-    // Hilt navigation for Compose
+    implementation("com.google.dagger:hilt-android:2.56.2") // latest stable as of now
+    kapt("com.google.dagger:hilt-android-compiler:2.56.2")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+
+// Force update javapoet to avoid canonicalName() error
+    implementation("com.squareup:javapoet:1.13.0")
+
+
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+
+    // Converter Library (Choose one based on your data format, e.g., JSON)
+    // For GSON:
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
 }
