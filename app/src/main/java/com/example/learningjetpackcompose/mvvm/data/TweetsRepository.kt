@@ -30,8 +30,9 @@ class TweetsRepository @Inject constructor(private val tweetsApi: TweetsApi){
     suspend fun getDataOfSpecificCategory(category : String) : List<TweetListItem>?{
         return withContext(Dispatchers.IO){
             try {
-                val response = tweetsApi.getTweetsFromSpecificCategory(category)
+                val response = tweetsApi.getTweetsFromSpecificCategory("$[?(@.category==\"$category\")]")
                 if(response.isSuccessful && response.body()!=null){
+                    Log.d("khan","data new is  ${response.body()}")
                     response.body()!!
                 } else {
                     Log.d("khan","Error is ${response.errorBody()}")

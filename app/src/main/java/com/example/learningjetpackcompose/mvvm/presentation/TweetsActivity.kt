@@ -24,6 +24,8 @@ import com.example.learningjetpackcompose.basic_components.EditTextComposable
 import com.example.learningjetpackcompose.basic_components.ImageComposable
 import com.example.learningjetpackcompose.basic_components.TextComposable
 import com.example.learningjetpackcompose.mvvm.data.TweetsApi
+import com.example.learningjetpackcompose.mvvm.presentation.activity.CategoryScreen
+import com.example.learningjetpackcompose.mvvm.presentation.activity.DetailScreen
 import com.example.learningjetpackcompose.side_effects.DisposableEffectSimulation
 import com.example.learningjetpackcompose.side_effects.LaunchedEffectButton
 import com.example.learningjetpackcompose.side_effects.ProducedAndDerivedStateOfSimulation
@@ -48,7 +50,7 @@ class TweetsActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             LearningJetpackComposeTheme {
-                
+                DetailScreen()
             }
         }
     }

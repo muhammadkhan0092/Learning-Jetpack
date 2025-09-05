@@ -16,7 +16,7 @@ class DetailViewModel @Inject constructor(private val repository: TweetsReposito
     val apps : StateFlow<List<TweetListItem>?> = _apps.asStateFlow()
 
     init {
-        getAppsOfSpecificCategory("")
+        getAppsOfSpecificCategory("Android")
     }
     private fun getAppsOfSpecificCategory(category : String){
         viewModelScope.launch {
