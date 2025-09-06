@@ -34,14 +34,20 @@ import com.example.learningjetpackcompose.mvvm.presentation.view_models.Category
 fun CategoryScreen(onCategoryClicked: (String) -> Unit) {
     val categoryViewModel : CategoryViewModel = hiltViewModel()
     val categories = categoryViewModel.categories.collectAsState()
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(2),
-        contentPadding = PaddingValues(8.dp),
-        verticalArrangement = Arrangement.SpaceAround
-    ) {
-        categories.value?.let {
-            items(it){
-                CategoryItem(it,onCategoryClicked)
+    categories.value?.let {
+        if(it.isEmpty()){
+            LoadingComposable()
+        }
+        else
+        {
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                contentPadding = PaddingValues(8.dp),
+                verticalArrangement = Arrangement.SpaceAround
+            ) {
+                items(it){
+                    CategoryItem(it,onCategoryClicked)
+                }
             }
         }
     }

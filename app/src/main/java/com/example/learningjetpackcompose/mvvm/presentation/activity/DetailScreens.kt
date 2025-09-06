@@ -23,10 +23,16 @@ import com.example.learningjetpackcompose.mvvm.presentation.view_models.DetailVi
 fun DetailScreen(){
     val detailViewModel : DetailViewModel = hiltViewModel()
     val data = detailViewModel.apps.collectAsState()
-    LazyColumn {
-        data.value?.let {
-            items(it) {
-                TweetListItem(it.tweet)
+    if(data.value!=null && data.value!!.isEmpty()){
+        LoadingComposable()
+    }
+    else
+    {
+        LazyColumn {
+            data.value?.let {
+                items(it) {
+                    TweetListItem(it.tweet)
+                }
             }
         }
     }
