@@ -1,6 +1,7 @@
 package com.example.learningjetpackcompose.mvvm.presentation.activity
 
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -24,32 +25,37 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.learningjetpackcompose.R
 import com.example.learningjetpackcompose.mvvm.presentation.view_models.CategoryViewModel
 
 @Composable
-fun CategoryScreen(){
-    val categoryViewModel : CategoryViewModel = viewModel()
+fun CategoryScreen(onCategoryClicked: (String) -> Unit) {
+    val categoryViewModel : CategoryViewModel = hiltViewModel()
     val categories = categoryViewModel.categories.collectAsState()
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         contentPadding = PaddingValues(8.dp),
         verticalArrangement = Arrangement.SpaceAround
     ) {
-        items(categories.value!!){
-            CategoryItem(it)
+        categories.value?.let {
+            items(it){
+                CategoryItem(it,onCategoryClicked)
+            }
         }
     }
 }
-@Preview(showSystemUi = true)
 @Composable
-fun CategoryItem(category : String = "motivation"){
+fun CategoryItem(category : String,onCategoryClicked: (String) -> Unit = {}){
     Box (
         modifier = Modifier
             .padding(4.dp)
             .size(160.dp)
             .clip(RoundedCornerShape(8.dp))
+            .clickable{
+                onCategoryClicked(category)
+            }
             .paint(
                 painter = painterResource(R.drawable.bg_wave),
                 contentScale = ContentScale.Crop
