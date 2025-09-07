@@ -23,12 +23,14 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.learningjetpackcompose.basic_components.BoxComposable
 import com.example.learningjetpackcompose.mvvm.data.TweetsApi
 import com.example.learningjetpackcompose.mvvm.presentation.activity.CategoryScreen
 import com.example.learningjetpackcompose.mvvm.presentation.activity.DetailScreen
 import com.example.learningjetpackcompose.mvvm.presentation.constants.Constants.ARG_CATEGORY
 import com.example.learningjetpackcompose.mvvm.presentation.constants.Constants.ROUTE_CATEGORIES
 import com.example.learningjetpackcompose.mvvm.presentation.constants.Constants.ROUTE_DETAIL
+import com.example.learningjetpackcompose.shopping_ui.GetStarted
 import com.example.learningjetpackcompose.ui.theme.LearningJetpackComposeTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -42,6 +44,7 @@ class TweetsActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             LearningJetpackComposeTheme {
+               // BoxComposable()
                 Scaffold(
                     topBar = {
                         TopAppBar(
@@ -70,7 +73,10 @@ class TweetsActivity : ComponentActivity() {
     @Composable
     private fun App() {
         val navController = rememberNavController()
-        NavHost(navController = navController, startDestination = ROUTE_CATEGORIES) {
+        NavHost(navController = navController, startDestination = "getstarted") {
+            composable("getstarted") {
+                GetStarted()
+            }
             composable(ROUTE_CATEGORIES) {
                 CategoryScreen() {
                     val navigateTo = ROUTE_DETAIL+"/$it"
