@@ -30,6 +30,7 @@ import com.example.learningjetpackcompose.mvvm.presentation.activity.DetailScree
 import com.example.learningjetpackcompose.mvvm.presentation.constants.Constants.ARG_CATEGORY
 import com.example.learningjetpackcompose.mvvm.presentation.constants.Constants.ROUTE_CATEGORIES
 import com.example.learningjetpackcompose.mvvm.presentation.constants.Constants.ROUTE_DETAIL
+import com.example.learningjetpackcompose.shopping_ui.CreateAccount
 import com.example.learningjetpackcompose.shopping_ui.GetStarted
 import com.example.learningjetpackcompose.ui.theme.LearningJetpackComposeTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,28 +45,29 @@ class TweetsActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             LearningJetpackComposeTheme {
+                App()
                // BoxComposable()
-                Scaffold(
-                    topBar = {
-                        TopAppBar(
-                            title = {
-                                Text("Tweetsy")
-                            },
-                            colors = TopAppBarColors(
-                                containerColor = Color.Black,
-                                titleContentColor = Color.White,
-                                scrolledContainerColor = Color.White,
-                                navigationIconContentColor = Color.White,
-                                actionIconContentColor = Color.White,
-                            )
-                        )
-                    }
-                ){
-                    Box(modifier = Modifier.padding(it))
-                    {
-                        App()
-                    }
-                }
+//                Scaffold(
+//                    topBar = {
+//                        TopAppBar(
+//                            title = {
+//                                Text("Tweetsy")
+//                            },
+//                            colors = TopAppBarColors(
+//                                containerColor = Color.Black,
+//                                titleContentColor = Color.White,
+//                                scrolledContainerColor = Color.White,
+//                                navigationIconContentColor = Color.White,
+//                                actionIconContentColor = Color.White,
+//                            )
+//                        )
+//                    }
+//                ){
+//                    Box(modifier = Modifier.padding(it))
+//                    {
+//                        App()
+//                    }
+//                }
             }
         }
     }
@@ -75,7 +77,7 @@ class TweetsActivity : ComponentActivity() {
         val navController = rememberNavController()
         NavHost(navController = navController, startDestination = "getstarted") {
             composable("getstarted") {
-                GetStarted()
+                CreateAccount()
             }
             composable(ROUTE_CATEGORIES) {
                 CategoryScreen() {
