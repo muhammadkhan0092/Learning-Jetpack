@@ -36,6 +36,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
+import com.example.learningjetpackcompose.shopping_ui.common_views.LargeBlueButton
+import kotlin.times
 
 //768
 //375
@@ -101,22 +103,12 @@ fun GetStarted(){
                 modifier = Modifier.fillMaxWidth()
             )
         }
-        Button(
-            shape = RoundedCornerShape(16.dp),
-            colors = ButtonColors(
-                containerColor = Color(0xFF004CFF),
-                contentColor = Color(0xFFF3F3F3),
-                disabledContainerColor = Color.White,
-                disabledContentColor = Color(0xFF004CFF)
-            ),
-            modifier = Modifier
-                .offset(maxWidth*0.053f,maxHeight*0.754f)
-                .fillMaxWidth(0.893f)
-                .fillMaxHeight(0.078f),
-            onClick = {}
-        ) {
-            Text("Let's get started", fontSize = text_22, fontFamily = FontFamily(nunitoFont), lineHeight = 31.sp)
-        }
+        LargeBlueButton(
+            "Let's get started",
+            Modifier
+            .offset(maxWidth*0.053f,maxHeight*0.754f)
+            .fillMaxWidth(0.893f)
+            .fillMaxHeight(0.078f))
         Text(
             "I already have an account",
             fontSize = text_15,
