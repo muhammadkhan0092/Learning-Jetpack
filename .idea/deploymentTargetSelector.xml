@@ -4,10 +4,10 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2025-09-06T19:52:59.460176800Z">
+        <DropdownSelection timestamp="2025-09-09T19:14:05.809846800Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\rockz\.android\avd\figma_device.avd" />
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\rockz\.android\avd\3.3_WQVGA.avd" />
             </handle>
           </Target>
         </DropdownSelection>

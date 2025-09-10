@@ -55,7 +55,7 @@ fun CreateAccount(){
     val dp_10 = dimensionResource(R.dimen.dp_10)
     val dp_90 = dimensionResource(R.dimen.dp_90)
     val dp_17 = dimensionResource(R.dimen.dp_17)
-    val dp_13 = dimensionResource(R.dimen.dp_13)
+    val dp_15 = dimensionResource(R.dimen.dp_15)
     val dp_8 = dimensionResource(R.dimen.dp_8)
     val dp_16 = dimensionResource(R.dimen.dp_16)
     val dp_52 = dimensionResource(R.dimen.dp_52)
@@ -105,7 +105,7 @@ fun CreateAccount(){
                     modifier = Modifier
                         .fillMaxWidth()
                         .background(Color(0xFF004CFF), shape = RoundedCornerShape(16.dp))
-                        .padding(top = dp_17, bottom = dp_13)
+                        .padding(top = dp_15, bottom = dp_15)
                 )
                 Spacer(modifier = Modifier.height(dp_24))
                 Text(

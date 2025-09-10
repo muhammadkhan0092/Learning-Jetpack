@@ -6,10 +6,13 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -25,6 +28,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
@@ -39,6 +43,15 @@ import com.example.learningjetpackcompose.R
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 fun GetStarted(){
+    val ralewayFont = androidx.compose.ui.text.font.Font(R.font.raleway_bold)
+    val nunitoFont = androidx.compose.ui.text.font.Font(R.font.nuninto_light)
+    val text_19 = dimensionResource(R.dimen.sp_19).value.sp
+    val text_52 = dimensionResource(R.dimen.sp_52).value.sp
+    val text_26 = dimensionResource(R.dimen.sp_26).value.sp
+    val text_15 = dimensionResource(R.dimen.sp_15).value.sp
+    val text_33 = dimensionResource(R.dimen.sp_33).value.sp
+    val text_22 = dimensionResource(R.dimen.sp_22).value.sp
+    val margin_18 = dimensionResource(R.dimen.dp_18)
     BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
         val maxWidth = maxWidth
         val maxHeight = maxHeight
@@ -67,25 +80,27 @@ fun GetStarted(){
                 )
             }
         }
-        Text(
-            "Shoppe",
-            fontSize = 52.sp,
-            textAlign = TextAlign.Center,
-            color = Color.Black,
-            modifier = Modifier
-                .offset(0.dp,maxHeight*0.457f)
-                .fillMaxWidth(1f)
-        )
-        val font = androidx.compose.ui.text.font.Font(R.font.nunito_regular)
-        Text(
-            "Beautiful eCommerce UI Kit for your online store",
-            fontSize = 19.sp,
-            lineHeight = 33.sp,
-            fontFamily = FontFamily(font),
-            color = Color(0xFF202020),
-            textAlign = TextAlign.Center,
-            modifier = Modifier.offset(maxWidth*0.168f,maxHeight*0.543f).fillMaxWidth(0.664f)
-        )
+        Column(Modifier.offset(0.dp,maxHeight*0.457f).fillMaxWidth()) {
+            Text(
+                "Shoppe",
+                fontSize = text_52,
+                textAlign = TextAlign.Center,
+                color = Color.Black,
+                fontFamily = FontFamily(ralewayFont),
+                modifier = Modifier
+                    .fillMaxWidth(1f)
+            )
+            Spacer(modifier = Modifier.height(margin_18))
+            Text(
+                "Beautiful eCommerce UI Kit\nfor your online store",
+                fontSize = text_19,
+                lineHeight = text_33,
+                fontFamily = FontFamily(nunitoFont),
+                color = Color(0xFF202020),
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
         Button(
             shape = RoundedCornerShape(16.dp),
             colors = ButtonColors(
@@ -100,12 +115,13 @@ fun GetStarted(){
                 .fillMaxHeight(0.078f),
             onClick = {}
         ) {
-            Text("Let's get started", fontSize = 22.sp)
+            Text("Let's get started", fontSize = text_22, fontFamily = FontFamily(nunitoFont), lineHeight = 31.sp)
         }
         Text(
             "I already have an account",
-            fontSize = 15.sp,
-            lineHeight = 26.sp,
+            fontSize = text_15,
+            lineHeight =text_26,
+            fontFamily = FontFamily(nunitoFont),
             modifier = Modifier.offset(maxWidth*0.216f,maxHeight*0.863f)
         )
         Image(
