@@ -22,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -39,55 +40,48 @@ import com.example.learningjetpackcompose.shopping_ui.common_views.LargeBlueButt
 fun LoginScreen(){
     val raleway = Font(R.font.raleway_bold)
     val nunitoSans = Font(R.font.nuninto_light)
-    Image(
-        painter = painterResource(R.drawable.bg_top),
-        contentDescription = "",
-        contentScale = ContentScale.FillBounds,
-        modifier = Modifier.fillMaxWidth(0.75f).aspectRatio(1.09f)
-    )
-    Image(
-        painter = painterResource(R.drawable.bg_bottom),
-        contentDescription = "",
-        contentScale = ContentScale.FillBounds,
-        modifier = Modifier.fillMaxWidth(0.6f).aspectRatio(1.09f)
-    )
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.CenterEnd){
-        Image(
-            painter = painterResource(R.drawable.bg_login_center),
-            contentDescription = "",
-            contentScale = ContentScale.FillBounds,
-            modifier = Modifier.fillMaxHeight(0.2f).aspectRatio(0.5f)
-        )
-    }
+    Image(painter = painterResource(R.drawable.bg_top), contentDescription = "", contentScale = ContentScale.FillBounds, modifier = Modifier.fillMaxHeight(0.40f).aspectRatio(0.84f))
+    Image(painter = painterResource(R.drawable.bg_bottom), contentDescription = "", contentScale = ContentScale.FillBounds, modifier = Modifier.fillMaxWidth(0.6f).aspectRatio(1.09f))
+
     Box(contentAlignment = Alignment.BottomCenter, modifier = Modifier.fillMaxSize().padding( start = 20.dp)) {
-        BoxWithConstraints(
-            modifier = Modifier.fillMaxWidth().fillMaxHeight(0.420f)
-        ) {
-            val width = maxWidth
-            val height = maxHeight
-            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.BottomEnd){
-                Image(
+        Box(modifier = Modifier.fillMaxWidth().fillMaxHeight(0.683f), contentAlignment = Alignment.TopEnd){
+            Image(painter = painterResource(R.drawable.bg_login_center), contentDescription = "", contentScale = ContentScale.FillBounds, modifier = Modifier.fillMaxHeight(0.3f).aspectRatio(0.5f))
+        }
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.BottomEnd){
+            Image(
                     painter = painterResource(R.drawable.bg_bottom_login),
                     contentDescription = "",
                     contentScale = ContentScale.FillBounds,
                     modifier = Modifier.fillMaxWidth(0.75f).aspectRatio(1f)
                 )
             }
+        val text52 = dimensionResource(R.dimen.sp_52).value.sp
+        val text19 = dimensionResource(R.dimen.sp_19).value.sp
+        val text35 = dimensionResource(R.dimen.sp_35).value.sp
+        val text15 = dimensionResource(R.dimen.sp_15).value.sp
+        val margin20 = dimensionResource(R.dimen.dp_20)
+        val margin36 = dimensionResource(R.dimen.dp_36)
+        val margin17 = dimensionResource(R.dimen.dp_17)
+        val margin14 = dimensionResource(R.dimen.dp_14)
+        val margin10 = dimensionResource(R.dimen.dp_10)
+        val height4 = dimensionResource(R.dimen.dp_4)
+        Box(contentAlignment = Alignment.TopCenter, modifier = Modifier.fillMaxWidth().fillMaxHeight(0.420f)){
             Column {
-                Text("Login", fontSize = 52.sp, fontFamily = FontFamily(raleway))
-                Spacer(modifier = Modifier.height(4.dp))
+                Text("Login", fontSize =text52, fontFamily = FontFamily(raleway))
+                Spacer(modifier = Modifier.height(height4))
                 Row(verticalAlignment = Alignment.CenterVertically){
-                    Text("Good to see you back!", fontSize = 19.sp, lineHeight = 35.sp, fontFamily = FontFamily(nunitoSans))
-                    Spacer(modifier = Modifier.width(10.2.dp))
+                    Text("Good to see you back!", fontSize =text19, lineHeight = text35, fontFamily = FontFamily(nunitoSans))
+                    Spacer(modifier = Modifier.width(margin10))
                     Image(painter = painterResource(R.drawable.heart), contentDescription = "")
                 }
-                Spacer(modifier = Modifier.height(17.dp))
-                EditTextComposable(hint = "Email", Modifier.fillMaxWidth())
-                Spacer(modifier = Modifier.height(36.dp))
-                LargeBlueButton("Next", Modifier.fillMaxWidth().fillMaxHeight(0.40f).padding(end = 20.dp))
-                Spacer(modifier = Modifier.height(14.dp))
-                Text("Cancel", modifier = Modifier.fillMaxWidth().padding(end = 20.dp), textAlign = TextAlign.Center, fontSize = 15.sp, fontFamily = FontFamily(nunitoSans))
+                Spacer(modifier = Modifier.height(margin17))
+                EditTextComposable(hint = "Email", Modifier.fillMaxWidth().padding(end = margin20))
+                Spacer(modifier = Modifier.height(margin36))
+                LargeBlueButton("Next", Modifier.fillMaxWidth().fillMaxHeight(0.40f).padding(end = margin20))
+                Spacer(modifier = Modifier.height(margin14))
+                Text("Cancel", modifier = Modifier.fillMaxWidth().padding(end = margin20), textAlign = TextAlign.Center, fontSize = text15, fontFamily = FontFamily(nunitoSans))
             }
-        }
+            }
+
     }
 }

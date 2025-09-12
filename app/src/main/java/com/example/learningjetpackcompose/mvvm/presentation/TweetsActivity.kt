@@ -32,6 +32,7 @@ import com.example.learningjetpackcompose.mvvm.presentation.constants.Constants.
 import com.example.learningjetpackcompose.mvvm.presentation.constants.Constants.ROUTE_DETAIL
 import com.example.learningjetpackcompose.shopping_ui.CreateAccount
 import com.example.learningjetpackcompose.shopping_ui.GetStarted
+import com.example.learningjetpackcompose.shopping_ui.LoginScreen
 import com.example.learningjetpackcompose.ui.theme.LearningJetpackComposeTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -77,7 +78,7 @@ class TweetsActivity : ComponentActivity() {
         val navController = rememberNavController()
         NavHost(navController = navController, startDestination = "getstarted") {
             composable("getstarted") {
-                CreateAccount()
+                LoginScreen()
             }
             composable(ROUTE_CATEGORIES) {
                 CategoryScreen() {

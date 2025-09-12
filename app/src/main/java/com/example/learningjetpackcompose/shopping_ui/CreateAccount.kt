@@ -94,7 +94,7 @@ fun CreateAccount(){
                 Spacer(modifier = Modifier.height(dp_8))
                 EditTextComposable("Password", Modifier.fillMaxWidth())
                 Spacer(modifier = Modifier.height(dp_8))
-                EditTextComposable("Country", Modifier.fillMaxWidth())
+                EditTextComposable("Country", Modifier.fillMaxWidth().padding(20.dp))
                 Spacer(modifier = Modifier.height(dp_52))
                 Text(
                     "Done",
@@ -129,11 +129,9 @@ fun EditTextComposable(hint : String,modifier: Modifier){
     BasicTextField(
         value = "",
         onValueChange = { },
-        modifier = Modifier
-            .fillMaxWidth()
+        modifier = modifier
             .height(dp_54) // fixed height
             .background(Color(0xFFF8F8F8), RoundedCornerShape(100.dp))
-            .padding(start = dp_20, top = 0.dp, bottom = 0.dp, end = 0.dp)
         ,
         decorationBox = { innerTextField ->
             Box(
