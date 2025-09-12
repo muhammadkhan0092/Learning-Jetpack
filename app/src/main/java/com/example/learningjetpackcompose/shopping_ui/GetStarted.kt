@@ -1,7 +1,6 @@
 package com.example.learningjetpackcompose.shopping_ui
 
 import android.annotation.SuppressLint
-import android.graphics.fonts.Font
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -15,19 +14,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CardElevation
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
@@ -37,7 +31,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
 import com.example.learningjetpackcompose.shopping_ui.common_views.LargeBlueButton
-import kotlin.times
 
 //768
 //375
@@ -52,7 +45,6 @@ fun GetStarted(){
     val text_26 = dimensionResource(R.dimen.sp_26).value.sp
     val text_15 = dimensionResource(R.dimen.sp_15).value.sp
     val text_33 = dimensionResource(R.dimen.sp_33).value.sp
-    val text_22 = dimensionResource(R.dimen.sp_22).value.sp
     val margin_18 = dimensionResource(R.dimen.dp_18)
     BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
         val maxWidth = maxWidth
