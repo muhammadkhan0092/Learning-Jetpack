@@ -40,6 +40,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
+import com.example.learningjetpackcompose.shopping_ui.common_views.EditTextComposable
 
 
 @SuppressLint("UnusedBoxWithConstraintsScope")
@@ -90,11 +91,11 @@ fun CreateAccount(){
                 modifier = Modifier.offset(dp_10,maxHeight*0.248f).size(dp_90)
             )
             Column(modifier = Modifier.offset(0.dp,maxHeight*0.436f)){
-                EditTextComposable("Email", Modifier.fillMaxWidth())
+                EditTextComposable("Email", Modifier.fillMaxWidth().padding(start = 20.dp))
                 Spacer(modifier = Modifier.height(dp_8))
-                EditTextComposable("Password", Modifier.fillMaxWidth())
+                EditTextComposable("Password", Modifier.fillMaxWidth().padding(start = 20.dp))
                 Spacer(modifier = Modifier.height(dp_8))
-                EditTextComposable("Country", Modifier.fillMaxWidth().padding(20.dp))
+                EditTextComposable("Country", Modifier.fillMaxWidth().padding(start = 20.dp))
                 Spacer(modifier = Modifier.height(dp_52))
                 Text(
                     "Done",
@@ -119,46 +120,5 @@ fun CreateAccount(){
             }
 
         }
-    }
-}
-@Composable
-fun EditTextComposable(hint : String,modifier: Modifier){
-    val sp_14 = dimensionResource(id = R.dimen.sp_14).value.sp
-    val dp_20 = dimensionResource(id = R.dimen.sp_20)
-    val dp_54 = dimensionResource(R.dimen.dp_54)
-    BasicTextField(
-        value = "",
-        onValueChange = { },
-        modifier = modifier
-            .height(dp_54) // fixed height
-            .background(Color(0xFFF8F8F8), RoundedCornerShape(100.dp))
-        ,
-        decorationBox = { innerTextField ->
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.CenterStart // centers text vertically
-            ) {
-                if ("".isEmpty()) { // show hint only if value is empty
-                    Text(
-                        text = hint,
-                        color = Color(0xFFD2D2D2),
-                        fontSize = sp_14
-                    )
-                }
-                innerTextField()
-            }
-        }
-    )
-
-
-}
-@Composable
-fun dimensionResourceByName(name: String): Dp {
-    val context = LocalContext.current
-    val resId = context.resources.getIdentifier(name, "dimen", context.packageName)
-    return if (resId != 0) {
-        (context.resources.getDimensionPixelSize(resId) / context.resources.displayMetrics.density).dp
-    } else {
-        0.dp
     }
 }

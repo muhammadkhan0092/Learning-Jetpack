@@ -31,8 +31,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
-import com.example.learningjetpackcompose.basic_components.EditTextComposable
+import com.example.learningjetpackcompose.shopping_ui.common_views.EditTextComposable
 import com.example.learningjetpackcompose.shopping_ui.common_views.LargeBlueButton
+import com.example.learningjetpackcompose.shopping_ui.common_views.TopLeftTwoBg
 
 @Preview(showSystemUi = true)
 @SuppressLint("UnusedBoxWithConstraintsScope")
@@ -40,9 +41,7 @@ import com.example.learningjetpackcompose.shopping_ui.common_views.LargeBlueButt
 fun LoginScreen(){
     val raleway = Font(R.font.raleway_bold)
     val nunitoSans = Font(R.font.nuninto_light)
-    Image(painter = painterResource(R.drawable.bg_top), contentDescription = "", contentScale = ContentScale.FillBounds, modifier = Modifier.fillMaxHeight(0.40f).aspectRatio(0.84f))
-    Image(painter = painterResource(R.drawable.bg_bottom), contentDescription = "", contentScale = ContentScale.FillBounds, modifier = Modifier.fillMaxWidth(0.6f).aspectRatio(1.09f))
-
+    TopLeftTwoBg()
     Box(contentAlignment = Alignment.BottomCenter, modifier = Modifier.fillMaxSize().padding( start = 20.dp)) {
         Box(modifier = Modifier.fillMaxWidth().fillMaxHeight(0.683f), contentAlignment = Alignment.TopEnd){
             Image(painter = painterResource(R.drawable.bg_login_center), contentDescription = "", contentScale = ContentScale.FillBounds, modifier = Modifier.fillMaxHeight(0.3f).aspectRatio(0.5f))

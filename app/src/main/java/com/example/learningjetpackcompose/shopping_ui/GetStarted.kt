@@ -30,6 +30,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
+import com.example.learningjetpackcompose.shopping_ui.common_views.ButtonFrontArrow
 import com.example.learningjetpackcompose.shopping_ui.common_views.LargeBlueButton
 
 //768
@@ -108,17 +109,6 @@ fun GetStarted(){
             fontFamily = FontFamily(nunitoFont),
             modifier = Modifier.offset(maxWidth*0.216f,maxHeight*0.863f)
         )
-        Image(
-            modifier = Modifier
-                .fillMaxWidth(0.08f)
-                .fillMaxHeight(0.038f)
-                .offset(maxWidth*0.705f,maxHeight*0.855f)
-                .aspectRatio(1f)
-                .background(Color(0xFF004CFF),RoundedCornerShape(20.dp))
-                .padding(top = 9.dp, bottom = 9.dp, start = 8.dp, end = 7.dp)
-            ,
-            painter = painterResource(R.drawable.ic_forward),
-            contentDescription = ""
-        )
+        ButtonFrontArrow(Modifier.offset(maxWidth*0.705f,maxHeight*0.855f))
     }
 }
