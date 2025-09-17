@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
 import com.example.learningjetpackcompose.shopping_ui.common_views.ButtonFrontArrow
+import com.example.learningjetpackcompose.shopping_ui.common_views.ProfileAvatar
 import com.example.learningjetpackcompose.shopping_ui.common_views.TopLeftTwoBg
 
 @SuppressLint("UnusedBoxWithConstraintsScope")
@@ -48,26 +49,13 @@ fun PasswordScreen(){
     val text15 = dimensionResource(R.dimen.sp_15).value.sp
     val margin_30 = dimensionResource(R.dimen.dp_30)
     val margin_23 = dimensionResource(R.dimen.dp_23)
-    val height106 = dimensionResource(R.dimen.dp_106)
-    val height90 = dimensionResource(R.dimen.dp_90)
     TopLeftTwoBg()
-    BoxWithConstraints {
+    BoxWithConstraints(modifier = Modifier.fillMaxWidth().fillMaxHeight()) {
         val width = maxWidth
         val height = maxHeight
 
         Column(modifier = Modifier.fillMaxWidth().fillMaxHeight().offset(0.dp,height*0.12f), horizontalAlignment = Alignment.CenterHorizontally) {
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier.size(height106).background(Color.White,
-                RoundedCornerShape(100.dp),
-            )) {
-                Image(
-                    painter = painterResource(id = R.drawable.img_profile_avatar),
-                    contentDescription = "Profile picture",
-                    modifier = Modifier.size(height90)
-                        .clip(CircleShape)
-                )
-            }
+            ProfileAvatar()
             Spacer(modifier = Modifier.height(28.dp))
             Text("Hello, Romina!!", fontFamily = FontFamily(raleway), fontSize = text28, letterSpacing = 0.28.sp, color = Color(0xFF202020), lineHeight = text36)
             Spacer(modifier = Modifier.height(margin_30))
