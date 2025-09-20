@@ -33,14 +33,14 @@ import com.example.learningjetpackcompose.R
 fun CustomCheckbox(
     modifier: Modifier = Modifier.fillMaxWidth(),
     selected: String = "",
-    name: String = ""
+    name: String = "Email"
 ) {
     val margin_9 = dimensionResource(R.dimen.dp_9)
     val margin_10 = dimensionResource(R.dimen.dp_10)
     val size_22 = dimensionResource(R.dimen.dp_22)
     val size_20 = dimensionResource(R.dimen.dp_20)
     val text15 = dimensionResource(R.dimen.sp_15).value.sp
-
+    val height = dimensionResource(R.dimen.dp_40)
     val selectedBoxColor = Color(0xFFE5EBFC)
     val unselectedBoxColor = Color(0xFFFFEBEB)
     val selectedTextColor = Color(0xFF004CFF)
@@ -55,19 +55,11 @@ fun CustomCheckbox(
     Box(
         modifier = modifier
             .background(boxColor, RoundedCornerShape(100.dp))
-            .padding(top = margin_9, bottom = margin_9, end = margin_10)
+            .height(height)
+            .padding(end = margin_10),
+        contentAlignment = Alignment.Center
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-
-            Text(
-                text = "Email",
-                modifier = Modifier.weight(1f),
-                textAlign = TextAlign.Center,
-                fontFamily = FontFamily(Font(R.font.raleway_semi_bold)),
-                color = textColor,
-                fontSize = text15
-            )
-
+        Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterEnd){
             Box(
                 modifier = Modifier
                     .size(size_22)
@@ -90,5 +82,13 @@ fun CustomCheckbox(
                 }
             }
         }
+        Text(
+            text = name,
+            textAlign = TextAlign.Center,
+            fontFamily = FontFamily(Font(R.font.raleway_semi_bold)),
+            modifier = Modifier.fillMaxWidth(),
+            color = textColor,
+            fontSize = text15
+        )
     }
 }
