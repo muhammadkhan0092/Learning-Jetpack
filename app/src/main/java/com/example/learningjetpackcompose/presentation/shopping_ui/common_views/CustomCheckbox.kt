@@ -20,22 +20,21 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
 
 @Composable
 fun CustomCheckbox(
-    modifier: Modifier = Modifier.fillMaxWidth(),
+    modifier: Modifier = Modifier,
     selected: String = "Email",
     name: String = "Email",
     onClick : ()-> Unit
 ) {
     dimensionResource(R.dimen.dp_9)
-    val margin_10 = dimensionResource(R.dimen.dp_10)
-    val size_22 = dimensionResource(R.dimen.dp_22)
-    val size_20 = dimensionResource(R.dimen.dp_20)
+    val margin10 = dimensionResource(R.dimen.dp_10)
+    val size22 = dimensionResource(R.dimen.dp_22)
+    val size20 = dimensionResource(R.dimen.dp_20)
     val text15 = dimensionResource(R.dimen.sp_15).value.sp
     val size15 = dimensionResource(R.dimen.dp_15)
     val height = dimensionResource(R.dimen.dp_40)
@@ -54,7 +53,7 @@ fun CustomCheckbox(
         modifier = modifier
             .background(boxColor, RoundedCornerShape(100.dp))
             .height(height)
-            .padding(end = margin_10)
+            .padding(end = margin10)
             .clickable{onClick()}
         ,
         contentAlignment = Alignment.Center
@@ -62,13 +61,13 @@ fun CustomCheckbox(
         Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterEnd){
             Box(
                 modifier = Modifier
-                    .size(size_22)
+                    .size(size22)
                     .background(Color.White, CircleShape),
                 contentAlignment = Alignment.Center
             ) {
                 Box(
                     modifier = Modifier
-                        .size(size_20)
+                        .size(size20)
                         .background(circleColor, CircleShape),
                     contentAlignment = Alignment.Center
                 ) {

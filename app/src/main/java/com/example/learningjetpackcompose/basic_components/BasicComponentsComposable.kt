@@ -14,11 +14,11 @@ import androidx.compose.ui.Modifier
         val etState = remember {mutableStateOf("")}
         val nameState = remember { mutableStateOf("Your Name is ${etState.value}") }
         Column(verticalArrangement = Arrangement.SpaceEvenly, horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxSize(1f)) {
-            ButtonComposable("Button Composable",{})
-            EditTextComposable(etState.value,{
+            ButtonComposable("Button Composable") {}
+            EditTextComposable(etState.value) {
                 etState.value = it
                 nameState.value = "Your Name is $it"
-            })
+            }
             TextComposable(nameState.value)
             ImageComposable()
         }

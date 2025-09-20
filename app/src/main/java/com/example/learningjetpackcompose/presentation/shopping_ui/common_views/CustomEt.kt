@@ -18,14 +18,13 @@ import com.example.learningjetpackcompose.R
 
 @Composable
 fun EditTextComposable(hint : String,modifier: Modifier){
-    val sp_14 = dimensionResource(id = R.dimen.sp_14).value.sp
-    val dp_20 = dimensionResource(id = R.dimen.sp_20)
-    val dp_54 = dimensionResource(R.dimen.dp_54)
+    val sp14 = dimensionResource(id = R.dimen.sp_14).value.sp
+    val dp54 = dimensionResource(R.dimen.dp_54)
     BasicTextField(
         value = "",
         onValueChange = { },
         modifier = modifier
-            .height(dp_54) 
+            .height(dp54)
             .background(Color(0xFFF8F8F8), RoundedCornerShape(100.dp))
         ,
         decorationBox = { innerTextField ->
@@ -37,7 +36,7 @@ fun EditTextComposable(hint : String,modifier: Modifier){
                     Text(
                         text = hint,
                         color = Color(0xFFD2D2D2),
-                        fontSize = sp_14
+                        fontSize = sp14
                     )
                 }
                 innerTextField()

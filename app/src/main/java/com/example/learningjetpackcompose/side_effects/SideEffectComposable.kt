@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
         val rememberScope = rememberCoroutineScope()
         val counter = remember { mutableIntStateOf(0) }
         ConstraintLayout(modifier = Modifier.fillMaxSize(1f)){
-            val (btnOne,btnTwo,textRemember,textRememberUpdated,etDisposible,producedAndDerivedState) = createRefs()
+            val (btnOne,btnTwo,textRemember,textRememberUpdated,etDisposable,producedAndDerivedState) = createRefs()
             LaunchedEffectButton(
                 count.intValue,
                 {count.intValue++},
@@ -33,7 +33,7 @@ import kotlinx.coroutines.launch
                     rememberScope.launch {
                         Log.d("khan","Remember Launched")
                         try {
-                            for (i in 1..10){
+                            repeat(10){
                                 counter.intValue++
                                 Log.d("khan","Counter -> ${counter.intValue}")
                                 delay(1000)
@@ -63,7 +63,7 @@ import kotlinx.coroutines.launch
                 }
             )
             DisposableEffectSimulation(
-                Modifier.constrainAs(etDisposible){
+                Modifier.constrainAs(etDisposable){
                     top.linkTo(textRememberUpdated.bottom)
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
@@ -71,7 +71,7 @@ import kotlinx.coroutines.launch
             )
             ProducedAndDerivedStateOfSimulation(
                 Modifier.constrainAs(producedAndDerivedState){
-                    top.linkTo(etDisposible.bottom,20.dp)
+                    top.linkTo(etDisposable.bottom,20.dp)
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                 }

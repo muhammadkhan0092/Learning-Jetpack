@@ -19,7 +19,6 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
@@ -49,9 +48,8 @@ fun SetupNewPassword(onClick : ()-> Unit){
     BoxWithConstraints(
         modifier = Modifier.fillMaxWidth().fillMaxHeight().padding(start = margin20, end = margin20).clickable {onClick()}
     ){
-        val width = maxWidth
         val height = maxHeight
-        Column(modifier = Modifier.offset(0.dp,maxHeight*0.148f)){
+        Column(modifier = Modifier.offset(0.dp,height*0.148f)){
             Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center){
                 ProfileAvatar()
             }
@@ -65,7 +63,7 @@ fun SetupNewPassword(onClick : ()-> Unit){
             SquareEditText("Repeat Password", Modifier)
         }
 
-        Column(modifier = Modifier.offset(0.dp,maxHeight*0.780f)){
+        Column(modifier = Modifier.offset(0.dp,height*0.780f)){
             LargeBlueButton("Save", Modifier.fillMaxWidth())
             Spacer(Modifier.height(margin24))
             Text("Cancel", fontFamily = FontFamily(nunito), modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center, fontSize = text15, lineHeight = text26)

@@ -26,7 +26,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
@@ -39,55 +38,55 @@ import com.example.learningjetpackcompose.presentation.shopping_ui.common_views.
 fun GetStarted(onClick : ()-> Unit){
     val ralewayFont = Font(R.font.raleway_bold)
     val nunitoFont = Font(R.font.nuninto_light)
-    val text_19 = dimensionResource(R.dimen.sp_19).value.sp
-    val text_52 = dimensionResource(R.dimen.sp_52).value.sp
-    val text_26 = dimensionResource(R.dimen.sp_26).value.sp
-    val text_15 = dimensionResource(R.dimen.sp_15).value.sp
-    val text_33 = dimensionResource(R.dimen.sp_33).value.sp
-    val margin_18 = dimensionResource(R.dimen.dp_18)
+    val text19 = dimensionResource(R.dimen.sp_19).value.sp
+    val text52 = dimensionResource(R.dimen.sp_52).value.sp
+    val text26 = dimensionResource(R.dimen.sp_26).value.sp
+    val text15 = dimensionResource(R.dimen.sp_15).value.sp
+    val text33 = dimensionResource(R.dimen.sp_33).value.sp
+    val margin18 = dimensionResource(R.dimen.dp_18)
     BoxWithConstraints(modifier = Modifier.fillMaxSize().clickable {onClick()}) {
         val maxWidth = maxWidth
         val maxHeight = maxHeight
-        Card(
-            shape = RoundedCornerShape(120.dp),
-            colors = CardDefaults.cardColors(Color.White),
-            elevation = CardDefaults.cardElevation(8.dp),
-            modifier = Modifier
-                .offset(maxWidth*0.318f,maxHeight*0.244f)
-                .fillMaxWidth(0.357f)
-                .fillMaxHeight(0.174f)
-                .aspectRatio(1f)
-        )
-        {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                Image(
-                    painter = painterResource(R.drawable.img_shopping_back),
-                    contentDescription = "",
-                    modifier = Modifier
-                        .fillMaxHeight(0.686f)
-                        .fillMaxWidth(0.607f)
-                        .aspectRatio(1.095f)
-                )
+        Box(modifier = Modifier.offset(0.dp,maxHeight*0.244f).fillMaxWidth(), contentAlignment = Alignment.Center){
+            Card(
+                shape = RoundedCornerShape(120.dp),
+                colors = CardDefaults.cardColors(Color.White),
+                elevation = CardDefaults.cardElevation(8.dp),
+                modifier = Modifier
+                    .fillMaxHeight(0.174f)
+                    .aspectRatio(1f)
+            )
+            {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Image(
+                        painter = painterResource(R.drawable.img_shopping_back),
+                        contentDescription = "",
+                        modifier = Modifier
+                            .fillMaxHeight(0.686f)
+                            .fillMaxWidth(0.607f)
+                            .aspectRatio(1.095f)
+                    )
+                }
             }
         }
         Column(Modifier.offset(0.dp,maxHeight*0.457f).fillMaxWidth()) {
             Text(
                 "Shoppe",
-                fontSize = text_52,
+                fontSize = text52,
                 textAlign = TextAlign.Center,
                 color = Color.Black,
                 fontFamily = FontFamily(ralewayFont),
                 modifier = Modifier
                     .fillMaxWidth(1f)
             )
-            Spacer(modifier = Modifier.height(margin_18))
+            Spacer(modifier = Modifier.height(margin18))
             Text(
                 "Beautiful eCommerce UI Kit\nfor your online store",
-                fontSize = text_19,
-                lineHeight = text_33,
+                fontSize = text19,
+                lineHeight = text33,
                 fontFamily = FontFamily(nunitoFont),
                 color = Color(0xFF202020),
                 textAlign = TextAlign.Center,
@@ -102,8 +101,8 @@ fun GetStarted(onClick : ()-> Unit){
             .fillMaxHeight(0.078f))
         Text(
             "I already have an account",
-            fontSize = text_15,
-            lineHeight =text_26,
+            fontSize = text15,
+            lineHeight =text26,
             fontFamily = FontFamily(nunitoFont),
             modifier = Modifier.offset(maxWidth*0.216f,maxHeight*0.863f)
         )

@@ -3,7 +3,6 @@ package com.example.learningjetpackcompose.mvvm.data
 import android.util.Log
 import com.example.learningjetpackcompose.mvvm.domain.models.TweetListItem
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 

@@ -1,9 +1,7 @@
 package com.example.learningjetpackcompose.mvvm.presentation.constants
 
 object Constants {
-    const val ROUTE_CATEGORIES = "CATEGORIES"
     const val ROUTE_DETAIL = "DETAIL"
-    const val ARG_CATEGORY = "CATEGORY"
     const val ROUTE_BASIC = "Basic Components"
     const val ROUTE_SIDE = "Side Effects"
     const val ROUTE_MVVM = "Mvvm App"

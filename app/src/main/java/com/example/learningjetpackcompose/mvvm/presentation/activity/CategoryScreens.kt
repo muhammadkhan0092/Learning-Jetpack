@@ -22,11 +22,9 @@ import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.learningjetpackcompose.R
 import com.example.learningjetpackcompose.mvvm.presentation.view_models.CategoryViewModel
 

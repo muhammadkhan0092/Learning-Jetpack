@@ -14,8 +14,8 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun LaunchedEffectButton(count: Int, onClick: () -> Int, modifier: Modifier) {
     //Launched effect is used in compose to handle side effects , side effect is the manipulation
-    // of components outside the scope of the function , Composables should only handle the ui rendering , but
-    //sometimes we need to put such code in our composables , launched effect manages it, the log will only
+    // of components outside the scope of the function , Composable should only handle the ui rendering , but
+    //sometimes we need to put such code in our composable , launched effect manages it, the log will only
     //run once the key passed changes. We can control the side effects according to our need
         LaunchedEffect(Unit) {
             Log.d("khan","Count is $count")

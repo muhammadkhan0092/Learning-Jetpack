@@ -21,7 +21,6 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
@@ -53,7 +52,6 @@ fun PasswordRecovery(onClick : ()-> Unit){
         modifier = Modifier.fillMaxWidth().fillMaxHeight().padding(start = margin20, end = margin20).clickable {onClick()}
     ){
         val width = maxWidth
-        val height = maxHeight
         Column(modifier = Modifier.offset(0.dp,maxHeight*0.148f)){
             Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center){
                 ProfileAvatar()

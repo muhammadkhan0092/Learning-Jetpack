@@ -25,7 +25,7 @@ fun HomeLauncher() {
     BoxWithConstraints(modifier = Modifier.fillMaxSize().background(Color(0xFFDFDDD3))) {
         val screenHeight = maxHeight      // This is a Dp
         val screenWidth = maxWidth        // This is a Dp
-        val InterFontFamily = FontFamily(
+        val interFontFamily = FontFamily(
             Font(R.font.inter_extra_light, weight = FontWeight.ExtraLight)
         )
         CircularProgressIndicator(
@@ -38,7 +38,7 @@ fun HomeLauncher() {
         defaultAppComposable(
             screenWidth * 0.222f,
             screenHeight * 0.153f,
-            InterFontFamily,
+            interFontFamily,
             "85",
             20.sp
         )
@@ -61,28 +61,28 @@ fun HomeLauncher() {
         defaultAppComposable(
             screenWidth * 0.120f,
             screenHeight * 0.5f,
-            InterFontFamily,
+            interFontFamily,
             "Call",
             24.sp
         )
         defaultAppComposable(
             screenWidth * 0.120f,
             screenHeight * 0.57f,
-            InterFontFamily,
+            interFontFamily,
             "Message",
             24.sp
         )
         defaultAppComposable(
             screenWidth * 0.120f,
             screenHeight * 0.64f,
-            InterFontFamily,
+            interFontFamily,
             "Camera",
             24.sp
         )
         defaultAppComposable(
             screenWidth * 0.120f,
             screenHeight * 0.71f,
-            InterFontFamily,
+            interFontFamily,
             "Music",
             24.sp
         )

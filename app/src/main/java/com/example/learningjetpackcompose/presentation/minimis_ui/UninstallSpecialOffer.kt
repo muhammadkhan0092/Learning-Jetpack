@@ -1,9 +1,5 @@
 package com.example.learningjetpackcompose.presentation.minimis_ui
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -33,9 +29,8 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.example.learningjetpackcompose.R
-import com.example.learningjetpackcompose.ui.theme.LearningJetpackComposeTheme
 
-    @Preview(showSystemUi = true)
+@Preview(showSystemUi = true)
     @Composable
     fun FourSidePercentageBox(
 
@@ -73,7 +68,7 @@ import com.example.learningjetpackcompose.ui.theme.LearningJetpackComposeTheme
                     val (lifeText, yearText, icon, spacer) = createRefs()
 
                     Text(
-                        "\$ 49 USD", fontFamily = FontFamily(Font(R.font.inter_bold)),
+                        "$ 49 USD", fontFamily = FontFamily(Font(R.font.inter_bold)),
                         fontSize = 19.sp,
                         lineHeight = 25.sp,
                         textAlign = TextAlign.Companion.Start,
@@ -98,7 +93,7 @@ import com.example.learningjetpackcompose.ui.theme.LearningJetpackComposeTheme
                     )
 
                     Text(
-                        "\$49 USD / year", fontFamily = FontFamily(Font(R.font.inter_regular)),
+                        "$49 USD / year", fontFamily = FontFamily(Font(R.font.inter_regular)),
                         fontSize = 12.sp,
                         lineHeight = 18.sp,
                         modifier = Modifier.Companion.constrainAs(yearText) {

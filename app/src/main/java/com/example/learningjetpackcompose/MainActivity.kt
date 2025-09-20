@@ -5,10 +5,12 @@ import android.provider.MediaStore.Video.VideoColumns.CATEGORY
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraphBuilder
@@ -86,13 +88,71 @@ class MainActivity : ComponentActivity() {
             composable(ROUTE_LAUNCHER) {
                 HomeLauncher()
             }
-            shoppingRoutes(this,navController)
             composable(ROUTE_BASIC) {
                 BasicComponentsComposable()
             }
+            shoppingRoutes(this,navController)
+            mvvmRoutes(this,navController)
+        }
+    }
+
+    @Composable
+    private fun MenuComposable(
+        onBasicComponentClicked : ()-> Unit,
+        onSideEffectClicked : ()-> Unit,
+        onLauncherAppClicked : ()-> Unit,
+        onMvvmAppClicked : ()-> Unit,
+        onShoppingAppClicked : ()-> Unit
+    ){
+        Column(modifier = Modifier.fillMaxSize().padding(20.dp), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally){
+            ButtonComposable(ROUTE_BASIC,onBasicComponentClicked)
+            ButtonComposable(ROUTE_SIDE,onSideEffectClicked)
+            ButtonComposable(ROUTE_LAUNCHER,onLauncherAppClicked)
+            ButtonComposable(ROUTE_MVVM,onMvvmAppClicked)
+            ButtonComposable(ROUTE_SHOPPING,onShoppingAppClicked)
+        }
+    }
+
+
+
+    private fun shoppingRoutes(builder: NavGraphBuilder, navController: NavHostController) {
+        builder.apply {
+            composable(ROUTE_SHOPPING) {
+                GetStarted {
+                    navController.navigate(SHOPPING_ROUTE_CREATE_ACCOUNT)
+                }
+            }
+            composable(SHOPPING_ROUTE_CREATE_ACCOUNT) {
+                CreateAccount {
+                    navController.navigate(SHOPPING_ROUTE_LOGIN)
+                }
+            }
+            composable(SHOPPING_ROUTE_LOGIN) {
+                LoginScreen {
+                    navController.navigate(SHOPPING_ROUTE_PASSWORD)
+                }
+            }
+            composable(SHOPPING_ROUTE_PASSWORD) {
+                PasswordScreen {
+                    navController.navigate(SHOPPING_ROUTE_PASSWORD_NEW)
+                }
+
+            }
+            composable(SHOPPING_ROUTE_PASSWORD_NEW) {
+                SetupNewPassword {
+                    navController.navigate(SHOPPING_ROUTE_PASSWORD_RECOVERY)
+                }
+            }
+            composable(SHOPPING_ROUTE_PASSWORD_RECOVERY) {
+                PasswordRecovery {}
+            }
+        }
+    }
+    private fun mvvmRoutes(builder: NavGraphBuilder, navController: NavHostController){
+        builder.apply {
             composable(ROUTE_MVVM) {
-                CategoryScreen() {
-                    val navigateTo = ROUTE_DETAIL+"/$it"
+                CategoryScreen {
+                    val navigateTo = "$ROUTE_DETAIL/$it"
                     navController.navigate(navigateTo)
                 }
             }
@@ -108,59 +168,5 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-
-    @Composable
-    private fun MenuComposable(
-        onBasicComponentClicked : ()-> Unit,
-        onSideEffectClicked : ()-> Unit,
-        onLauncherAppClicked : ()-> Unit,
-        onMvvmAppClicked : ()-> Unit,
-        onShoppingAppClicked : ()-> Unit
-    ){
-        Column(modifier = Modifier.fillMaxSize().padding(20.dp)){
-            ButtonComposable(ROUTE_BASIC,onBasicComponentClicked)
-            ButtonComposable(ROUTE_SIDE,onSideEffectClicked)
-            ButtonComposable(ROUTE_LAUNCHER,onLauncherAppClicked)
-            ButtonComposable(ROUTE_MVVM,onMvvmAppClicked)
-            ButtonComposable(ROUTE_SHOPPING,onShoppingAppClicked)
-        }
-    }
-
-
-
-    private fun shoppingRoutes(builder: NavGraphBuilder, navController: NavHostController) {
-        builder.apply {
-            composable(ROUTE_SHOPPING) {
-                GetStarted(){
-                    navController.navigate(SHOPPING_ROUTE_CREATE_ACCOUNT)
-                }
-            }
-            composable(SHOPPING_ROUTE_CREATE_ACCOUNT) {
-                CreateAccount(){
-                    navController.navigate(SHOPPING_ROUTE_LOGIN)
-                }
-            }
-            composable(SHOPPING_ROUTE_LOGIN) {
-                LoginScreen(){
-                    navController.navigate(SHOPPING_ROUTE_PASSWORD)
-                }
-            }
-            composable(SHOPPING_ROUTE_PASSWORD) {
-                PasswordScreen(){
-                    navController.navigate(SHOPPING_ROUTE_PASSWORD_NEW)
-                }
-
-            }
-            composable(SHOPPING_ROUTE_PASSWORD_NEW) {
-                SetupNewPassword(){
-                    navController.navigate(SHOPPING_ROUTE_PASSWORD_RECOVERY)
-                }
-            }
-            composable(SHOPPING_ROUTE_PASSWORD_RECOVERY) {
-                PasswordRecovery(){}
-            }
-        }
-    }
-
 
 }

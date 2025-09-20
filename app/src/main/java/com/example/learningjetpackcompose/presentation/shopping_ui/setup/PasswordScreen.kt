@@ -19,7 +19,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
@@ -37,20 +36,19 @@ fun PasswordScreen(onClick : ()-> Unit){
     val text36 = dimensionResource(R.dimen.sp_36).value.sp
     val text26 = dimensionResource(R.dimen.sp_26).value.sp
     val text15 = dimensionResource(R.dimen.sp_15).value.sp
-    val margin_30 = dimensionResource(R.dimen.dp_30)
-    val margin_23 = dimensionResource(R.dimen.dp_23)
+    val margin30 = dimensionResource(R.dimen.dp_30)
+    val margin23 = dimensionResource(R.dimen.dp_23)
     TopLeftTwoBg()
     BoxWithConstraints(modifier = Modifier.fillMaxWidth().fillMaxHeight().clickable {onClick()}) {
-        val width = maxWidth
         val height = maxHeight
 
         Column(modifier = Modifier.fillMaxWidth().fillMaxHeight().offset(0.dp,height*0.12f), horizontalAlignment = Alignment.CenterHorizontally) {
             ProfileAvatar()
             Spacer(modifier = Modifier.height(28.dp))
             Text("Hello, Romina!!", fontFamily = FontFamily(raleway), fontSize = text28, letterSpacing = 0.28.sp, color = Color(0xFF202020), lineHeight = text36)
-            Spacer(modifier = Modifier.height(margin_30))
+            Spacer(modifier = Modifier.height(margin30))
             Text("Type your password", fontFamily = FontFamily(nunito), fontSize = text19)
-            Spacer(modifier = Modifier.height(margin_23))
+            Spacer(modifier = Modifier.height(margin23))
             OtpTextFields {  }
         }
         Row(modifier = Modifier.fillMaxWidth().offset(0.dp,height*0.892f), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {

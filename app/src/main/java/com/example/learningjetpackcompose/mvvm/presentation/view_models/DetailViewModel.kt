@@ -12,8 +12,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import java.util.logging.Logger
 import javax.inject.Inject
+
 @HiltViewModel
 class DetailViewModel @Inject constructor(
     private val repository: TweetsRepository,

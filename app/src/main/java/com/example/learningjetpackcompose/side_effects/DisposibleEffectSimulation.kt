@@ -11,20 +11,20 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 //Used When We have to dispose any component after the composable goes off screen
-//Used to prevent memmory leaks by removing listeners etc
+//Used to prevent memory leaks by removing listeners etc
 @Composable
-fun DisposableEffectSimulation(constrainAs: Modifier) {
-    TextField("", onValueChange = {}, modifier = constrainAs)
+fun DisposableEffectSimulation(modifier: Modifier) {
+    TextField("", onValueChange = {}, modifier = modifier)
     val view = LocalView.current
     DisposableEffect(Unit) {
         val listener = ViewTreeObserver.OnGlobalLayoutListener{
             val insets = ViewCompat.getRootWindowInsets(view)
             val isKeyBoardVisible = insets?.isVisible(WindowInsetsCompat.Type.ime())
-            Log.d("Disposible Effect","is keyboard visible -> $isKeyBoardVisible")
+            Log.d("Disposable Effect","is keyboard visible -> $isKeyBoardVisible")
         }
         view.viewTreeObserver.addOnGlobalLayoutListener(listener)
         onDispose {
-            Log.d("Disposible Effect","Removing Listeners")
+            Log.d("Disposable Effect","Removing Listeners")
            view.viewTreeObserver.removeOnGlobalLayoutListener(listener)
         }
     }
