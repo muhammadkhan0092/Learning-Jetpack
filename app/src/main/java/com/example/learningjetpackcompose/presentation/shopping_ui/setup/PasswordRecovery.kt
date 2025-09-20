@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
@@ -46,6 +48,7 @@ fun PasswordRecovery(onClick : ()-> Unit){
     val text26 = dimensionResource(R.dimen.sp_26).value.sp
     val raleway = Font(R.font.raleway_bold)
     val nunito = Font(R.font.nunito_light)
+    val checkedType = remember { mutableStateOf("SMS") }
     BoxWithConstraints(
         modifier = Modifier.fillMaxWidth().fillMaxHeight().padding(start = margin20, end = margin20).clickable {onClick()}
     ){
@@ -61,11 +64,15 @@ fun PasswordRecovery(onClick : ()-> Unit){
             Text("How you would like to restore\nyour password?",modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center,fontFamily = FontFamily(nunito), fontSize = text19, lineHeight = text27)
             Spacer(Modifier.height(margin28))
             Box(modifier = Modifier.offset(width * 0.197f,0.dp).fillMaxWidth(0.594f)){
-                CustomCheckbox(name = "SMS", selected = "SMS")
+                CustomCheckbox(name = "SMS", selected = checkedType.value){
+                    if(checkedType.value!="SMS") checkedType.value = "SMS"
+                }
             }
             Spacer(Modifier.height(margin10))
             Box(modifier = Modifier.offset(width * 0.197f,0.dp).fillMaxWidth(0.594f)){
-                CustomCheckbox(name = "Email", selected = "SMS")
+                CustomCheckbox(name = "Email", selected =checkedType.value){
+                    if(checkedType.value!="Email") checkedType.value = "Email"
+                }
             }
         }
 
