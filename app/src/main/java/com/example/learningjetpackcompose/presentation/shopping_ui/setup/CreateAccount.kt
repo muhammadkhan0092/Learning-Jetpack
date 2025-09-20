@@ -1,8 +1,9 @@
-package com.example.learningjetpackcompose.shopping_ui
+package com.example.learningjetpackcompose.presentation.shopping_ui.setup
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
@@ -15,38 +16,26 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.material3.Button
-import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldColors
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
-import com.example.learningjetpackcompose.shopping_ui.common_views.EditTextComposable
+import com.example.learningjetpackcompose.presentation.shopping_ui.common_views.EditTextComposable
 
 
 @SuppressLint("UnusedBoxWithConstraintsScope")
-@Preview(showSystemUi = true)
 @Composable
-fun CreateAccount(){
+fun CreateAccount(onClick : ()-> Unit){
     val ralewayFont = Font(R.font.raleway_bold)
     val nunitoLight = Font(R.font.nunito_light)
     val sp_54 = dimensionResource(id = R.dimen.sp_54)
@@ -61,7 +50,7 @@ fun CreateAccount(){
     val dp_16 = dimensionResource(R.dimen.dp_16)
     val dp_52 = dimensionResource(R.dimen.dp_52)
     val dp_24 = dimensionResource(R.dimen.dp_24)
-    Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()){
+    Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().clickable {onClick()}){
         BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
             val width = maxWidth
             val height = maxHeight

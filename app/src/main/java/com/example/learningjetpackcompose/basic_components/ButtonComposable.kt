@@ -14,16 +14,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-@Preview
 @Composable
-fun ButtonComposable(){
+fun ButtonComposable(text : String,onClick : ()-> Unit){
     Button(onClick = {
-        Log.d("khan","Button Clicked")
+        onClick()
     },
         colors = ButtonDefaults.buttonColors(containerColor = Color.DarkGray, contentColor = Color.White),
         shape = RoundedCornerShape(10.dp),
         modifier = Modifier.background(Color.White)
     ) {
-        Text("Demo Button")
+        Text(text)
     }
 }

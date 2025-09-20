@@ -1,22 +1,18 @@
-package com.example.learningjetpackcompose.shopping_ui.common_views
+package com.example.learningjetpackcompose.presentation.shopping_ui.common_views
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -32,14 +28,15 @@ import com.example.learningjetpackcompose.R
 @Composable
 fun CustomCheckbox(
     modifier: Modifier = Modifier.fillMaxWidth(),
-    selected: String = "",
+    selected: String = "Email",
     name: String = "Email"
 ) {
-    val margin_9 = dimensionResource(R.dimen.dp_9)
+    dimensionResource(R.dimen.dp_9)
     val margin_10 = dimensionResource(R.dimen.dp_10)
     val size_22 = dimensionResource(R.dimen.dp_22)
     val size_20 = dimensionResource(R.dimen.dp_20)
     val text15 = dimensionResource(R.dimen.sp_15).value.sp
+    val size15 = dimensionResource(R.dimen.dp_15)
     val height = dimensionResource(R.dimen.dp_40)
     val selectedBoxColor = Color(0xFFE5EBFC)
     val unselectedBoxColor = Color(0xFFFFEBEB)
@@ -74,9 +71,9 @@ fun CustomCheckbox(
                 ) {
                     if (selected == name) {
                         Image(
-                            painter = painterResource(R.drawable.ic_forward),
+                            painter = painterResource(R.drawable.ic_tick),
                             contentDescription = null,
-                            modifier = Modifier.size(15.dp)
+                            modifier = Modifier.size(size15)
                         )
                     }
                 }

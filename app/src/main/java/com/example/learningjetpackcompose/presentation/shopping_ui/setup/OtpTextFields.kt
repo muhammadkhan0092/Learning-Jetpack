@@ -1,5 +1,6 @@
-package com.example.learningjetpackcompose.shopping_ui
+package com.example.learningjetpackcompose.presentation.shopping_ui.setup
 
+import android.view.KeyEvent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -7,9 +8,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.LocalTextStyle
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldColors
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -32,10 +31,7 @@ fun OtpTextFields(
     otpLength: Int = 4,
     onOtpComplete: (String) -> Unit
 ) {
-    // OTP state: list of single-char strings
     var otpValue by remember { mutableStateOf(List(otpLength) { "" }) }
-
-    // Keep focus requesters stable across recompositions
     val focusRequesters = remember { List(otpLength) { FocusRequester() } }
 
     Row(
@@ -81,7 +77,7 @@ fun OtpTextFields(
                 .onKeyEvent { keyEvent ->
                     // Use nativeKeyEvent.keyCode (Int) and compare with android.view.KeyEvent.KEYCODE_DEL
                     if (keyEvent.type == KeyEventType.KeyDown &&
-                        keyEvent.nativeKeyEvent.keyCode == android.view.KeyEvent.KEYCODE_DEL &&
+                        keyEvent.nativeKeyEvent.keyCode == KeyEvent.KEYCODE_DEL &&
                         value.isEmpty() &&
                         index > 0
                     ) {

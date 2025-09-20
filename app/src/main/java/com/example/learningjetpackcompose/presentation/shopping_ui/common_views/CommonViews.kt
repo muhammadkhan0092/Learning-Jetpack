@@ -1,4 +1,4 @@
-package com.example.learningjetpackcompose.shopping_ui.common_views
+package com.example.learningjetpackcompose.presentation.shopping_ui.common_views
 
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -22,7 +23,7 @@ fun LargeBlueButton(text : String,modifier: Modifier){
     val text_22 = dimensionResource(R.dimen.sp_22).value.sp
     val text_31 = dimensionResource(R.dimen.sp_31).value.sp
     val padding = dimensionResource(R.dimen.dp_5)
-    val nunitoFont = androidx.compose.ui.text.font.Font(R.font.nuninto_light)
+    val nunitoFont = Font(R.font.nuninto_light)
     Button(
         shape = RoundedCornerShape(16.dp),
         colors = ButtonColors(

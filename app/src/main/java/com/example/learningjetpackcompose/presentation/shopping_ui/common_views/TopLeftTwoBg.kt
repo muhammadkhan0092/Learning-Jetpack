@@ -1,4 +1,4 @@
-package com.example.learningjetpackcompose.shopping_ui.common_views
+package com.example.learningjetpackcompose.presentation.shopping_ui.common_views
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.aspectRatio

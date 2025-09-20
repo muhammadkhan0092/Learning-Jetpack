@@ -1,4 +1,4 @@
-package com.example.learningjetpackcompose
+package com.example.learningjetpackcompose.presentation.minimis_ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -20,7 +20,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
@@ -33,18 +32,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import com.example.learningjetpackcompose.R
 import com.example.learningjetpackcompose.ui.theme.LearningJetpackComposeTheme
 
-class UninstallSpecialOffer : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            LearningJetpackComposeTheme {
-
-            }
-        }
-    }
     @Preview(showSystemUi = true)
     @Composable
     fun FourSidePercentageBox(
@@ -54,55 +44,56 @@ class UninstallSpecialOffer : ComponentActivity() {
         val screenHeight = config.screenHeightDp.dp
         val screenWidth = config.screenWidthDp.dp
         ConstraintLayout(
-            modifier = Modifier.offset().fillMaxWidth(1f).fillMaxHeight(1f).background(Color(0xFF282E36))
+            modifier = Modifier.Companion.offset().fillMaxWidth(1f).fillMaxHeight(1f)
+                .background(Color(0xFF282E36))
         ) {
-            val (box,oneTime) = createRefs()
+            val (box, oneTime) = createRefs()
 
             Box(
-                modifier = Modifier
+                modifier = Modifier.Companion
                     .background(Color(0xFFECEBE5), RoundedCornerShape(4.dp))
                     .constrainAs(box) {
-                        top.linkTo(parent.top,screenHeight*0.457f)
-                        bottom.linkTo(parent.bottom,screenHeight*0.412f)
-                        start.linkTo(parent.start,screenWidth*0.089f)
-                        end.linkTo(parent.end,screenWidth*0.089f)
-                        width = Dimension.fillToConstraints
-                        height = Dimension.fillToConstraints
+                        top.linkTo(parent.top, screenHeight * 0.457f)
+                        bottom.linkTo(parent.bottom, screenHeight * 0.412f)
+                        start.linkTo(parent.start, screenWidth * 0.089f)
+                        end.linkTo(parent.end, screenWidth * 0.089f)
+                        width = Dimension.Companion.fillToConstraints
+                        height = Dimension.Companion.fillToConstraints
                     }
 
-            ){
+            ) {
                 ConstraintLayout(
-                    modifier = Modifier.fillMaxSize()
+                    modifier = Modifier.Companion.fillMaxSize()
                 ) {
                     val guidelineLifeTop = createGuidelineFromTop(0.161f)   // 20% from top of Box
                     val guidelineStart = createGuidelineFromStart(0.050f) // 30% from start
                     val guidelineYearTop = createGuidelineFromTop(0.656f)
                     val guidelineSpacerTop = createGuidelineFromTop(0.535f)
                     val guidelineSpacerEnd = createGuidelineFromEnd(0.05f)
-                    val (lifeText,yearText,icon,spacer) = createRefs()
+                    val (lifeText, yearText, icon, spacer) = createRefs()
 
                     Text(
                         "\$ 49 USD", fontFamily = FontFamily(Font(R.font.inter_bold)),
                         fontSize = 19.sp,
                         lineHeight = 25.sp,
-                        textAlign = TextAlign.Start,
-                        modifier = Modifier.constrainAs(lifeText) {
+                        textAlign = TextAlign.Companion.Start,
+                        modifier = Modifier.Companion.constrainAs(lifeText) {
                             top.linkTo(guidelineLifeTop)
                             start.linkTo(guidelineStart)
                             end.linkTo(icon.start)
-                            width = Dimension.fillToConstraints
+                            width = Dimension.Companion.fillToConstraints
                         }
                     )
 
                     Image(
                         painter = painterResource(R.drawable.ic_checkbox_checked),
                         contentDescription = "",
-                        contentScale = ContentScale.Crop,
+                        contentScale = ContentScale.Companion.Crop,
                         colorFilter = null,
-                        modifier = Modifier.constrainAs(icon) {
+                        modifier = Modifier.Companion.constrainAs(icon) {
                             top.linkTo(lifeText.top)
                             bottom.linkTo(lifeText.bottom)
-                            end.linkTo(parent.end,10.dp)
+                            end.linkTo(parent.end, 10.dp)
                         }.width(24.dp).height(24.dp)
                     )
 
@@ -110,21 +101,21 @@ class UninstallSpecialOffer : ComponentActivity() {
                         "\$49 USD / year", fontFamily = FontFamily(Font(R.font.inter_regular)),
                         fontSize = 12.sp,
                         lineHeight = 18.sp,
-                        modifier = Modifier.constrainAs(yearText) {
+                        modifier = Modifier.Companion.constrainAs(yearText) {
                             top.linkTo(guidelineYearTop)
                             start.linkTo(guidelineStart)
                         },
-                        textDecoration = TextDecoration.LineThrough
+                        textDecoration = TextDecoration.Companion.LineThrough
                     )
                     Spacer(
-                        modifier = Modifier
+                        modifier = Modifier.Companion
                             .background(Color(0xFFDDDBCF))
                             .constrainAs(spacer) {
                                 top.linkTo(guidelineSpacerTop)
                                 start.linkTo(guidelineStart)
                                 end.linkTo(guidelineSpacerEnd)
-                                width = Dimension.fillToConstraints
-                                height = Dimension.value(1.dp)   // fixed height
+                                width = Dimension.Companion.fillToConstraints
+                                height = Dimension.Companion.value(1.dp)   // fixed height
                             }
                     )
 
@@ -135,21 +126,21 @@ class UninstallSpecialOffer : ComponentActivity() {
             val guidelineStart = createGuidelineFromEnd(0.068f)
             Text(
                 text = "One-time payment for life!",
-                color = Color.White,
+                color = Color.Companion.White,
                 fontSize = 14.sp,
                 fontFamily = FontFamily(Font(R.font.inter_semibold)),
                 lineHeight = 18.sp,
-                modifier = Modifier
-                    .constrainAs(oneTime){
-                    top.linkTo(guidelineTop)
-                    end.linkTo(guidelineStart)
+                modifier = Modifier.Companion
+                    .constrainAs(oneTime) {
+                        top.linkTo(guidelineTop)
+                        end.linkTo(guidelineStart)
                     }
-                    .background(color = Color(0xFFFF7414), RoundedCornerShape(topStart = 4.dp, bottomStart = 4.dp))
+                    .background(
+                        color = Color(0xFFFF7414),
+                        RoundedCornerShape(topStart = 4.dp, bottomStart = 4.dp)
+                    )
                     .padding(8.dp)
 
             )
         }
     }
-
-
-}

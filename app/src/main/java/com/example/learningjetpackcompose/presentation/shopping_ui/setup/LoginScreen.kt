@@ -1,10 +1,9 @@
-package com.example.learningjetpackcompose.shopping_ui
+package com.example.learningjetpackcompose.presentation.shopping_ui.setup
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -13,14 +12,12 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -31,18 +28,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
-import com.example.learningjetpackcompose.shopping_ui.common_views.EditTextComposable
-import com.example.learningjetpackcompose.shopping_ui.common_views.LargeBlueButton
-import com.example.learningjetpackcompose.shopping_ui.common_views.TopLeftTwoBg
+import com.example.learningjetpackcompose.presentation.shopping_ui.common_views.EditTextComposable
+import com.example.learningjetpackcompose.presentation.shopping_ui.common_views.LargeBlueButton
+import com.example.learningjetpackcompose.presentation.shopping_ui.common_views.TopLeftTwoBg
 
-@Preview(showSystemUi = true)
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
-fun LoginScreen(){
+fun LoginScreen(onClick : ()-> Unit){
     val raleway = Font(R.font.raleway_bold)
     val nunitoSans = Font(R.font.nuninto_light)
     TopLeftTwoBg()
-    Box(contentAlignment = Alignment.BottomCenter, modifier = Modifier.fillMaxSize().padding( start = 20.dp)) {
+    Box(contentAlignment = Alignment.BottomCenter, modifier = Modifier.fillMaxSize().padding( start = 20.dp).clickable {onClick()}) {
         Box(modifier = Modifier.fillMaxWidth().fillMaxHeight(0.683f), contentAlignment = Alignment.TopEnd){
             Image(painter = painterResource(R.drawable.bg_login_center), contentDescription = "", contentScale = ContentScale.FillBounds, modifier = Modifier.fillMaxHeight(0.3f).aspectRatio(0.5f))
         }

@@ -1,4 +1,4 @@
-package com.example.learningjetpackcompose
+package com.example.learningjetpackcompose.presentation.minimis_ui
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
@@ -17,6 +17,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.learningjetpackcompose.R
 
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable

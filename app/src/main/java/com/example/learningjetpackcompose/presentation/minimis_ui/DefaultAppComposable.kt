@@ -1,4 +1,4 @@
-package com.example.learningjetpackcompose
+package com.example.learningjetpackcompose.presentation.minimis_ui
 
 import androidx.compose.foundation.layout.offset
 import androidx.compose.material3.Text

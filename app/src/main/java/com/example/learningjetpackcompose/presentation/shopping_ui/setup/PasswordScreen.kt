@@ -1,10 +1,8 @@
-package com.example.learningjetpackcompose.shopping_ui
+package com.example.learningjetpackcompose.presentation.shopping_ui.setup
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,33 +11,25 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
-import com.example.learningjetpackcompose.shopping_ui.common_views.ButtonFrontArrow
-import com.example.learningjetpackcompose.shopping_ui.common_views.ProfileAvatar
-import com.example.learningjetpackcompose.shopping_ui.common_views.TopLeftTwoBg
+import com.example.learningjetpackcompose.presentation.shopping_ui.common_views.ButtonFrontArrow
+import com.example.learningjetpackcompose.presentation.shopping_ui.common_views.ProfileAvatar
+import com.example.learningjetpackcompose.presentation.shopping_ui.common_views.TopLeftTwoBg
 
 @SuppressLint("UnusedBoxWithConstraintsScope")
-@Preview(showSystemUi = true)
 @Composable
-fun PasswordScreen(){
+fun PasswordScreen(onClick : ()-> Unit){
     val raleway = Font(R.font.raleway_bold)
     val nunito = Font(R.font.nunito_light)
     val text28 = dimensionResource(R.dimen.sp_28).value.sp
@@ -50,7 +40,7 @@ fun PasswordScreen(){
     val margin_30 = dimensionResource(R.dimen.dp_30)
     val margin_23 = dimensionResource(R.dimen.dp_23)
     TopLeftTwoBg()
-    BoxWithConstraints(modifier = Modifier.fillMaxWidth().fillMaxHeight()) {
+    BoxWithConstraints(modifier = Modifier.fillMaxWidth().fillMaxHeight().clickable {onClick()}) {
         val width = maxWidth
         val height = maxHeight
 

@@ -1,130 +1,166 @@
 package com.example.learningjetpackcompose
 
 import android.os.Bundle
-import android.util.Log
+import android.provider.MediaStore.Video.VideoColumns.CATEGORY
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.example.learningjetpackcompose.basic_components.BasicComponentsComposable
 import com.example.learningjetpackcompose.basic_components.ButtonComposable
-import com.example.learningjetpackcompose.basic_components.EditTextComposable
-import com.example.learningjetpackcompose.basic_components.ImageComposable
-import com.example.learningjetpackcompose.basic_components.TextComposable
-import com.example.learningjetpackcompose.side_effects.DisposableEffectSimulation
-import com.example.learningjetpackcompose.side_effects.LaunchedEffectButton
-import com.example.learningjetpackcompose.side_effects.ProducedAndDerivedStateOfSimulation
-import com.example.learningjetpackcompose.side_effects.RememberCoroutineScope
-import com.example.learningjetpackcompose.side_effects.RememberUpdatedState
+import com.example.learningjetpackcompose.mvvm.presentation.activity.CategoryScreen
+import com.example.learningjetpackcompose.mvvm.presentation.activity.DetailScreen
+import com.example.learningjetpackcompose.mvvm.presentation.constants.Constants.ROUTE_BASIC
+import com.example.learningjetpackcompose.mvvm.presentation.constants.Constants.ROUTE_DETAIL
+import com.example.learningjetpackcompose.mvvm.presentation.constants.Constants.ROUTE_LAUNCHER
+import com.example.learningjetpackcompose.mvvm.presentation.constants.Constants.ROUTE_SIDE
+import com.example.learningjetpackcompose.mvvm.presentation.constants.Constants.ROUTE_MVVM
+import com.example.learningjetpackcompose.mvvm.presentation.constants.Constants.ROUTE_SHOPPING
+import com.example.learningjetpackcompose.mvvm.presentation.constants.Constants.MENU
+import com.example.learningjetpackcompose.mvvm.presentation.constants.Constants.SHOPPING_ROUTE_CREATE_ACCOUNT
+import com.example.learningjetpackcompose.mvvm.presentation.constants.Constants.SHOPPING_ROUTE_LOGIN
+import com.example.learningjetpackcompose.mvvm.presentation.constants.Constants.SHOPPING_ROUTE_PASSWORD
+import com.example.learningjetpackcompose.mvvm.presentation.constants.Constants.SHOPPING_ROUTE_PASSWORD_NEW
+import com.example.learningjetpackcompose.mvvm.presentation.constants.Constants.SHOPPING_ROUTE_PASSWORD_RECOVERY
+import com.example.learningjetpackcompose.presentation.minimis_ui.HomeLauncher
+import com.example.learningjetpackcompose.presentation.shopping_ui.setup.CreateAccount
+import com.example.learningjetpackcompose.presentation.shopping_ui.setup.GetStarted
+import com.example.learningjetpackcompose.presentation.shopping_ui.setup.LoginScreen
+import com.example.learningjetpackcompose.presentation.shopping_ui.setup.PasswordRecovery
+import com.example.learningjetpackcompose.presentation.shopping_ui.setup.PasswordScreen
+import com.example.learningjetpackcompose.presentation.shopping_ui.setup.SetupNewPassword
+import com.example.learningjetpackcompose.side_effects.SideEffectComposable
 import com.example.learningjetpackcompose.ui.theme.LearningJetpackComposeTheme
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             LearningJetpackComposeTheme {
-                //appComposable()
-                SideEffects()
+                App()
             }
         }
     }
 
     @Composable
-    fun appComposable(){
-        val etState = remember {mutableStateOf("")}
-        val nameState = remember { mutableStateOf("Your Name is ${etState.value}") }
-        Column(verticalArrangement = Arrangement.SpaceEvenly, horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxSize(1f)) {
-            ButtonComposable()
-            EditTextComposable(etState.value,{
-                etState.value = it
-                nameState.value = "Your Name is $it"
-            })
-            TextComposable(nameState.value)
-            ImageComposable()
+    private fun App() {
+        val navController = rememberNavController()
+        NavHost(navController = navController, startDestination = MENU) {
+            composable(MENU) {
+                MenuComposable(
+                    {
+                        navController.navigate(ROUTE_BASIC)
+                    },
+                    {
+                        navController.navigate(ROUTE_SIDE)
+                    },
+                    {
+                        navController.navigate(ROUTE_LAUNCHER)
+                    },
+                    {
+                        navController.navigate(ROUTE_MVVM)
+                    },
+                    {
+                        navController.navigate(ROUTE_SHOPPING)
+                    }
+                )
+            }
+            composable(ROUTE_SIDE) {
+                SideEffectComposable()
+            }
+            composable(ROUTE_LAUNCHER) {
+                HomeLauncher()
+            }
+            shoppingRoutes(this,navController)
+            composable(ROUTE_BASIC) {
+                BasicComponentsComposable()
+            }
+            composable(ROUTE_MVVM) {
+                CategoryScreen() {
+                    val navigateTo = ROUTE_DETAIL+"/$it"
+                    navController.navigate(navigateTo)
+                }
+            }
+            composable(
+                ROUTE_DETAIL+"/{${CATEGORY}}",
+                arguments = listOf(
+                    navArgument(CATEGORY) {
+                        type = NavType.StringType
+                    }
+                )
+            ){
+                DetailScreen()
+            }
         }
     }
 
-    @Preview(showSystemUi = true)
     @Composable
-    fun SideEffects(){
-        val count = remember { mutableIntStateOf(0) }
-        val rememberScope = rememberCoroutineScope()
-        val counter = remember { mutableIntStateOf(0) }
-        ConstraintLayout(modifier = Modifier.fillMaxSize(1f)){
-            val (btnOne,btnTwo,textRemember,textRememberUpdated,etDisposible,producedAndDerivedState) = createRefs()
-            LaunchedEffectButton(
-                count.intValue,
-                {count.intValue++},
-                Modifier.constrainAs(btnOne){
-                    top.linkTo(parent.top)
-                    bottom.linkTo(parent.bottom)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                }
-            )
-            RememberCoroutineScope(
-                counter.intValue,
-                {
-                    rememberScope.launch {
-                        Log.d("khan","Remember Launched")
-                        try {
-                            for (i in 1..10){
-                                counter.intValue++
-                                Log.d("khan","Counter -> ${counter.intValue}")
-                                delay(1000)
-                            }
-                        }
-                        catch (e : Exception){
-                            Log.d("khan","Exception in Remember -> ${e.message}")
-                        }
-                    }
-                },
-                Modifier.constrainAs(btnTwo){
-                    top.linkTo(btnOne.bottom)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                },
-                Modifier.constrainAs(textRemember){
-                    top.linkTo(btnTwo.bottom)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                }
-            )
-            RememberUpdatedState(
-                Modifier.constrainAs(textRememberUpdated){
-                    top.linkTo(textRemember.bottom)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                }
-            )
-            DisposableEffectSimulation(
-                Modifier.constrainAs(etDisposible){
-                    top.linkTo(textRememberUpdated.bottom)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                }
-            )
-            ProducedAndDerivedStateOfSimulation(
-                Modifier.constrainAs(producedAndDerivedState){
-                    top.linkTo(etDisposible.bottom,20.dp)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                }
-            )
+    private fun MenuComposable(
+        onBasicComponentClicked : ()-> Unit,
+        onSideEffectClicked : ()-> Unit,
+        onLauncherAppClicked : ()-> Unit,
+        onMvvmAppClicked : ()-> Unit,
+        onShoppingAppClicked : ()-> Unit
+    ){
+        Column(modifier = Modifier.fillMaxSize().padding(20.dp)){
+            ButtonComposable(ROUTE_BASIC,onBasicComponentClicked)
+            ButtonComposable(ROUTE_SIDE,onSideEffectClicked)
+            ButtonComposable(ROUTE_LAUNCHER,onLauncherAppClicked)
+            ButtonComposable(ROUTE_MVVM,onMvvmAppClicked)
+            ButtonComposable(ROUTE_SHOPPING,onShoppingAppClicked)
         }
     }
+
+
+
+    private fun shoppingRoutes(builder: NavGraphBuilder, navController: NavHostController) {
+        builder.apply {
+            composable(ROUTE_SHOPPING) {
+                GetStarted(){
+                    navController.navigate(SHOPPING_ROUTE_CREATE_ACCOUNT)
+                }
+            }
+            composable(SHOPPING_ROUTE_CREATE_ACCOUNT) {
+                CreateAccount(){
+                    navController.navigate(SHOPPING_ROUTE_LOGIN)
+                }
+            }
+            composable(SHOPPING_ROUTE_LOGIN) {
+                LoginScreen(){
+                    navController.navigate(SHOPPING_ROUTE_PASSWORD)
+                }
+            }
+            composable(SHOPPING_ROUTE_PASSWORD) {
+                PasswordScreen(){
+                    navController.navigate(SHOPPING_ROUTE_PASSWORD_NEW)
+                }
+
+            }
+            composable(SHOPPING_ROUTE_PASSWORD_NEW) {
+                SetupNewPassword(){
+                    navController.navigate(SHOPPING_ROUTE_PASSWORD_RECOVERY)
+                }
+            }
+            composable(SHOPPING_ROUTE_PASSWORD_RECOVERY) {
+                PasswordRecovery(){}
+            }
+        }
+    }
+
+
 }
