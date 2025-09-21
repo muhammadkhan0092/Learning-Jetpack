@@ -28,7 +28,6 @@ import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
 import com.example.learningjetpackcompose.presentation.shopping_ui.common_views.LargeBlueButton
 
-@Preview
 @Composable
 fun LimitPopUp(modifier: Modifier) {
     val margin57 = dimensionResource(R.dimen.dp_57)

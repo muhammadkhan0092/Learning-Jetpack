@@ -39,6 +39,7 @@ import com.example.learningjetpackcompose.mvvm.presentation.constants.Constants.
 import com.example.learningjetpackcompose.presentation.minimis_ui.HomeLauncher
 import com.example.learningjetpackcompose.presentation.shopping_ui.setup.main_screens.CreateAccount
 import com.example.learningjetpackcompose.presentation.shopping_ui.setup.main_screens.GetStarted
+import com.example.learningjetpackcompose.presentation.shopping_ui.setup.main_screens.HelloScreen
 import com.example.learningjetpackcompose.presentation.shopping_ui.setup.main_screens.LoginScreen
 import com.example.learningjetpackcompose.presentation.shopping_ui.setup.main_screens.PasswordRecovery
 import com.example.learningjetpackcompose.presentation.shopping_ui.setup.main_screens.PasswordScreen
@@ -64,23 +65,24 @@ class MainActivity : ComponentActivity() {
         val navController = rememberNavController()
         NavHost(navController = navController, startDestination = MENU) {
             composable(MENU) {
-                MenuComposable(
-                    {
-                        navController.navigate(ROUTE_BASIC)
-                    },
-                    {
-                        navController.navigate(ROUTE_SIDE)
-                    },
-                    {
-                        navController.navigate(ROUTE_LAUNCHER)
-                    },
-                    {
-                        navController.navigate(ROUTE_MVVM)
-                    },
-                    {
-                        navController.navigate(ROUTE_SHOPPING)
-                    }
-                )
+                HelloScreen()
+//                MenuComposable(
+//                    {
+//                        navController.navigate(ROUTE_BASIC)
+//                    },
+//                    {
+//                        navController.navigate(ROUTE_SIDE)
+//                    },
+//                    {
+//                        navController.navigate(ROUTE_LAUNCHER)
+//                    },
+//                    {
+//                        navController.navigate(ROUTE_MVVM)
+//                    },
+//                    {
+//                        navController.navigate(ROUTE_SHOPPING)
+//                    }
+//                )
             }
             composable(ROUTE_SIDE) {
                 SideEffectComposable()
