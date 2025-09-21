@@ -1,4 +1,4 @@
-package com.example.learningjetpackcompose.presentation.shopping_ui.setup
+package com.example.learningjetpackcompose.presentation.shopping_ui.setup.main_screens
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
