@@ -32,7 +32,7 @@ fun ItemStories(){
     val size29 = dimensionResource(R.dimen.dp_29)
     val width17 = dimensionResource(R.dimen.dp_17)
     val height12 = dimensionResource(R.dimen.dp_12)
-        Box(modifier= Modifier.fillMaxHeight(0.231f).aspectRatio(0.594f).background(Color.White,RoundedCornerShape(10.dp)), contentAlignment = Alignment.Center){
+    Box(modifier= Modifier.fillMaxHeight(0.231f).aspectRatio(0.594f).background(Color.White,RoundedCornerShape(10.dp)), contentAlignment = Alignment.Center){
             Image(
                 painter = painterResource(R.drawable.img_ready),
                 contentDescription = null,
