@@ -30,13 +30,13 @@ import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
 import com.example.learningjetpackcompose.presentation.shopping_ui.common_views.LargeBlueButton
 
-
+@Preview(showSystemUi = true)
 @Composable
 fun HelloAndReadyCard(
     img: Int = R.drawable.img_hello,
-    heading: String ,
-    content: String ,
-    type: String
+    heading: String ="fsad",
+    content: String ="das",
+    type: String=""
 ){
     val raleBold = Font(R.font.raleway_bold)
     val nunLight = Font(R.font.nunito_light)
