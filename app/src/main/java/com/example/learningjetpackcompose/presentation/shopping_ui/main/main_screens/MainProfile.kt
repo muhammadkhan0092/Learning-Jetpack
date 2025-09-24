@@ -1,11 +1,14 @@
 package com.example.learningjetpackcompose.presentation.shopping_ui.main.main_screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -26,7 +29,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
 import com.example.learningjetpackcompose.presentation.shopping_ui.common_views.ButtonFrontArrow
+import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.HeadingWithSeeAll
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemMyOrders
+import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemNewItem
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemRoundedImage
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemStories
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemTopMenu
@@ -69,6 +74,12 @@ fun MainProfile(height: Dp = 812.dp) {
     val text30 = dimensionResource(R.dimen.sp_30).value.sp
     val raleway = Font(R.font.raleway_bold)
     val scrollState = rememberScrollState()
+    val padding = dimensionResource(R.dimen.dp_10)
+    val ralewayExtra = Font(R.font.raleway_extra_bold)
+    val nun = Font(R.font.nunito_regular)
+    val text12 = dimensionResource(R.dimen.sp_12).value.sp
+    val text17 = dimensionResource(R.dimen.sp_12).value.sp
+    val margin1 = dimensionResource(R.dimen.dp_1)
     Column(modifier = Modifier.fillMaxSize()
         .verticalScroll(scrollState) .padding(top = paddingTop, bottom = paddingBottom, start = paddingStart, end = paddingEnd).background(Color.White)) {
         Row(verticalAlignment = Alignment.CenterVertically){
@@ -137,16 +148,21 @@ fun MainProfile(height: Dp = 812.dp) {
         Spacer(Modifier.height(margin28))
         Text("Stories", fontSize = text21, lineHeight = text30, fontFamily = FontFamily(raleway))
         Spacer(Modifier.height(margin5))
-        Row {
+        val horizontalScroll = rememberScrollState()
+        Row(horizontalArrangement = Arrangement.spacedBy(margin6), modifier = Modifier.fillMaxWidth().horizontalScroll(horizontalScroll)){
            ItemStories(height*0.215f)
-            Spacer(Modifier.width(margin6))
             ItemStories(height*0.215f)
-            Spacer(Modifier.width(margin6))
             ItemStories(height*0.215f)
-            Spacer(Modifier.width(margin6))
             ItemStories(height*0.215f)
-            Spacer(Modifier.width(margin6))
             ItemStories(height*0.215f)
+        }
+        Spacer(Modifier.height(margin28))
+        HeadingWithSeeAll("New Items",text21,text30,raleway,text15,margin12)
+        Spacer(Modifier.height(margin10))
+        Row {
+            repeat(2){
+                ItemNewItem(height*0.172f,text12,text16,text17,text21,margin6,margin1,ralewayExtra,nun,padding)
+            }
         }
     }
 }
