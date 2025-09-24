@@ -3,7 +3,6 @@ package com.example.learningjetpackcompose.presentation.shopping_ui.main.main_sc
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -30,6 +29,7 @@ import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
 import com.example.learningjetpackcompose.presentation.shopping_ui.common_views.ButtonFrontArrow
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.HeadingWithSeeAll
+import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemMostPopular
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemMyOrders
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemNewItem
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemRoundedImage
@@ -47,7 +47,7 @@ fun MainProfile(height: Dp = 812.dp) {
     val padding7 = dimensionResource(R.dimen.dp_7)
     val margin16 = dimensionResource(R.dimen.dp_16)
     val margin6 = dimensionResource(R.dimen.dp_6)
-    val margin19 = dimensionResource(R.dimen.dp_19)
+    dimensionResource(R.dimen.dp_19)
     val margin20 = dimensionResource(R.dimen.dp_20)
     val margin34 = dimensionResource(R.dimen.dp_34)
     val margin11 = dimensionResource(R.dimen.dp_11)
@@ -66,24 +66,29 @@ fun MainProfile(height: Dp = 812.dp) {
     val text28 = dimensionResource(R.dimen.sp_28).value.sp
     val text10 = dimensionResource(R.dimen.sp_10).value.sp
     val text15 = dimensionResource(R.dimen.sp_15).value.sp
+    val text19 = dimensionResource(R.dimen.sp_19).value.sp
     val text16 = dimensionResource(R.dimen.sp_16).value.sp
     val text14 = dimensionResource(R.dimen.sp_14).value.sp
     val text18 = dimensionResource(R.dimen.sp_18).value.sp
     val text36 = dimensionResource(R.dimen.sp_36).value.sp
     val text21 = dimensionResource(R.dimen.sp_21).value.sp
     val text30 = dimensionResource(R.dimen.sp_30).value.sp
+    val text12 = dimensionResource(R.dimen.sp_12).value.sp
     val raleway = Font(R.font.raleway_bold)
     val scrollState = rememberScrollState()
     val padding = dimensionResource(R.dimen.dp_10)
     val ralewayExtra = Font(R.font.raleway_extra_bold)
+    val ralewayRegular = Font(R.font.raleway_regular)
     val nun = Font(R.font.nunito_regular)
-    val text12 = dimensionResource(R.dimen.sp_12).value.sp
-    val text17 = dimensionResource(R.dimen.sp_12).value.sp
+    val text13 = dimensionResource(R.dimen.sp_13).value.sp
+    val text17 = dimensionResource(R.dimen.sp_17).value.sp
     val margin1 = dimensionResource(R.dimen.dp_1)
+
+    val recentImages = listOf(R.drawable.img_recent_one,R.drawable.img_recent_two,R.drawable.img_recent_three,R.drawable.img_recent_four,R.drawable.img_recent_five)
     Column(modifier = Modifier.fillMaxSize()
         .verticalScroll(scrollState) .padding(top = paddingTop, bottom = paddingBottom, start = paddingStart, end = paddingEnd).background(Color.White)) {
         Row(verticalAlignment = Alignment.CenterVertically){
-            ItemRoundedImage(size40)
+            ItemRoundedImage(R.drawable.img_profile,size40)
             Spacer(Modifier.width(margin16))
             Text(
                 "My Activity",
@@ -127,21 +132,15 @@ fun MainProfile(height: Dp = 812.dp) {
         Spacer(Modifier.height(margin17))
         Row(horizontalArrangement = Arrangement.spacedBy(16.dp)){
             repeat(5){
-                ItemRoundedImage(height*0.061f)
-                ItemRoundedImage(height*0.061f)
-                ItemRoundedImage(height*0.061f)
-                ItemRoundedImage(height*0.061f)
-                ItemRoundedImage(height*0.061f)
+                ItemRoundedImage(recentImages[it],height*0.061f)
             }
         }
         Spacer(Modifier.height(margin25))
         Text("My Orders", fontSize = text21, lineHeight = text30, fontFamily = FontFamily(raleway))
         Spacer(Modifier.height(margin12))
-        Row {
+        Row(horizontalArrangement = Arrangement.spacedBy(margin8)){
             ItemMyOrders()
-            Spacer(Modifier.width(margin8))
             ItemMyOrders(isSelected = false)
-            Spacer(Modifier.width(margin8))
             ItemMyOrders(isSelected = false)
 
         }
@@ -150,19 +149,24 @@ fun MainProfile(height: Dp = 812.dp) {
         Spacer(Modifier.height(margin5))
         val horizontalScroll = rememberScrollState()
         Row(horizontalArrangement = Arrangement.spacedBy(margin6), modifier = Modifier.fillMaxWidth().horizontalScroll(horizontalScroll)){
-           ItemStories(height*0.215f)
-            ItemStories(height*0.215f)
-            ItemStories(height*0.215f)
-            ItemStories(height*0.215f)
-            ItemStories(height*0.215f)
+            repeat(5){
+                ItemStories(height*0.215f)
+            }
         }
         Spacer(Modifier.height(margin28))
         HeadingWithSeeAll("New Items",text21,text30,raleway,text15,margin12)
         Spacer(Modifier.height(margin10))
-        Row {
-            repeat(2){
-                ItemNewItem(height*0.172f,text12,text16,text17,text21,margin6,margin1,ralewayExtra,nun,padding)
-            }
+        Row(horizontalArrangement = Arrangement.spacedBy(margin6)){
+            ItemNewItem(R.drawable.img_new_item_one,height*0.172f,text12,text16,text17,text21,margin6,margin1,ralewayExtra,nun,padding)
+            ItemNewItem(R.drawable.img_new_item_two,height*0.172f,text12,text16,text17,text21,margin6,margin1,ralewayExtra,nun,padding)
+        }
+        Spacer(Modifier.height(margin25))
+        HeadingWithSeeAll("Most Popular",text21,text30,raleway,text15,margin12)
+        Spacer(Modifier.height(margin10))
+        Row(horizontalArrangement = Arrangement.spacedBy(margin6)){
+            ItemMostPopular(R.drawable.img_popular_one,"New",height*0.172f,height*0.126f,margin5,text15,text19,raleway,ralewayRegular,margin1,text13,text17,margin10)
+            ItemMostPopular(R.drawable.img_popular_two,"Sale",height*0.172f,height*0.126f,margin5,text15,text19,raleway,ralewayRegular,margin1,text13,text17,margin10)
+            ItemMostPopular(R.drawable.img_popular_three,"Hot",height*0.172f,height*0.126f,margin5,text15,text19,raleway,ralewayRegular,margin1,text13,text17,margin10)
         }
     }
 }

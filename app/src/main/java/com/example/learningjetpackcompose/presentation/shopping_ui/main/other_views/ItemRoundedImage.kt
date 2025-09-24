@@ -21,9 +21,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.learningjetpackcompose.R
 
-@Preview
 @Composable
-fun ItemRoundedImage(size : Dp = 50.dp){
+fun ItemRoundedImage(img : Int,size : Dp = 50.dp){
     val padding = dimensionResource(R.dimen.dp_5)
     Box(
         modifier = Modifier
@@ -33,6 +32,6 @@ fun ItemRoundedImage(size : Dp = 50.dp){
             .background(Color.White)                 // circle background
             .padding(padding), contentAlignment = Alignment.Center
     ){
-        Image(painter = painterResource(R.drawable.img_hello), contentDescription = "", modifier = Modifier.fillMaxSize().clip(CircleShape), contentScale = ContentScale.FillBounds)
+        Image(painter = painterResource(img), contentDescription = "", modifier = Modifier.fillMaxSize().clip(CircleShape), contentScale = ContentScale.FillBounds)
     }
 }

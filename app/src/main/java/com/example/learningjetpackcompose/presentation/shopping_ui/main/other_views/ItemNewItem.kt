@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
@@ -29,7 +30,7 @@ import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
 
 @Composable
-fun ItemNewItem(size : Dp=140.dp,textOne : TextUnit,lineHeightOne : TextUnit,textTwo : TextUnit,lineHeightTwo : TextUnit,marginOne : Dp,marginTwo : Dp,raleway : Font,nun : Font,padding : Dp){
+fun ItemNewItem(img : Int,size : Dp=140.dp,textOne : TextUnit,lineHeightOne : TextUnit,textTwo : TextUnit,lineHeightTwo : TextUnit,marginOne : Dp,marginTwo : Dp,raleway : Font,nun : Font,padding : Dp){
     Column(modifier = Modifier.width(size)){
         Box(
             modifier = Modifier
@@ -38,7 +39,7 @@ fun ItemNewItem(size : Dp=140.dp,textOne : TextUnit,lineHeightOne : TextUnit,tex
                 .background(Color.White,RoundedCornerShape(10.dp))
                 .padding(padding)
         ){
-            Image(painter = painterResource(R.drawable.img_hello), contentDescription = "", modifier = Modifier.clip(RoundedCornerShape(10.dp)).fillMaxSize())
+            Image(painter = painterResource(img), contentDescription = "", modifier = Modifier.clip(RoundedCornerShape(10.dp)).fillMaxSize(), contentScale = ContentScale.Crop)
         }
         Spacer(Modifier.height(marginOne))
         Text("Lorem ipsum dolor sit amet consectetur.", fontFamily = FontFamily(nun), fontSize = textOne, lineHeight = lineHeightOne)

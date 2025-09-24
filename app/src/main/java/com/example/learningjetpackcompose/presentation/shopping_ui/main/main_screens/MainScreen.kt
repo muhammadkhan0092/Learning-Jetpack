@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 fun  MainScreen(){
     BoxWithConstraints(modifier = Modifier.fillMaxSize().background(Color.White)){
         val height = maxHeight
+        val width = maxWidth
         Column(modifier = Modifier.fillMaxSize().background(Color.White)){
             MainProfile(height)
         }
