@@ -37,6 +37,7 @@ import com.example.learningjetpackcompose.mvvm.presentation.constants.Constants.
 import com.example.learningjetpackcompose.mvvm.presentation.constants.Constants.SHOPPING_ROUTE_PASSWORD_NEW
 import com.example.learningjetpackcompose.mvvm.presentation.constants.Constants.SHOPPING_ROUTE_PASSWORD_RECOVERY
 import com.example.learningjetpackcompose.presentation.minimis_ui.HomeLauncher
+import com.example.learningjetpackcompose.presentation.shopping_ui.main.main_screens.MainScreen
 import com.example.learningjetpackcompose.presentation.shopping_ui.setup.main_screens.CreateAccount
 import com.example.learningjetpackcompose.presentation.shopping_ui.setup.main_screens.GetStarted
 import com.example.learningjetpackcompose.presentation.shopping_ui.setup.main_screens.HelloScreen
@@ -65,7 +66,8 @@ class MainActivity : ComponentActivity() {
         val navController = rememberNavController()
         NavHost(navController = navController, startDestination = MENU) {
             composable(MENU) {
-                HelloScreen()
+                MainScreen()
+                //HelloScreen()
 //                MenuComposable(
 //                    {
 //                        navController.navigate(ROUTE_BASIC)

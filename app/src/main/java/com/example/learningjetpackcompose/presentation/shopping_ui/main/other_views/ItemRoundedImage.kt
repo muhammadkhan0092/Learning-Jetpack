@@ -24,8 +24,15 @@ import com.example.learningjetpackcompose.R
 @Preview
 @Composable
 fun ItemRoundedImage(size : Dp = 50.dp){
-    val padding = dimensionResource(R.dimen.dp_2)
-    Box(modifier = Modifier.size(size).background(Color.White, CircleShape).padding(padding), contentAlignment = Alignment.Center){
+    val padding = dimensionResource(R.dimen.dp_5)
+    Box(
+        modifier = Modifier
+            .size(size)
+            .shadow(2.dp, CircleShape, clip = false) // shadow outside
+            .clip(CircleShape)                       // force circle
+            .background(Color.White)                 // circle background
+            .padding(padding), contentAlignment = Alignment.Center
+    ){
         Image(painter = painterResource(R.drawable.img_hello), contentDescription = "", modifier = Modifier.fillMaxSize().clip(CircleShape), contentScale = ContentScale.FillBounds)
     }
 }
