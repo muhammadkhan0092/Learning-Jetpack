@@ -1,8 +1,11 @@
 package com.example.learningjetpackcompose.presentation.shopping_ui.main.main_screens
 
+import android.widget.GridLayout
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -10,18 +13,31 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -29,6 +45,7 @@ import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
 import com.example.learningjetpackcompose.presentation.shopping_ui.common_views.ButtonFrontArrow
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.HeadingWithSeeAll
+import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemGridCategories
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemMostPopular
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemMyOrders
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemNewItem
@@ -38,7 +55,7 @@ import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_vi
 
 @Preview(showSystemUi = true)
 @Composable
-fun MainProfile(height: Dp = 812.dp) {
+fun MainProfile(height: Dp = 812.dp,width : Dp = 375.dp) {
     val paddingTop = dimensionResource(R.dimen.dp_71)
     val paddingBottom = dimensionResource(R.dimen.dp_19)
     val paddingStart = dimensionResource(R.dimen.dp_24)
@@ -55,6 +72,7 @@ fun MainProfile(height: Dp = 812.dp) {
     val margin12 = dimensionResource(R.dimen.dp_12)
     val margin17 = dimensionResource(R.dimen.dp_17)
     val margin5 = dimensionResource(R.dimen.dp_5)
+    val margin4 = dimensionResource(R.dimen.dp_4)
     val margin8 = dimensionResource(R.dimen.dp_8)
     val margin10 = dimensionResource(R.dimen.dp_10)
     val margin29 = dimensionResource(R.dimen.dp_29)
@@ -129,44 +147,57 @@ fun MainProfile(height: Dp = 812.dp) {
         }
         Spacer(Modifier.height(margin18))
         Text("Recently viewed", fontSize = text21, lineHeight = text30, fontFamily = FontFamily(raleway))
-        Spacer(Modifier.height(margin17))
-        Row(horizontalArrangement = Arrangement.spacedBy(16.dp)){
-            repeat(5){
-                ItemRoundedImage(recentImages[it],height*0.061f)
-            }
-        }
-        Spacer(Modifier.height(margin25))
-        Text("My Orders", fontSize = text21, lineHeight = text30, fontFamily = FontFamily(raleway))
-        Spacer(Modifier.height(margin12))
-        Row(horizontalArrangement = Arrangement.spacedBy(margin8)){
-            ItemMyOrders()
-            ItemMyOrders(isSelected = false)
-            ItemMyOrders(isSelected = false)
-
-        }
+//        Spacer(Modifier.height(margin17))
+//        Row(horizontalArrangement = Arrangement.spacedBy(16.dp)){
+//            repeat(5){
+//                ItemRoundedImage(recentImages[it],height*0.061f)
+//            }
+//        }
+//        Spacer(Modifier.height(margin25))
+//        Text("My Orders", fontSize = text21, lineHeight = text30, fontFamily = FontFamily(raleway))
+//        Spacer(Modifier.height(margin12))
+//        Row(horizontalArrangement = Arrangement.spacedBy(margin8)){
+//            ItemMyOrders()
+//            ItemMyOrders(isSelected = false)
+//            ItemMyOrders(isSelected = false)
+//
+//        }
+//        Spacer(Modifier.height(margin28))
+//        Text("Stories", fontSize = text21, lineHeight = text30, fontFamily = FontFamily(raleway))
+//        Spacer(Modifier.height(margin5))
+//        val horizontalScroll = rememberScrollState()
+//        Row(horizontalArrangement = Arrangement.spacedBy(margin6), modifier = Modifier.fillMaxWidth().horizontalScroll(horizontalScroll)){
+//            repeat(5){
+//                ItemStories(height*0.215f)
+//            }
+//        }
+//        Spacer(Modifier.height(margin28))
+//        HeadingWithSeeAll("New Items",text21,text30,raleway,text15,margin12)
+//        Spacer(Modifier.height(margin10))
+//        Row(horizontalArrangement = Arrangement.spacedBy(margin6)){
+//            ItemNewItem(R.drawable.img_new_item_one,height*0.172f,text12,text16,text17,text21,margin6,margin1,ralewayExtra,nun,padding)
+//            ItemNewItem(R.drawable.img_new_item_two,height*0.172f,text12,text16,text17,text21,margin6,margin1,ralewayExtra,nun,padding)
+//        }
+//        Spacer(Modifier.height(margin25))
+//        HeadingWithSeeAll("Most Popular",text21,text30,raleway,text15,margin12)
+//        Spacer(Modifier.height(margin10))
+//        Row(horizontalArrangement = Arrangement.spacedBy(margin6)){
+//            ItemMostPopular(R.drawable.img_popular_one,"New",height*0.172f,height*0.126f,margin5,text15,text19,raleway,ralewayRegular,margin1,text13,text17,margin10)
+//            ItemMostPopular(R.drawable.img_popular_two,"Sale",height*0.172f,height*0.126f,margin5,text15,text19,raleway,ralewayRegular,margin1,text13,text17,margin10)
+//            ItemMostPopular(R.drawable.img_popular_three,"Hot",height*0.172f,height*0.126f,margin5,text15,text19,raleway,ralewayRegular,margin1,text13,text17,margin10)
+//        }
         Spacer(Modifier.height(margin28))
-        Text("Stories", fontSize = text21, lineHeight = text30, fontFamily = FontFamily(raleway))
-        Spacer(Modifier.height(margin5))
-        val horizontalScroll = rememberScrollState()
-        Row(horizontalArrangement = Arrangement.spacedBy(margin6), modifier = Modifier.fillMaxWidth().horizontalScroll(horizontalScroll)){
-            repeat(5){
-                ItemStories(height*0.215f)
+        HeadingWithSeeAll("Categories",text21,text30,raleway,text15,margin12)
+        Spacer(Modifier.height(margin10))
+        Column(verticalArrangement = Arrangement.spacedBy(margin6)){
+            Row(horizontalArrangement = Arrangement.spacedBy(margin6)){
+                ItemGridCategories("Clothing","253",R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,margin4,margin6,margin5,height*0.092f,width*0.40f,margin1,ralewayExtra,text17,text21,text12,margin8)
+                ItemGridCategories("Clothing","253",R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,margin4,margin6,margin5,height*0.092f,width*0.40f,margin1,ralewayExtra,text17,text21,text12,margin8)
             }
-        }
-        Spacer(Modifier.height(margin28))
-        HeadingWithSeeAll("New Items",text21,text30,raleway,text15,margin12)
-        Spacer(Modifier.height(margin10))
-        Row(horizontalArrangement = Arrangement.spacedBy(margin6)){
-            ItemNewItem(R.drawable.img_new_item_one,height*0.172f,text12,text16,text17,text21,margin6,margin1,ralewayExtra,nun,padding)
-            ItemNewItem(R.drawable.img_new_item_two,height*0.172f,text12,text16,text17,text21,margin6,margin1,ralewayExtra,nun,padding)
-        }
-        Spacer(Modifier.height(margin25))
-        HeadingWithSeeAll("Most Popular",text21,text30,raleway,text15,margin12)
-        Spacer(Modifier.height(margin10))
-        Row(horizontalArrangement = Arrangement.spacedBy(margin6)){
-            ItemMostPopular(R.drawable.img_popular_one,"New",height*0.172f,height*0.126f,margin5,text15,text19,raleway,ralewayRegular,margin1,text13,text17,margin10)
-            ItemMostPopular(R.drawable.img_popular_two,"Sale",height*0.172f,height*0.126f,margin5,text15,text19,raleway,ralewayRegular,margin1,text13,text17,margin10)
-            ItemMostPopular(R.drawable.img_popular_three,"Hot",height*0.172f,height*0.126f,margin5,text15,text19,raleway,ralewayRegular,margin1,text13,text17,margin10)
+            Row(horizontalArrangement = Arrangement.spacedBy(margin6)){
+                ItemGridCategories("Clothing","253",R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,margin4,margin6,margin5,height*0.092f,width*0.40f,margin1,ralewayExtra,text17,text21,text12,margin8)
+                ItemGridCategories("Clothing","253",R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,margin4,margin6,margin5,height*0.092f,width*0.40f,margin1,ralewayExtra,text17,text21,text12,margin8)
+            }
         }
     }
 }
