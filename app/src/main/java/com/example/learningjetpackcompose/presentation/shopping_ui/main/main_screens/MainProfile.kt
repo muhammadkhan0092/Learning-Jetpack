@@ -3,6 +3,7 @@ package com.example.learningjetpackcompose.presentation.shopping_ui.main.main_sc
 import android.widget.GridLayout
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -224,6 +225,14 @@ fun MainProfile(height: Dp = 812.dp,width : Dp = 375.dp) {
             repeat(5){
                 ItemRoundedImage(recentImages[it],height*0.061f)
             }
+        }
+        Spacer(Modifier.height(margin34))
+        Text("Just For You", fontSize = text21, lineHeight = text30, fontFamily = FontFamily(raleway))
+        Spacer(Modifier.height(margin10))
+        val scrollIndicator = rememberScrollState()
+        Row(horizontalArrangement = Arrangement.spacedBy(margin6), modifier = Modifier.horizontalScroll(scrollIndicator)){
+            ItemNewItem(R.drawable.img_new_item_one,width*0.44f,text12,text16,text17,text21,margin6,margin1,ralewayExtra,nun,padding)
+            ItemNewItem(R.drawable.img_new_item_two,width*0.44f,text12,text16,text17,text21,margin6,margin1,ralewayExtra,nun,padding)
         }
     }
 }
