@@ -31,11 +31,11 @@ import com.example.learningjetpackcompose.R
 @Composable
 fun ItemGridCategories(textOne : String,textTwo : String,imgOne : Int,imgTwo : Int,imgThree : Int,imgFour : Int,margin4 : Dp,margin6 : Dp,margin5 : Dp,height : Dp,width : Dp,margin1 : Dp,raleway : Font,text17 : TextUnit,text21: TextUnit,text12 : TextUnit,margin8 : Dp){
     Column(
-        verticalArrangement = Arrangement.spacedBy(margin4)
-        ,modifier = Modifier
+        verticalArrangement = Arrangement.spacedBy(margin4),
+        modifier = Modifier
             .shadow(elevation = 2.dp, shape = RoundedCornerShape(10.dp), clip = false)
             .background(Color.White, RoundedCornerShape(10.dp))
-            .padding(start = margin6, end = margin6, top = margin6, bottom = margin5)){
+            .padding(start = width*0.016f, end = width*0.016f, top = width*0.016f, bottom = width*0.013f)){
             Row(horizontalArrangement = Arrangement.spacedBy(margin4), modifier = Modifier.background(Color.White,
                 RoundedCornerShape(10.dp))){
                 ItemSquareImage(imgOne,height)
@@ -47,7 +47,7 @@ fun ItemGridCategories(textOne : String,textTwo : String,imgOne : Int,imgTwo : I
             ItemSquareImage(imgFour,height)
         }
         Spacer(Modifier.height(margin1))
-        Row(modifier = Modifier.width(width), verticalAlignment = Alignment.CenterVertically){
+        Row(modifier = Modifier.width(width*0.41f), verticalAlignment = Alignment.CenterVertically){
             Text(textOne, fontFamily = FontFamily(raleway), fontSize = text17, lineHeight = text21, modifier = Modifier.weight(1f))
             Text(
                 textTwo, modifier = Modifier.background(Color(0xFFF3F3F3),RoundedCornerShape(6.dp)).padding(top = margin4, bottom = margin4, start = margin8, end = margin8),

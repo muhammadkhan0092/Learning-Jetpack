@@ -69,6 +69,7 @@ fun MainProfile(height: Dp = 812.dp,width : Dp = 375.dp) {
     val margin34 = dimensionResource(R.dimen.dp_34)
     val margin11 = dimensionResource(R.dimen.dp_11)
     val margin14 = dimensionResource(R.dimen.dp_14)
+    val margin35 = dimensionResource(R.dimen.dp_35)
     val margin12 = dimensionResource(R.dimen.dp_12)
     val margin17 = dimensionResource(R.dimen.dp_17)
     val margin5 = dimensionResource(R.dimen.dp_5)
@@ -104,7 +105,7 @@ fun MainProfile(height: Dp = 812.dp,width : Dp = 375.dp) {
 
     val recentImages = listOf(R.drawable.img_recent_one,R.drawable.img_recent_two,R.drawable.img_recent_three,R.drawable.img_recent_four,R.drawable.img_recent_five)
     Column(modifier = Modifier.fillMaxSize()
-        .verticalScroll(scrollState) .padding(top = paddingTop, bottom = paddingBottom, start = paddingStart, end = paddingEnd).background(Color.White)) {
+        .verticalScroll(scrollState).padding(top = paddingTop, bottom = paddingBottom, start = width*0.05f, end = width*0.05f).background(Color.White)) {
         Row(verticalAlignment = Alignment.CenterVertically){
             ItemRoundedImage(R.drawable.img_profile,size40)
             Spacer(Modifier.width(margin16))
@@ -147,56 +148,64 @@ fun MainProfile(height: Dp = 812.dp,width : Dp = 375.dp) {
         }
         Spacer(Modifier.height(margin18))
         Text("Recently viewed", fontSize = text21, lineHeight = text30, fontFamily = FontFamily(raleway))
-//        Spacer(Modifier.height(margin17))
-//        Row(horizontalArrangement = Arrangement.spacedBy(16.dp)){
-//            repeat(5){
-//                ItemRoundedImage(recentImages[it],height*0.061f)
-//            }
-//        }
-//        Spacer(Modifier.height(margin25))
-//        Text("My Orders", fontSize = text21, lineHeight = text30, fontFamily = FontFamily(raleway))
-//        Spacer(Modifier.height(margin12))
-//        Row(horizontalArrangement = Arrangement.spacedBy(margin8)){
-//            ItemMyOrders()
-//            ItemMyOrders(isSelected = false)
-//            ItemMyOrders(isSelected = false)
-//
-//        }
-//        Spacer(Modifier.height(margin28))
-//        Text("Stories", fontSize = text21, lineHeight = text30, fontFamily = FontFamily(raleway))
-//        Spacer(Modifier.height(margin5))
-//        val horizontalScroll = rememberScrollState()
-//        Row(horizontalArrangement = Arrangement.spacedBy(margin6), modifier = Modifier.fillMaxWidth().horizontalScroll(horizontalScroll)){
-//            repeat(5){
-//                ItemStories(height*0.215f)
-//            }
-//        }
-//        Spacer(Modifier.height(margin28))
-//        HeadingWithSeeAll("New Items",text21,text30,raleway,text15,margin12)
-//        Spacer(Modifier.height(margin10))
-//        Row(horizontalArrangement = Arrangement.spacedBy(margin6)){
-//            ItemNewItem(R.drawable.img_new_item_one,height*0.172f,text12,text16,text17,text21,margin6,margin1,ralewayExtra,nun,padding)
-//            ItemNewItem(R.drawable.img_new_item_two,height*0.172f,text12,text16,text17,text21,margin6,margin1,ralewayExtra,nun,padding)
-//        }
-//        Spacer(Modifier.height(margin25))
-//        HeadingWithSeeAll("Most Popular",text21,text30,raleway,text15,margin12)
-//        Spacer(Modifier.height(margin10))
-//        Row(horizontalArrangement = Arrangement.spacedBy(margin6)){
-//            ItemMostPopular(R.drawable.img_popular_one,"New",height*0.172f,height*0.126f,margin5,text15,text19,raleway,ralewayRegular,margin1,text13,text17,margin10)
-//            ItemMostPopular(R.drawable.img_popular_two,"Sale",height*0.172f,height*0.126f,margin5,text15,text19,raleway,ralewayRegular,margin1,text13,text17,margin10)
-//            ItemMostPopular(R.drawable.img_popular_three,"Hot",height*0.172f,height*0.126f,margin5,text15,text19,raleway,ralewayRegular,margin1,text13,text17,margin10)
-//        }
+        Spacer(Modifier.height(margin17))
+        Row(horizontalArrangement = Arrangement.spacedBy(16.dp)){
+            repeat(5){
+                ItemRoundedImage(recentImages[it],height*0.061f)
+            }
+        }
+        Spacer(Modifier.height(margin25))
+        Text("My Orders", fontSize = text21, lineHeight = text30, fontFamily = FontFamily(raleway))
+        Spacer(Modifier.height(margin12))
+        Row(horizontalArrangement = Arrangement.spacedBy(margin8)){
+            ItemMyOrders()
+            ItemMyOrders(isSelected = false)
+            ItemMyOrders(isSelected = false)
+
+        }
+        Spacer(Modifier.height(margin28))
+        Text("Stories", fontSize = text21, lineHeight = text30, fontFamily = FontFamily(raleway))
+        Spacer(Modifier.height(margin5))
+        val horizontalScroll = rememberScrollState()
+        Row(horizontalArrangement = Arrangement.spacedBy(margin6), modifier = Modifier.fillMaxWidth().horizontalScroll(horizontalScroll)){
+            repeat(5){
+                ItemStories(height*0.215f)
+            }
+        }
+        Spacer(Modifier.height(margin28))
+        HeadingWithSeeAll("New Items",text21,text30,raleway,text15,margin12)
+        Spacer(Modifier.height(margin10))
+        Row(horizontalArrangement = Arrangement.spacedBy(margin6)){
+            ItemNewItem(R.drawable.img_new_item_one,height*0.172f,text12,text16,text17,text21,margin6,margin1,ralewayExtra,nun,padding)
+            ItemNewItem(R.drawable.img_new_item_two,height*0.172f,text12,text16,text17,text21,margin6,margin1,ralewayExtra,nun,padding)
+        }
+        Spacer(Modifier.height(margin25))
+        HeadingWithSeeAll("Most Popular",text21,text30,raleway,text15,margin12)
+        Spacer(Modifier.height(margin10))
+        Row(horizontalArrangement = Arrangement.spacedBy(margin6)){
+            ItemMostPopular(R.drawable.img_popular_one,"New",height*0.172f,height*0.126f,margin5,text15,text19,raleway,ralewayRegular,margin1,text13,text17,margin10)
+            ItemMostPopular(R.drawable.img_popular_two,"Sale",height*0.172f,height*0.126f,margin5,text15,text19,raleway,ralewayRegular,margin1,text13,text17,margin10)
+            ItemMostPopular(R.drawable.img_popular_three,"Hot",height*0.172f,height*0.126f,margin5,text15,text19,raleway,ralewayRegular,margin1,text13,text17,margin10)
+        }
         Spacer(Modifier.height(margin28))
         HeadingWithSeeAll("Categories",text21,text30,raleway,text15,margin12)
         Spacer(Modifier.height(margin10))
         Column(verticalArrangement = Arrangement.spacedBy(margin6)){
             Row(horizontalArrangement = Arrangement.spacedBy(margin6)){
-                ItemGridCategories("Clothing","253",R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,margin4,margin6,margin5,height*0.092f,width*0.40f,margin1,ralewayExtra,text17,text21,text12,margin8)
-                ItemGridCategories("Clothing","253",R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,margin4,margin6,margin5,height*0.092f,width*0.40f,margin1,ralewayExtra,text17,text21,text12,margin8)
+                ItemGridCategories("Clothing","253",R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,margin4,margin6,margin5,width*0.2f,width,margin1,ralewayExtra,text17,text21,text12,margin8)
+                ItemGridCategories("Clothing","253",R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,margin4,margin6,margin5,width*0.2f,width,margin1,ralewayExtra,text17,text21,text12,margin8)
             }
             Row(horizontalArrangement = Arrangement.spacedBy(margin6)){
-                ItemGridCategories("Clothing","253",R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,margin4,margin6,margin5,height*0.092f,width*0.40f,margin1,ralewayExtra,text17,text21,text12,margin8)
-                ItemGridCategories("Clothing","253",R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,margin4,margin6,margin5,height*0.092f,width*0.40f,margin1,ralewayExtra,text17,text21,text12,margin8)
+                ItemGridCategories("Clothing","253",R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,margin4,margin6,margin5,width*0.2f,width,margin1,ralewayExtra,text17,text21,text12,margin8)
+                ItemGridCategories("Clothing","253",R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,margin4,margin6,margin5,width*0.2f,width,margin1,ralewayExtra,text17,text21,text12,margin8)
+            }
+        }
+        Spacer(Modifier.height(margin35))
+        Text("Top Products", fontSize = text21, lineHeight = text30, fontFamily = FontFamily(raleway))
+        Spacer(Modifier.height(margin10))
+        Row(horizontalArrangement = Arrangement.spacedBy(16.dp)){
+            repeat(5){
+                ItemRoundedImage(recentImages[it],height*0.061f)
             }
         }
     }

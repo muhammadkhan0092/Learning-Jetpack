@@ -16,7 +16,7 @@ fun  MainScreen(){
         val height = maxHeight
         val width = maxWidth
         Column(modifier = Modifier.fillMaxSize().background(Color.White)){
-            MainProfile(height)
+            MainProfile(height,width)
         }
     }
 }
