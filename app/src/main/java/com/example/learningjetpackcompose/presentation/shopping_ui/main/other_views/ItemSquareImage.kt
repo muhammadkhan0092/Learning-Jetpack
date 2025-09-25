@@ -23,9 +23,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
 
-@Preview()
+
 @Composable
-fun ItemSquareImage(image : Int =R.drawable.img_hello,height : Dp = 75.dp,isOnSale : Boolean = true){
+fun ItemSquareImage(image : Int =R.drawable.img_hello,height : Dp ,isOnSale : Boolean = false){
     val text13 = dimensionResource(R.dimen.sp_13).value.sp
     val padding4 = dimensionResource(R.dimen.dp_4)
     Box(modifier = Modifier.size(height).clip(RoundedCornerShape(5.dp)), contentAlignment = Alignment.TopEnd){
@@ -35,17 +35,19 @@ fun ItemSquareImage(image : Int =R.drawable.img_hello,height : Dp = 75.dp,isOnSa
             modifier = Modifier.size(height).clip(RoundedCornerShape(5.dp)),
             contentScale = ContentScale.FillBounds
         )
-        Text(
-            text = "-20%",
-            fontSize = text13,
-            modifier = Modifier
-                .background(
-                    brush = Brush.linearGradient(
-                        colors = listOf(Color(0xFFFF5790), Color(0xFFE91E63)) // blue → pink
-                    ),
-                    shape = RoundedCornerShape(topStart = 5.dp, bottomStart = 5.dp, topEnd = 5.dp)
-                ).padding(start = padding4, end = padding4),
-            color = Color.White // text color on top of gradient
-        )
+        if(isOnSale){
+            Text(
+                text = "-20%",
+                fontSize = text13,
+                modifier = Modifier
+                    .background(
+                        brush = Brush.linearGradient(
+                            colors = listOf(Color(0xFFFF5790), Color(0xFFE91E63)) // blue → pink
+                        ),
+                        shape = RoundedCornerShape(topStart = 5.dp, bottomStart = 5.dp, topEnd = 5.dp)
+                    ).padding(start = padding4, end = padding4),
+                color = Color.White // text color on top of gradient
+            )
+        }
     }
 }

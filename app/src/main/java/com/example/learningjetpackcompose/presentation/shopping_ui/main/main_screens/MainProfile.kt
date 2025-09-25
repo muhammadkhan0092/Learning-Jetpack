@@ -50,6 +50,8 @@ import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_vi
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemMyOrders
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemNewItem
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemRoundedImage
+import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemSquareImage
+import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemSquareImageWhiteBg
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemStories
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemTopMenu
 
@@ -102,7 +104,7 @@ fun MainProfile(height: Dp = 812.dp,width : Dp = 375.dp) {
     val text13 = dimensionResource(R.dimen.sp_13).value.sp
     val text17 = dimensionResource(R.dimen.sp_17).value.sp
     val margin1 = dimensionResource(R.dimen.dp_1)
-
+    val imgHello = R.drawable.img_hello
     val recentImages = listOf(R.drawable.img_recent_one,R.drawable.img_recent_two,R.drawable.img_recent_three,R.drawable.img_recent_four,R.drawable.img_recent_five)
     Column(modifier = Modifier.fillMaxSize()
         .verticalScroll(scrollState).padding(top = paddingTop, bottom = paddingBottom, start = width*0.05f, end = width*0.05f).background(Color.White)) {
@@ -198,6 +200,21 @@ fun MainProfile(height: Dp = 812.dp,width : Dp = 375.dp) {
             Row(horizontalArrangement = Arrangement.spacedBy(margin6)){
                 ItemGridCategories("Clothing","253",R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,margin4,margin6,margin5,width*0.2f,width,margin1,ralewayExtra,text17,text21,text12,margin8)
                 ItemGridCategories("Clothing","253",R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,margin4,margin6,margin5,width*0.2f,width,margin1,ralewayExtra,text17,text21,text12,margin8)
+            }
+        }
+        Spacer(Modifier.height(margin28))
+        Text("Flash Sale", fontSize = text21, lineHeight = text30, fontFamily = FontFamily(raleway))
+        Spacer(Modifier.height(margin10))
+        Column(verticalArrangement = Arrangement.spacedBy(margin6)){
+            Row(horizontalArrangement = Arrangement.spacedBy(margin8)){
+                ItemSquareImageWhiteBg(imgHello,width,true)
+                ItemSquareImageWhiteBg(imgHello,width,true)
+                ItemSquareImageWhiteBg(imgHello,width,true)
+            }
+            Row(horizontalArrangement = Arrangement.spacedBy(margin8)){
+                ItemSquareImageWhiteBg(imgHello,width,true)
+                ItemSquareImageWhiteBg(imgHello,width,true)
+                ItemSquareImageWhiteBg(imgHello,width,true)
             }
         }
         Spacer(Modifier.height(margin35))
