@@ -56,7 +56,6 @@ import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_vi
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemStories
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemTopMenu
 
-@Preview(showSystemUi = true)
 @Composable
 fun MainProfile(height: Dp = 812.dp,width : Dp = 375.dp) {
     val paddingTop = dimensionResource(R.dimen.dp_71)

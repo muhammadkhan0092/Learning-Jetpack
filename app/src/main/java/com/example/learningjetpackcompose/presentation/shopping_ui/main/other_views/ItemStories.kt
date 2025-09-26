@@ -34,7 +34,7 @@ fun ItemStories(height: Dp) {
                 painter = painterResource(R.drawable.img_ready),
                 contentDescription = null,
                 modifier = Modifier.fillMaxSize().clip(RoundedCornerShape(10.dp)).background(Color.Green),
-                contentScale = ContentScale.FillBounds
+                contentScale = ContentScale.Crop
             )
             Box(modifier = Modifier.size(size29).background(Color(0xFFD9D9D9),CircleShape), contentAlignment = Alignment.Center){
                 Image(
