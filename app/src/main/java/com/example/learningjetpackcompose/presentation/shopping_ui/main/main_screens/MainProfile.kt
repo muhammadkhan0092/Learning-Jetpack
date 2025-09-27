@@ -106,6 +106,16 @@ fun MainProfile(height: Dp = 812.dp,width : Dp = 375.dp) {
     val margin1 = dimensionResource(R.dimen.dp_1)
     val imgHello = R.drawable.img_hello
     val recentImages = listOf(R.drawable.img_recent_one,R.drawable.img_recent_two,R.drawable.img_recent_three,R.drawable.img_recent_four,R.drawable.img_recent_five)
+
+    val sizeH75 =width*0.2f
+    val marginH6 = width*0.016f
+    val sizeH165 = width*0.44f
+    val marginH5 = width*0.013f
+    val marginH4 = width*0.010f
+
+
+    val marginV5 = height*0.006f
+    val marginV6 = height*0.007f
     Column(modifier = Modifier.fillMaxSize()
         .verticalScroll(scrollState).padding(top = paddingTop, bottom = paddingBottom, start = width*0.05f, end = width*0.05f).background(Color.White)) {
         Row(verticalAlignment = Alignment.CenterVertically){
@@ -193,13 +203,17 @@ fun MainProfile(height: Dp = 812.dp,width : Dp = 375.dp) {
         HeadingWithSeeAll("Categories",text21,text30,raleway,text15,margin12)
         Spacer(Modifier.height(margin10))
         Column(verticalArrangement = Arrangement.spacedBy(margin6)){
-            Row(horizontalArrangement = Arrangement.spacedBy(margin6)){
-                ItemGridCategories("Clothing","253",R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,margin4,margin6,margin5,width*0.2f,width,margin1,ralewayExtra,text17,text21,text12,margin8)
-                ItemGridCategories("Clothing","253",R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,margin4,margin6,margin5,width*0.2f,width,margin1,ralewayExtra,text17,text21,text12,margin8)
+            Row(horizontalArrangement = Arrangement.spacedBy(marginH6)){
+                ItemGridCategories("Clothing","253",R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,margin4,ralewayExtra,text17,text21,text12,margin8,sizeH75,sizeH165,marginH5,marginH6,marginH4,marginV5,marginV6)
+                ItemGridCategories("Clothing","253",R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,margin4,ralewayExtra,text17,text21,text12,margin8,sizeH75,sizeH165,marginH5,marginH6,marginH4,marginV5,marginV6)
             }
-            Row(horizontalArrangement = Arrangement.spacedBy(margin6)){
-                ItemGridCategories("Clothing","253",R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,margin4,margin6,margin5,width*0.2f,width,margin1,ralewayExtra,text17,text21,text12,margin8)
-                ItemGridCategories("Clothing","253",R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,margin4,margin6,margin5,width*0.2f,width,margin1,ralewayExtra,text17,text21,text12,margin8)
+            Row(horizontalArrangement = Arrangement.spacedBy(marginH6)){
+                ItemGridCategories("Clothing","253",R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,margin4,ralewayExtra,text17,text21,text12,margin8,sizeH75,sizeH165,marginH5,marginH6,marginH4,marginV5,marginV6)
+                ItemGridCategories("Clothing","253",R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,margin4,ralewayExtra,text17,text21,text12,margin8,sizeH75,sizeH165,marginH5,marginH6,marginH4,marginV5,marginV6)
+            }
+            Row(horizontalArrangement = Arrangement.spacedBy(marginH6)){
+                ItemGridCategories("Clothing","253",R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,margin4,ralewayExtra,text17,text21,text12,margin8,sizeH75,sizeH165,marginH5,marginH6,marginH4,marginV5,marginV6)
+                ItemGridCategories("Clothing","253",R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,R.drawable.img_hello,margin4,ralewayExtra,text17,text21,text12,margin8,sizeH75,sizeH165,marginH5,marginH6,marginH4,marginV5,marginV6)
             }
         }
         Spacer(Modifier.height(margin28))

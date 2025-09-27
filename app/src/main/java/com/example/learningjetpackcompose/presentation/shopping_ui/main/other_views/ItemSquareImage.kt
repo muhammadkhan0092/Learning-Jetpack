@@ -25,14 +25,14 @@ import com.example.learningjetpackcompose.R
 
 
 @Composable
-fun ItemSquareImage(image : Int =R.drawable.img_hello,height : Dp ,isOnSale : Boolean = false){
+fun ItemSquareImage(image : Int =R.drawable.img_hello,imgSize : Dp ,isOnSale : Boolean = false){
     val text13 = dimensionResource(R.dimen.sp_13).value.sp
     val padding4 = dimensionResource(R.dimen.dp_4)
-    Box(modifier = Modifier.size(height).clip(RoundedCornerShape(5.dp)), contentAlignment = Alignment.TopEnd){
+    Box(modifier = Modifier.size(imgSize).clip(RoundedCornerShape(5.dp)), contentAlignment = Alignment.TopEnd){
         Image(
             painter = painterResource(image),
             contentDescription = "",
-            modifier = Modifier.size(height).clip(RoundedCornerShape(5.dp)),
+            modifier = Modifier.size(imgSize).clip(RoundedCornerShape(5.dp)),
             contentScale = ContentScale.FillBounds
         )
         if(isOnSale){
@@ -42,11 +42,11 @@ fun ItemSquareImage(image : Int =R.drawable.img_hello,height : Dp ,isOnSale : Bo
                 modifier = Modifier
                     .background(
                         brush = Brush.linearGradient(
-                            colors = listOf(Color(0xFFFF5790), Color(0xFFE91E63)) // blue → pink
+                            colors = listOf(Color(0xFFFF5790), Color(0xFFE91E63))
                         ),
                         shape = RoundedCornerShape(topStart = 5.dp, bottomStart = 5.dp, topEnd = 5.dp)
                     ).padding(start = padding4, end = padding4),
-                color = Color.White // text color on top of gradient
+                color = Color.White
             )
         }
     }

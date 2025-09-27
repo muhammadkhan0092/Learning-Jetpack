@@ -1,9 +1,11 @@
 package com.example.learningjetpackcompose.presentation.shopping_ui.main.main_screens
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -29,6 +31,7 @@ import com.example.learningjetpackcompose.presentation.shopping_ui.constants.SCR
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.SCREEN_DESTINATIONS.MAIN_PROFILE
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.SCREEN_DESTINATIONS.MAIN_WISHLIST
 
+@SuppressLint("UnusedBoxWithConstraintsScope")
 @Preview
 @Composable
 fun MainScreen() {
@@ -41,16 +44,20 @@ fun MainScreen() {
             CustomBottomBar(navController)
         }
     ) { innerPadding ->
-        NavHost(
-            navController = navController,
-            startDestination = MAIN_HOME,
-            modifier = Modifier.padding(innerPadding)
-        ) {
-            composable(MAIN_HOME) { MainProfile() }
-            composable(MAIN_WISHLIST) { MainProfile()}
-            composable(MAIN_CATEGORIES) {MainProfile() }
-            composable ( MAIN_CART){MainProfile()}
-            composable (MAIN_PROFILE){MainProfile()}
+        BoxWithConstraints {
+            val width = maxWidth
+            val height = maxHeight
+            NavHost(
+                navController = navController,
+                startDestination = MAIN_HOME,
+                modifier = Modifier.padding(innerPadding)
+            ) {
+                composable(MAIN_HOME) { MainHome(width,height)}
+                composable(MAIN_WISHLIST) { MainProfile()}
+                composable(MAIN_CATEGORIES) {MainProfile() }
+                composable ( MAIN_CART){MainProfile()}
+                composable (MAIN_PROFILE){MainProfile()}
+            }
         }
     }
 }

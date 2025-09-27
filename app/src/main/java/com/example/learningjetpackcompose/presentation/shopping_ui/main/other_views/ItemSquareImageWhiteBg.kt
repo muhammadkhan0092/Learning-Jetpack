@@ -23,6 +23,6 @@ fun ItemSquareImageWhiteBg(image : Int =R.drawable.img_hello,width : Dp = 75.dp,
             .size(width*0.285f),
         contentAlignment = Alignment.Center
     ){
-        ItemSquareImage(image,width*0.265f,true)
+        ItemSquareImage(image,width,true)
     }
 }
