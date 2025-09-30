@@ -73,6 +73,8 @@ fun MainHome(width : Dp = 375.dp,height : Dp = 812.dp) {
     val marginV5 = height*0.006f
     val marginV6 = height*0.007f
 
+    val sizeV130 = height*0.160f
+
 
     val text11 =(height * 0.013f).value.sp
     val text12 = (height * 0.014f).value.sp
@@ -88,7 +90,6 @@ fun MainHome(width : Dp = 375.dp,height : Dp = 812.dp) {
     val text28 = (height * 0.034f).value.sp
     val text29 = (height * 0.034f).value.sp
     val text38 = (height * 0.046f).value.sp
-
 
 
 
@@ -125,7 +126,7 @@ fun MainHome(width : Dp = 375.dp,height : Dp = 812.dp) {
             }
         }
         Spacer(Modifier.height(margin17))
-        BigSaleCard(text29,text26,text12,text18,text11,text15,margin1,margin29,margin4,margin18,margin12,ralewayBold,nunito)
+        BigSaleCard(text29,text26,text12,text18,text11,text15,margin1,margin29,margin4,margin18,margin12,ralewayBold,nunito,sizeV130)
         Spacer(Modifier.height(margin22))
         HeadingWithSeeAll("Categories",text21,text30,ralewayBold,text15,margin12)
         Spacer(Modifier.height(margin10))

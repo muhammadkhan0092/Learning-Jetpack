@@ -23,7 +23,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
 
-@Preview()
 @Composable
 fun BigSaleCard(
     text29 : TextUnit = 29.sp,
@@ -38,7 +37,8 @@ fun BigSaleCard(
     padding18 : Dp = 18.dp,
     padding12 : Dp = 12.dp,
     raleway : Font = Font(R.font.raleway_bold),
-    nunito  : Font = Font(R.font.nunito_bold)
+    nunito  : Font = Font(R.font.nunito_bold),
+    imgSize : Dp
 ){
     Row(modifier = Modifier.fillMaxWidth().background(Color(0xFFF0B01B), RoundedCornerShape(10.dp))){
 
@@ -53,7 +53,7 @@ fun BigSaleCard(
         Image(
             painter = painterResource(R.drawable.img_hello),
             contentDescription = "",
-            modifier = Modifier.weight(0.5f)
+            modifier = Modifier.weight(0.5f).height(imgSize)
         )
     }
 }
