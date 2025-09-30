@@ -31,6 +31,7 @@ import com.example.learningjetpackcompose.presentation.shopping_ui.constants.SCR
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.SCREEN_DESTINATIONS.MAIN_PROFILE
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.SCREEN_DESTINATIONS.MAIN_WISHLIST
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsMenu
+import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsProfile
 
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Preview
@@ -38,29 +39,29 @@ import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main
 fun MainScreen() {
     val navController = rememberNavController()
 
-//    Scaffold(
-//        containerColor = Color.White,
-//        contentColor = Color.Black,
-//        bottomBar = {
-//            CustomBottomBar(navController)
-//        }
-//    ) { innerPadding ->
+    Scaffold(
+        containerColor = Color.White,
+        contentColor = Color.Black,
+        bottomBar = {
+            CustomBottomBar(navController)
+        }
+    ) { innerPadding ->
         BoxWithConstraints {
             val width = maxWidth
             val height = maxHeight
             NavHost(
                 navController = navController,
                 startDestination = MAIN_HOME,
-              //  modifier = Modifier.padding(innerPadding)
+                modifier = Modifier.padding(innerPadding)
             ) {
-                composable(MAIN_HOME) { SettingsMenu(width,height) }
+                composable(MAIN_HOME) { SettingsProfile(width,height) }
                 composable(MAIN_WISHLIST) { MainProfile()}
                 composable(MAIN_CATEGORIES) {MainProfile() }
                 composable ( MAIN_CART){MainProfile()}
                 composable (MAIN_PROFILE){MainProfile()}
             }
         }
-    //}
+    }
 }
 @Composable
 fun CustomBottomBar(navController: NavController) {
@@ -85,21 +86,21 @@ fun CustomBottomBar(navController: NavController) {
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically
     ){
-//        repeat(5) {
-//            Image(
-//                painter = painterResource(
-//                if(item[it]==currentDestination) selectedIcons[it]
-//                else unSelectedIcons[it]
-//            ),
-//                contentDescription = "",
-//                modifier = Modifier.clickable{
-//                navController.navigate(item[it]){
-//                    popUpTo(navController.graph.startDestinationId){ saveState = true }
-//                    launchSingleTop = true
-//                    restoreState = true
-//                }
-//            }
-//            )
-//        }
+        repeat(5) {
+            Image(
+                painter = painterResource(
+                if(item[it]==currentDestination) selectedIcons[it]
+                else unSelectedIcons[it]
+            ),
+                contentDescription = "",
+                modifier = Modifier.clickable{
+                navController.navigate(item[it]){
+                    popUpTo(navController.graph.startDestinationId){ saveState = true }
+                    launchSingleTop = true
+                    restoreState = true
+                }
+            }
+            )
+        }
     }
 }
