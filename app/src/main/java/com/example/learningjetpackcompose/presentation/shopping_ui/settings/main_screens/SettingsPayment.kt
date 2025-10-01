@@ -108,7 +108,6 @@ fun SettingsPayment(width : Dp = 375.dp,height : Dp = 812.dp){
             modifier = Modifier
                 .fillMaxSize()
                 .padding(top = size30V, start = size20H, end = size20H, bottom = size20V)
-                .verticalScroll(scrollState)
         ) {
             Text(
                 "Settings",
@@ -148,13 +147,17 @@ fun SettingsPayment(width : Dp = 375.dp,height : Dp = 812.dp){
                 }
             )
             Spacer(Modifier.height(size16V))
-            repeat(10){
-                PaymentItem(img,size19V,size12V,size9V,size18H,size20H,size13H,text10,text14,text18,text17,text21,ralewayBold,nunitoSemiBold)
-                Spacer(Modifier.height(size4V))
+            Column(modifier = Modifier.verticalScroll(scrollState)){
+                repeat(10){
+                    PaymentItem(img,size19V,size12V,size9V,size18H,size20H,size13H,text10,text14,text18,text17,text21,ralewayBold,nunitoSemiBold)
+                    Spacer(Modifier.height(size4V))
+                }
             }
         }
-        if(isAddCardClicked.value){
+        if(isAddCardClicked.value || isEditCardClicked.value){
             Box(modifier = Modifier.fillMaxSize().background(Color(0xB8E9E9E9)))
+        }
+        if(isAddCardClicked.value){
             CardAddAndEditBottomView(
                 size20H,
                 size10H,
