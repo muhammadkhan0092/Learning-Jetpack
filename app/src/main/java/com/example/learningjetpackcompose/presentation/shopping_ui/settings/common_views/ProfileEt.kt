@@ -41,7 +41,7 @@ fun ProfileEt(hint : String, text : String="", size50 : Dp, text17 : TextUnit, t
                 modifier = Modifier.fillMaxSize().padding(start = size20H),
                 contentAlignment = Alignment.CenterStart
             ) {
-                if ("".isEmpty()) {
+                if (text.isEmpty()) {
                     Text(
                         text = hint,
                         color = Color(0xFF9EB4E8),

@@ -45,7 +45,8 @@ fun CardView(
     text1_5_H: TextUnit,
     text10H: TextUnit,
     nunitoBold: Font,
-    onAddClicked: () -> Unit
+    onAddClicked: () -> Unit,
+    isEditClicked: () -> Unit
 ){
     Row(
         modifier = Modifier.fillMaxWidth(),
@@ -56,6 +57,7 @@ fun CardView(
                 .height(size155V)
                 .weight(1f)
                 .background(Color(0xFFF1F4FE),RoundedCornerShape(10.dp))
+                .clickable{isEditClicked()}
                 .padding(start = size17H, end = size17H, top = size14V)
         ){
             Row(
