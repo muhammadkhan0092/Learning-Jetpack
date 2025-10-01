@@ -28,10 +28,12 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemRoundedImage
+import com.example.learningjetpackcompose.presentation.shopping_ui.settings.common_views.PaymentItem
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.common_views.ProfileEt
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.other_views.CardView
 
@@ -39,6 +41,7 @@ import com.example.learningjetpackcompose.presentation.shopping_ui.settings.othe
 @Preview(showSystemUi = true)
 @Composable
 fun SettingsPayment(width : Dp = 375.dp,height : Dp = 812.dp){
+    val size4V = height*0.004f
     val size7V = height*0.008f
     val size12V = height*0.0147f
     val size14V = height*0.017f
@@ -53,11 +56,27 @@ fun SettingsPayment(width : Dp = 375.dp,height : Dp = 812.dp){
     val size155V = height*0.190f
     val size1V = height*0.00123f
     val size18V = height*0.0221f
-    val size20H = width*0.0533f
     val size33V = height*0.040f
+    val size16V = height*0.019f
+
+
+    val img : Int = R.drawable.ic_cart_red
+    val size19V : Dp =height*0.023f
+    val size9V : Dp=height*0.011f
+    val text10 : TextUnit = (height*0.012f).value.sp
+    val text14 : TextUnit = (height*0.017f).value.sp
+    val text18 : TextUnit = (height*0.022f).value.sp
+    val text17 : TextUnit = (height*0.020f).value.sp
+    val nunitoSemiBold : Font = Font(R.font.nunito_semi_bold)
 
 
 
+
+
+
+    val size18H : Dp = width*0.048f
+    val size20H : Dp = width*0.053f
+    val size13H : Dp = width*0.034f
     val size45H = width*0.12f
     val size16H = width*0.042f
     val size17H = width*0.045f
@@ -74,6 +93,11 @@ fun SettingsPayment(width : Dp = 375.dp,height : Dp = 812.dp){
     val text21 = (height*0.025f).value.sp
     val text28 = (height*0.0344f).value.sp
     val text36 = (height*0.044f).value.sp
+
+
+
+
+
 
     val text12H = (width*0.032f).value.sp
     val text7H = (width*0.018f).value.sp
@@ -125,6 +149,11 @@ fun SettingsPayment(width : Dp = 375.dp,height : Dp = 812.dp){
                 text10H,
                 nunitoBold
             )
+            Spacer(Modifier.height(size16V))
+            repeat(10){
+                PaymentItem(img,size19V,size12V,size9V,size18H,size20H,size13H,text10,text14,text18,text17,text21,ralewayBold,nunitoSemiBold)
+                Spacer(Modifier.height(size4V))
+            }
         }
     }
 }
