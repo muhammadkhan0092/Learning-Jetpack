@@ -1,28 +1,26 @@
 package com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
@@ -32,7 +30,6 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
-import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemRoundedImage
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.common_views.PaymentItem
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.common_views.ProfileEt
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.other_views.CardView
@@ -108,14 +105,20 @@ fun SettingsPayment(width : Dp = 375.dp,height : Dp = 812.dp){
     val ralewayBold = Font(R.font.raleway_bold)
     val ralewaySemiBold = Font(R.font.raleway_semi_bold)
     val scrollState = rememberScrollState()
+    val isAddCardClicked = remember { mutableStateOf(false) }
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = size30V, start = size20H, end = size20H, bottom = size20V)
+            .clickable{
+                if(isAddCardClicked.value!=false){
+                    isAddCardClicked.value = false
+                }
+            }
     ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .padding(top = size30V, start = size20H, end = size20H, bottom = size20V)
                 .verticalScroll(scrollState)
         ) {
             Text(
@@ -147,12 +150,67 @@ fun SettingsPayment(width : Dp = 375.dp,height : Dp = 812.dp){
                 text2H,
                 text1_5_H,
                 text10H,
-                nunitoBold
+                nunitoBold,
+                {
+                    isAddCardClicked.value = true
+                }
             )
             Spacer(Modifier.height(size16V))
             repeat(10){
                 PaymentItem(img,size19V,size12V,size9V,size18H,size20H,size13H,text10,text14,text18,text17,text21,ralewayBold,nunitoSemiBold)
                 Spacer(Modifier.height(size4V))
+            }
+        }
+        if(isAddCardClicked.value){
+            Box(modifier = Modifier.fillMaxSize().background(Color(0xB8E9E9E9)))
+            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.BottomCenter){
+                Column(
+                    modifier = Modifier
+                        .background(Color(0xFFF8FAFF),RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp))
+                        .padding(start = size20H, end = size20H)
+                ){
+                    Text(
+                        "Add Card",
+                        fontSize = text21,
+                        fontFamily = FontFamily(ralewayBold),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = size27V, bottom = size27V)
+                    )
+                    Column(modifier = Modifier.background(Color.White)){
+                        Spacer(Modifier.height(size20V))
+                        Text("Card Holder", fontSize = text13, lineHeight = text20, fontFamily = FontFamily(nunitoSemiBold))
+                        ProfileEt("Required","",size50V,text16,text20,size20H)
+                        Spacer(Modifier.height(size18V))
+                        Text("Card Number", fontSize = text13, lineHeight = text20, fontFamily = FontFamily(nunitoSemiBold))
+                        ProfileEt("Required","",size50V,text16,text20,size20H)
+                        Spacer(Modifier.height(size18V))
+                        Row(horizontalArrangement = Arrangement.spacedBy(size10H)){
+                            Column(Modifier.weight(1f)){
+                                Text("Valid", fontSize = text13, lineHeight = text20, fontFamily = FontFamily(nunitoSemiBold))
+                                ProfileEt("Required","",size50V,text16,text20,size20H)
+                            }
+                            Column(Modifier.weight(1f)){
+                                Text("Cvv", fontSize = text13, lineHeight = text20, fontFamily = FontFamily(nunitoSemiBold))
+                                ProfileEt("Required","",size50V,text16,text20,size20H)
+                            }
+                        }
+                        Spacer(Modifier.height(size18V))
+                            Text(
+                                "Save Changes",
+                                Modifier
+                                    .fillMaxWidth()
+                                    .background(Color(0xFF004CFF), RoundedCornerShape(9.dp))
+                                    .padding(top = size7V, bottom = size7V)
+                                ,
+                                textAlign = TextAlign.Center,
+                                fontSize = text16,
+                                lineHeight = text25,
+                                color = Color.White
+                            )
+                        Spacer(Modifier.height(size20V))
+                    }
+                }
             }
         }
     }

@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
 
 @Composable
-fun ProfileEt(hint : String,text : String,size50 : Dp,text17 : TextUnit,text21 : TextUnit,size20H : Dp){
+fun ProfileEt(hint : String, text : String="", size50 : Dp, text17 : TextUnit, text21 : TextUnit, size20H : Dp,modifier: Modifier = Modifier){
     val sp14 = dimensionResource(id = R.dimen.sp_14).value.sp
     val dp54 = dimensionResource(R.dimen.dp_54)
     BasicTextField(
@@ -32,9 +32,9 @@ fun ProfileEt(hint : String,text : String,size50 : Dp,text17 : TextUnit,text21 :
             lineHeight = text21
         ),
         readOnly = true,
-        modifier = Modifier
+        modifier = modifier
             .height(size50)
-            .background(Color(0xFFF1F4FE), RoundedCornerShape(5.dp))
+            .background(Color(0xFFF1F4FE), RoundedCornerShape(9.dp))
         ,
         decorationBox = { innerTextField ->
             Box(
@@ -44,7 +44,7 @@ fun ProfileEt(hint : String,text : String,size50 : Dp,text17 : TextUnit,text21 :
                 if ("".isEmpty()) {
                     Text(
                         text = hint,
-                        color = Color(0xFFF1F4FE),
+                        color = Color(0xFF9EB4E8),
                         fontSize = sp14,
                     )
                 }

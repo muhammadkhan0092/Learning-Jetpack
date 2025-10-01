@@ -2,6 +2,7 @@ package com.example.learningjetpackcompose.presentation.shopping_ui.settings.oth
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -29,21 +30,22 @@ import com.example.learningjetpackcompose.R
 
 @Composable
 fun CardView(
-    size14V : Dp,
-    size10V : Dp,
-    size35V : Dp,
-    size155V : Dp,
+    size14V: Dp,
+    size10V: Dp,
+    size35V: Dp,
+    size155V: Dp,
     size33V: Dp,
-    size45H : Dp,
+    size45H: Dp,
     size17H: Dp,
     size10H: Dp,
-    text13 : TextUnit,
-    text12 : TextUnit,
-    text7H : TextUnit,
+    text13: TextUnit,
+    text12: TextUnit,
+    text7H: TextUnit,
     text2H: TextUnit,
-    text1_5_H : TextUnit,
-    text10H : TextUnit,
-    nunitoBold : Font
+    text1_5_H: TextUnit,
+    text10H: TextUnit,
+    nunitoBold: Font,
+    onAddClicked: () -> Unit
 ){
     Row(
         modifier = Modifier.fillMaxWidth(),
@@ -90,8 +92,7 @@ fun CardView(
             modifier = Modifier
                 .height(size155V)
                 .width(size45H)
-                .background(Color(0xFF004CFF),RoundedCornerShape(9.dp)
-                ),
+                .background(Color(0xFF004CFF),RoundedCornerShape(9.dp)).clickable{onAddClicked()},
             contentAlignment = Alignment.Center
         ){
             Text(
