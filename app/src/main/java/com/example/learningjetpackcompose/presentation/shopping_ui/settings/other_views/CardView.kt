@@ -20,7 +20,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
@@ -44,7 +43,7 @@ fun CardView(
     text2H: TextUnit,
     text1_5_H: TextUnit,
     text10H: TextUnit,
-    nunitoBold: Font,
+    nunitoBold: FontFamily,
     onAddClicked: () -> Unit,
     isEditClicked: () -> Unit
 ){
@@ -77,8 +76,8 @@ fun CardView(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
             ){
-                Text("****  ****  **** ", fontSize = text12, letterSpacing = text7H, fontFamily = FontFamily(nunitoBold), textAlign = TextAlign.Center)
-                Text("1579",fontSize = text12, letterSpacing = text2H, fontFamily = FontFamily(nunitoBold))
+                Text("****  ****  **** ", fontSize = text12, letterSpacing = text7H, fontFamily = nunitoBold, textAlign = TextAlign.Center)
+                Text("1579",fontSize = text12, letterSpacing = text2H, fontFamily = nunitoBold)
             }
             Spacer(Modifier.height(size10V))
             Row(
@@ -86,8 +85,8 @@ fun CardView(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
             ){
-                Text("Amanda Morgan", fontSize = text10H, fontFamily = FontFamily(nunitoBold), letterSpacing = text1_5_H)
-                Text("12/22", fontSize = text12, fontFamily = FontFamily(nunitoBold), letterSpacing = text1_5_H)
+                Text("Amanda Morgan", fontSize = text10H, fontFamily = nunitoBold, letterSpacing = text1_5_H)
+                Text("12/22", fontSize = text12, fontFamily = nunitoBold, letterSpacing = text1_5_H)
             }
         }
         Box(

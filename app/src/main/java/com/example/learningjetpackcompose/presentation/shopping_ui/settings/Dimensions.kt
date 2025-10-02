@@ -1,0 +1,97 @@
+package com.example.learningjetpackcompose.presentation.shopping_ui.settings
+
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Stable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.unit.*
+@Stable
+data class Dimensions(
+    val size4V: Dp,
+    val size7V: Dp,
+    val size27V: Dp,
+    val size16V: Dp,
+    val size30V: Dp,
+    val size20V: Dp,
+    val size22V: Dp,
+    val size18V: Dp,
+    val size33V: Dp,
+    val size35V: Dp,
+    val size44V: Dp,
+    val size50V: Dp,
+    val size155V: Dp,
+    val size10V: Dp,
+    val size14V: Dp,
+    val size19V: Dp,
+    val size9V: Dp,
+    val size18H: Dp,
+    val size20H: Dp,
+    val size13H: Dp,
+    val size45H: Dp,
+    val size16H: Dp,
+    val size17H: Dp,
+    val size10H: Dp,
+    val text10: TextUnit,
+    val text12: TextUnit,
+    val text13: TextUnit,
+    val text14: TextUnit,
+    val text16: TextUnit,
+    val text17: TextUnit,
+    val text18: TextUnit,
+    val text20: TextUnit,
+    val text21: TextUnit,
+    val text25: TextUnit,
+    val text28: TextUnit,
+    val text36: TextUnit,
+    val text7H: TextUnit,
+    val text2H: TextUnit,
+    val text1_5_H: TextUnit,
+    val text10H: TextUnit
+)
+
+@Composable
+fun rememberDimensions(width: Dp, height: Dp): Dimensions {
+    return remember(width, height) {
+        Dimensions(
+            size4V = height * 0.004f,
+            size7V = height * 0.008f,
+            size27V = height * 0.033f,
+            size16V = height * 0.019f,
+            size30V = height * 0.0369f,
+            size20V = height * 0.023f,
+            size22V = height*0.027f,
+            size18V = height * 0.0221f,
+            size33V = height * 0.040f,
+            size35V = height * 0.043f,
+            size44V = height * 0.054f,
+            size50V = height * 0.061f,
+            size155V = height * 0.190f,
+            size10V = height * 0.012f,
+            size14V = height * 0.017f,
+            size19V = height * 0.023f,
+            size9V = height * 0.011f,
+            size18H = width * 0.048f,
+            size20H = width * 0.053f,
+            size13H = width * 0.034f,
+            size45H = width * 0.12f,
+            size16H = width * 0.042f,
+            size17H = width * 0.045f,
+            size10H = width * 0.026f,
+            text10 = (height * 0.012f).value.sp,
+            text12 = (height * 0.0147f).value.sp,
+            text13 = (height * 0.0160f).value.sp,
+            text14 = (height * 0.017f).value.sp,
+            text16 = (height * 0.019f).value.sp,
+            text17 = (height * 0.020f).value.sp,
+            text18 = (height * 0.022f).value.sp,
+            text20 = (height * 0.024f).value.sp,
+            text21 = (height * 0.025f).value.sp,
+            text25 = (height * 0.030f).value.sp,
+            text28 = (height * 0.0344f).value.sp,
+            text36 = (height * 0.044f).value.sp,
+            text7H = (width * 0.018f).value.sp,
+            text2H = (width * 0.0048f).value.sp,
+            text1_5_H = (width * 0.004f).value.sp,
+            text10H = (width * 0.026f).value.sp,
+        )
+    }
+}

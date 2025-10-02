@@ -30,6 +30,7 @@ import com.example.learningjetpackcompose.presentation.shopping_ui.constants.SCR
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.SCREEN_DESTINATIONS.MAIN_HOME
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.SCREEN_DESTINATIONS.MAIN_PROFILE
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.SCREEN_DESTINATIONS.MAIN_WISHLIST
+import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsLanguage
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsMenu
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsPayment
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsProfile
@@ -55,7 +56,7 @@ fun MainScreen() {
                 startDestination = MAIN_HOME,
                 modifier = Modifier.padding(innerPadding)
             ) {
-                composable(MAIN_HOME) { SettingsPayment(width,height) }
+                composable(MAIN_HOME) { SettingsLanguage(width,height) }
                 composable(MAIN_WISHLIST) { MainProfile()}
                 composable(MAIN_CATEGORIES) {MainProfile() }
                 composable ( MAIN_CART){MainProfile()}

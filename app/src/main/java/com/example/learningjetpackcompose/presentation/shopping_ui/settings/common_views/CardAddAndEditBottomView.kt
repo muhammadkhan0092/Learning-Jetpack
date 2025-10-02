@@ -17,7 +17,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
@@ -38,14 +37,14 @@ fun CardAddAndEditBottomView(
     text16: TextUnit,
     text20: TextUnit,
     text25: TextUnit,
-    ralewayBold: Font,
-    nunitoSemiBold: Font,
+    ralewayBold: FontFamily,
+    nunitoSemiBold: FontFamily,
     holder: String = "",
-    number : String ="",
-    valid : String = "",
-    cvv : String ="",
+    number: String ="",
+    valid: String = "",
+    cvv: String ="",
     type: String = "Add Card",
-    onSaveClicked :()-> Unit
+    onSaveClicked: () -> Unit
 ){
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.BottomCenter){
         Column(
@@ -56,26 +55,26 @@ fun CardAddAndEditBottomView(
             Text(
                 type,
                 fontSize = text21,
-                fontFamily = FontFamily(ralewayBold),
+                fontFamily = ralewayBold,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = size27V, bottom = size27V)
             )
             Column(modifier = Modifier.background(Color.White)){
                 Spacer(Modifier.height(size20V))
-                Text("Card Holder", fontSize = text13, lineHeight = text20, fontFamily = FontFamily(nunitoSemiBold))
+                Text("Card Holder", fontSize = text13, lineHeight = text20, fontFamily =nunitoSemiBold)
                 ProfileEt("Required",holder,size50V,text16,text20,size20H)
                 Spacer(Modifier.height(size18V))
-                Text("Card Number", fontSize = text13, lineHeight = text20, fontFamily = FontFamily(nunitoSemiBold))
+                Text("Card Number", fontSize = text13, lineHeight = text20, fontFamily = nunitoSemiBold)
                 ProfileEt("Required",number,size50V,text16,text20,size20H)
                 Spacer(Modifier.height(size18V))
                 Row(horizontalArrangement = Arrangement.spacedBy(size10H)){
                     Column(Modifier.weight(1f)){
-                        Text("Valid", fontSize = text13, lineHeight = text20, fontFamily = FontFamily(nunitoSemiBold))
+                        Text("Valid", fontSize = text13, lineHeight = text20, fontFamily = nunitoSemiBold)
                         ProfileEt("Required",valid,size50V,text16,text20,size20H)
                     }
                     Column(Modifier.weight(1f)){
-                        Text("Cvv", fontSize = text13, lineHeight = text20, fontFamily = FontFamily(nunitoSemiBold))
+                        Text("Cvv", fontSize = text13, lineHeight = text20, fontFamily = nunitoSemiBold)
                         ProfileEt("Required",cvv,size50V,text16,text20,size20H)
                     }
                 }
