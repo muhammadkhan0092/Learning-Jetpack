@@ -28,7 +28,8 @@ fun SettingsMenu(
     height : Dp = 812.dp,
     onLanguageClicked : ()-> Unit,
     onSizeClicked : () -> Unit,
-    onCurrencyClicked:()->Unit
+    onCurrencyClicked:()->Unit,
+    onShippingClicked:()-> Unit
 ){
     val size12V = height*0.0147f
     val size30V = height*0.0369f
@@ -90,8 +91,7 @@ fun SettingsMenu(
                 size16H,
                 size18V
             ) {
-                if (it == 1) onCurrencyClicked()
-                else if (it == 2) onSizeClicked()
+                if (it == 1) onShippingClicked()
             }
             SpacerView(size1V)
         }

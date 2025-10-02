@@ -32,9 +32,11 @@ import com.example.learningjetpackcompose.presentation.shopping_ui.constants.Scr
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTINGS_LANGUAGE
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTINGS_SIZE
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTING_CURRENCY
+import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTING_SHIPPING_ADDRESS
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsCurrency
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsLanguage
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsMenu
+import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsShippingAddress
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsSizes
 
 @SuppressLint("UnusedBoxWithConstraintsScope")
@@ -69,6 +71,9 @@ fun MainScreen() {
                         },
                         {
                             navController.navigate(SETTING_CURRENCY)
+                        },
+                        {
+                            navController.navigate(SETTING_SHIPPING_ADDRESS)
                         }
                     )
                 }
@@ -80,6 +85,7 @@ fun MainScreen() {
                 composable (SETTINGS_COUNTRY){MainProfile()}
                 composable (SETTINGS_SIZE){SettingsSizes()}
                 composable (SETTING_CURRENCY){ SettingsCurrency() }
+                composable (SETTING_SHIPPING_ADDRESS){ SettingsShippingAddress() }
             }
         }
     }
