@@ -1,6 +1,7 @@
 package com.example.learningjetpackcompose.presentation.shopping_ui.settings.common_views
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -19,26 +20,25 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
 
 @Composable
 fun SettingMenuItem(
-    settingName : String = "Country",
-    selectedItem : String = "",
-    size21V : Dp,
-    text16 : TextUnit,
-    nunitoBold : Font,
-    text15 : TextUnit ,
-    nunitoRegular : Font,
-    size16H : Dp,
-    size18V : Dp
+    settingName: String = "Country",
+    selectedItem: String = "",
+    size21V: Dp,
+    text16: TextUnit,
+    nunitoBold: Font,
+    text15: TextUnit,
+    nunitoRegular: Font,
+    size16H: Dp,
+    size18V: Dp,
+    onClick: () -> Unit
 ){
     Box(Modifier.fillMaxWidth().padding(top = size21V, bottom = size21V)){
         Text(settingName, fontSize = text16, fontFamily = FontFamily(nunitoBold))
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().clickable{onClick()},
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.End
         ){

@@ -7,10 +7,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,15 +23,19 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.learningjetpackcompose.R
-import com.example.learningjetpackcompose.presentation.shopping_ui.constants.SCREEN_DESTINATIONS.MAIN_CART
-import com.example.learningjetpackcompose.presentation.shopping_ui.constants.SCREEN_DESTINATIONS.MAIN_CATEGORIES
-import com.example.learningjetpackcompose.presentation.shopping_ui.constants.SCREEN_DESTINATIONS.MAIN_HOME
-import com.example.learningjetpackcompose.presentation.shopping_ui.constants.SCREEN_DESTINATIONS.MAIN_PROFILE
-import com.example.learningjetpackcompose.presentation.shopping_ui.constants.SCREEN_DESTINATIONS.MAIN_WISHLIST
+import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.MAIN_CART
+import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.MAIN_CATEGORIES
+import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.MAIN_HOME
+import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.MAIN_PROFILE
+import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.MAIN_WISHLIST
+import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTINGS_COUNTRY
+import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTINGS_LANGUAGE
+import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTINGS_SIZE
+import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTING_CURRENCY
+import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsCurrency
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsLanguage
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsMenu
-import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsPayment
-import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsProfile
+import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsSizes
 
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Preview
@@ -56,11 +58,28 @@ fun MainScreen() {
                 startDestination = MAIN_HOME,
                 modifier = Modifier.padding(innerPadding)
             ) {
-                composable(MAIN_HOME) { SettingsLanguage(width,height) }
+                composable(MAIN_HOME) {
+                    SettingsMenu(
+                        width,
+                        height,{
+                            navController.navigate(SETTINGS_LANGUAGE)
+                        },
+                        {
+                            navController.navigate(SETTINGS_SIZE)
+                        },
+                        {
+                            navController.navigate(SETTING_CURRENCY)
+                        }
+                    )
+                }
                 composable(MAIN_WISHLIST) { MainProfile()}
                 composable(MAIN_CATEGORIES) {MainProfile() }
                 composable ( MAIN_CART){MainProfile()}
                 composable (MAIN_PROFILE){MainProfile()}
+                composable (SETTINGS_LANGUAGE){ SettingsLanguage() }
+                composable (SETTINGS_COUNTRY){MainProfile()}
+                composable (SETTINGS_SIZE){SettingsSizes()}
+                composable (SETTING_CURRENCY){ SettingsCurrency() }
             }
         }
     }

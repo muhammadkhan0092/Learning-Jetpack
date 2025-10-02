@@ -13,7 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -23,9 +22,14 @@ import com.example.learningjetpackcompose.presentation.shopping_ui.settings.comm
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.common_views.SettingMenuItem
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.common_views.SpacerView
 
-@Preview(showSystemUi = true)
 @Composable
-fun SettingsMenu(width : Dp = 375.dp,height : Dp = 812.dp){
+fun SettingsMenu(
+    width : Dp = 375.dp,
+    height : Dp = 812.dp,
+    onLanguageClicked : ()-> Unit,
+    onSizeClicked : () -> Unit,
+    onCurrencyClicked:()->Unit
+){
     val size12V = height*0.0147f
     val size30V = height*0.0369f
     val size21V = height*0.025f
@@ -75,21 +79,49 @@ fun SettingsMenu(width : Dp = 375.dp,height : Dp = 812.dp){
         SettingHeadings("Personal",text20,ralewayExtraBold)
         Spacer(Modifier.height(size12V))
         repeat(3){
-            SettingMenuItem(personalSettings[it].settingName,personalSettings[it].selected,size21V,text16,nunitoBold,text15,nunitoRegular,size16H,size18V)
+            SettingMenuItem(
+                personalSettings[it].settingName,
+                personalSettings[it].selected,
+                size21V,
+                text16,
+                nunitoBold,
+                text15,
+                nunitoRegular,
+                size16H,
+                size18V
+            ) {
+                if (it == 1) onCurrencyClicked()
+                else if (it == 2) onSizeClicked()
+            }
             SpacerView(size1V)
         }
         Spacer(Modifier.height(size27V))
         SettingHeadings("Shop",text20,ralewayExtraBold)
         Spacer(Modifier.height(size12V))
         repeat(4){
-            SettingMenuItem(shopSettings[it].settingName,shopSettings[it].selected,size21V,text16,nunitoBold,text15,nunitoRegular,size16H,size18V)
+            SettingMenuItem(shopSettings[it].settingName,shopSettings[it].selected,size21V,text16,nunitoBold,text15,nunitoRegular,size16H,size18V){
+                if (it==1) onCurrencyClicked()
+                else if(it==2) onSizeClicked()
+            }
             SpacerView(size1V)
         }
         Spacer(Modifier.height(size27V))
         SettingHeadings("Account",text20,ralewayExtraBold)
         Spacer(Modifier.height(size12V))
         repeat(2){
-            SettingMenuItem(accountSetting[it].settingName,accountSetting[it].selected,size21V,text16,nunitoBold,text15,nunitoRegular,size16H,size18V)
+            SettingMenuItem(
+                accountSetting[it].settingName,
+                accountSetting[it].selected,
+                size21V,
+                text16,
+                nunitoBold,
+                text15,
+                nunitoRegular,
+                size16H,
+                size18V
+            ) {
+                if (it == 0) onLanguageClicked()
+            }
             SpacerView(size1V)
         }
         Spacer(Modifier.height(size44V))
