@@ -1,7 +1,11 @@
 package com.example.learningjetpackcompose
 
+import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import android.provider.MediaStore.Video.VideoColumns.CATEGORY
+import android.util.DisplayMetrics
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -10,8 +14,14 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
@@ -38,6 +48,7 @@ import com.example.learningjetpackcompose.mvvm.presentation.constants.Constants.
 import com.example.learningjetpackcompose.mvvm.presentation.constants.Constants.SHOPPING_ROUTE_PASSWORD_RECOVERY
 import com.example.learningjetpackcompose.presentation.minimis_ui.HomeLauncher
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.main_screens.MainScreen
+import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsAbout
 import com.example.learningjetpackcompose.presentation.shopping_ui.setup.main_screens.CreateAccount
 import com.example.learningjetpackcompose.presentation.shopping_ui.setup.main_screens.GetStarted
 import com.example.learningjetpackcompose.presentation.shopping_ui.setup.main_screens.HelloScreen
@@ -63,11 +74,27 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     private fun App() {
+        val baseDensity = LocalDensity.current
+        val baseConfig = LocalConfiguration.current
+
+        // create fixed (remembered) values with fontScale = 1f
+        val fixedConfig = remember(baseConfig) {
+            Configuration(baseConfig).apply { fontScale = 1f }
+        }
+        val fixedDensity = remember(baseDensity) {
+            Density(baseDensity.density, 1f) // density, fontScale
+        }
         val navController = rememberNavController()
-        NavHost(navController = navController, startDestination = MENU) {
-            composable(MENU) {
-                MainScreen()
-                //HelloScreen()
+//        CompositionLocalProvider(
+//            LocalConfiguration provides fixedConfig,
+//            LocalDensity provides fixedDensity
+//        ) {
+            val effectiveScale = LocalDensity.current.fontScale
+            Log.d("KHAN","SCALE IS ${effectiveScale}")
+            NavHost(navController = navController, startDestination = MENU) {
+                composable(MENU) {
+                    MainScreen()
+                    //HelloScreen()
 //                MenuComposable(
 //                    {
 //                        navController.navigate(ROUTE_BASIC)
@@ -85,19 +112,20 @@ class MainActivity : ComponentActivity() {
 //                        navController.navigate(ROUTE_SHOPPING)
 //                    }
 //                )
+                }
+                composable(ROUTE_SIDE) {
+                    SideEffectComposable()
+                }
+                composable(ROUTE_LAUNCHER) {
+                    HomeLauncher()
+                }
+                composable(ROUTE_BASIC) {
+                    BasicComponentsComposable()
+                }
+                shoppingRoutes(this,navController)
+                mvvmRoutes(this,navController)
             }
-            composable(ROUTE_SIDE) {
-                SideEffectComposable()
-            }
-            composable(ROUTE_LAUNCHER) {
-                HomeLauncher()
-            }
-            composable(ROUTE_BASIC) {
-                BasicComponentsComposable()
-            }
-            shoppingRoutes(this,navController)
-            mvvmRoutes(this,navController)
-        }
+     //   }
     }
 
     @Composable
@@ -172,5 +200,11 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+//    override fun attachBaseContext(newBase: Context) {
+//        val configuration = Configuration(newBase.resources.configuration)
+//        configuration.densityDpi = DisplayMetrics.DENSITY_DEFAULT // Force default DPI (ignores "Display size")
+//        val context = newBase.createConfigurationContext(configuration)
+//        super.attachBaseContext(context)
+//    }
 
 }

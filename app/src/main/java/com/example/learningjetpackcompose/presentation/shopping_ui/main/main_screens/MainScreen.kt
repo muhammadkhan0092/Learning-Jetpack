@@ -11,11 +11,16 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
@@ -31,8 +36,10 @@ import com.example.learningjetpackcompose.presentation.shopping_ui.constants.Scr
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTINGS_COUNTRY
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTINGS_LANGUAGE
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTINGS_SIZE
+import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTING_ABOUT
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTING_CURRENCY
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTING_SHIPPING_ADDRESS
+import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsAbout
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsCurrency
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsLanguage
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsMenu
@@ -55,38 +62,58 @@ fun MainScreen() {
         BoxWithConstraints {
             val width = maxWidth
             val height = maxHeight
-            NavHost(
-                navController = navController,
-                startDestination = MAIN_HOME,
-                modifier = Modifier.padding(innerPadding)
-            ) {
-                composable(MAIN_HOME) {
-                    SettingsMenu(
-                        width,
-                        height,{
-                            navController.navigate(SETTINGS_LANGUAGE)
-                        },
-                        {
-                            navController.navigate(SETTINGS_SIZE)
-                        },
-                        {
-                            navController.navigate(SETTING_CURRENCY)
-                        },
-                        {
-                            navController.navigate(SETTING_SHIPPING_ADDRESS)
-                        }
-                    )
+            val config = LocalConfiguration.current
+            val metrics = LocalContext.current.resources.displayMetrics
+
+            // Get actual physical density (px / dp) from metrics
+            val physicalDensity = metrics.xdpi / 160f  // baseline Android formula
+
+            // Lock density & font scale
+            val fixedDensity = Density(
+                density = physicalDensity, // ignores system Display size
+                fontScale = 1f             // ignores font size
+            )
+
+           // CompositionLocalProvider(LocalDensity provides fixedDensity) {
+                NavHost(
+                    navController = navController,
+                    startDestination = MAIN_HOME,
+                    modifier = Modifier.padding(innerPadding)
+                ) {
+                    composable(MAIN_HOME) {
+                        SettingsMenu(
+                            width,
+                            height,{
+                                navController.navigate(SETTINGS_LANGUAGE)
+                            },
+                            {
+                                navController.navigate(SETTINGS_SIZE)
+                            },
+                            {
+                                navController.navigate(SETTING_CURRENCY)
+                            },
+                            {
+                                navController.navigate(SETTING_SHIPPING_ADDRESS)
+                            },
+                            {
+                                navController.navigate(SETTING_ABOUT)
+                            }
+                        )
+                    }
+                    composable(MAIN_WISHLIST) { MainProfile()}
+                    composable(MAIN_CATEGORIES) {MainProfile() }
+                    composable ( MAIN_CART){MainProfile()}
+                    composable (MAIN_PROFILE){MainProfile()}
+                    composable (SETTINGS_LANGUAGE){ SettingsLanguage() }
+                    composable (SETTINGS_COUNTRY){MainProfile()}
+                    composable (SETTINGS_SIZE){SettingsSizes()}
+                    composable (SETTING_CURRENCY){ SettingsCurrency() }
+                    composable (SETTING_SHIPPING_ADDRESS){ SettingsShippingAddress() }
+                    composable (SETTING_ABOUT){
+                        SettingsAbout(width,height)
+                    }
                 }
-                composable(MAIN_WISHLIST) { MainProfile()}
-                composable(MAIN_CATEGORIES) {MainProfile() }
-                composable ( MAIN_CART){MainProfile()}
-                composable (MAIN_PROFILE){MainProfile()}
-                composable (SETTINGS_LANGUAGE){ SettingsLanguage() }
-                composable (SETTINGS_COUNTRY){MainProfile()}
-                composable (SETTINGS_SIZE){SettingsSizes()}
-                composable (SETTING_CURRENCY){ SettingsCurrency() }
-                composable (SETTING_SHIPPING_ADDRESS){ SettingsShippingAddress() }
-            }
+          //  }
         }
     }
 }

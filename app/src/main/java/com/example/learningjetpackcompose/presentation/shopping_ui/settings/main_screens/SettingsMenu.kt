@@ -24,12 +24,13 @@ import com.example.learningjetpackcompose.presentation.shopping_ui.settings.comm
 
 @Composable
 fun SettingsMenu(
-    width : Dp = 375.dp,
-    height : Dp = 812.dp,
-    onLanguageClicked : ()-> Unit,
-    onSizeClicked : () -> Unit,
-    onCurrencyClicked:()->Unit,
-    onShippingClicked:()-> Unit
+    width: Dp = 375.dp,
+    height: Dp = 812.dp,
+    onLanguageClicked: () -> Unit,
+    onSizeClicked: () -> Unit,
+    onCurrencyClicked: () -> Unit,
+    onShippingClicked: () -> Unit,
+    onAboutClicked: () -> Unit
 ){
     val size12V = height*0.0147f
     val size30V = height*0.0369f
@@ -121,6 +122,7 @@ fun SettingsMenu(
                 size18V
             ) {
                 if (it == 0) onLanguageClicked()
+                else onAboutClicked()
             }
             SpacerView(size1V)
         }
