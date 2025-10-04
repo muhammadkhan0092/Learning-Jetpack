@@ -5,19 +5,21 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Density
@@ -39,12 +41,16 @@ import com.example.learningjetpackcompose.presentation.shopping_ui.constants.Scr
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTING_ABOUT
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTING_CURRENCY
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTING_SHIPPING_ADDRESS
+import com.example.learningjetpackcompose.presentation.shopping_ui.settings.NunitoLight
+import com.example.learningjetpackcompose.presentation.shopping_ui.settings.RalewayBold
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsAbout
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsCurrency
+import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsDelete
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsLanguage
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsMenu
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsShippingAddress
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsSizes
+import com.example.learningjetpackcompose.presentation.shopping_ui.settings.rememberDimensions
 
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Preview
@@ -62,6 +68,7 @@ fun MainScreen() {
         BoxWithConstraints {
             val width = maxWidth
             val height = maxHeight
+            val dims = rememberDimensions(width, height)
             val config = LocalConfiguration.current
             val metrics = LocalContext.current.resources.displayMetrics
 
@@ -73,7 +80,7 @@ fun MainScreen() {
                 density = physicalDensity, // ignores system Display size
                 fontScale = 1f             // ignores font size
             )
-
+            val isDeleteClicked = remember { mutableStateOf(false) }
            // CompositionLocalProvider(LocalDensity provides fixedDensity) {
                 NavHost(
                     navController = navController,
@@ -97,23 +104,55 @@ fun MainScreen() {
                             },
                             {
                                 navController.navigate(SETTING_ABOUT)
-                            }
+                            },
+                            {
+                                if(!isDeleteClicked.value){
+                                    isDeleteClicked.value = true
+                                }
+                            },
+                            isDeleteClicked.value
                         )
                     }
-                    composable(MAIN_WISHLIST) { MainProfile()}
-                    composable(MAIN_CATEGORIES) {MainProfile() }
-                    composable ( MAIN_CART){MainProfile()}
-                    composable (MAIN_PROFILE){MainProfile()}
-                    composable (SETTINGS_LANGUAGE){ SettingsLanguage() }
-                    composable (SETTINGS_COUNTRY){MainProfile()}
-                    composable (SETTINGS_SIZE){SettingsSizes()}
-                    composable (SETTING_CURRENCY){ SettingsCurrency() }
-                    composable (SETTING_SHIPPING_ADDRESS){ SettingsShippingAddress() }
+                    composable(MAIN_WISHLIST) { MainProfile(width,height)}
+                    composable(MAIN_CATEGORIES) {MainProfile(width,height) }
+                    composable ( MAIN_CART){MainProfile(width,height)}
+                    composable (MAIN_PROFILE){MainProfile(width,height)}
+                    composable (SETTINGS_LANGUAGE){ SettingsLanguage(width,height) }
+                    composable (SETTINGS_COUNTRY){MainProfile(width,height)}
+                    composable (SETTINGS_SIZE){SettingsSizes(width,height)}
+                    composable (SETTING_CURRENCY){ SettingsCurrency(width,height) }
+                    composable (SETTING_SHIPPING_ADDRESS){ SettingsShippingAddress(width,height) }
                     composable (SETTING_ABOUT){
                         SettingsAbout(width,height)
                     }
                 }
           //  }
+            if(isDeleteClicked.value) Box(modifier = Modifier.fillMaxSize().background(Color(0xB8E9E9E9)))
+            if(isDeleteClicked.value){
+                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center){
+                    SettingsDelete(
+                        Modifier,
+                        dims.size7V,
+                        dims.size20V,
+                        dims.size27V,
+                        dims.size50V,
+                        dims.size35V,
+                        dims.size44V,
+                        height*0.098f,
+                        height*0.073f,
+                        height*0.049f,
+                        height*0.036f,
+                        dims.text16,
+                        dims.text25,
+                        dims.text28,
+                        dims.text25,
+                        dims.text13,
+                        dims.text20,
+                        RalewayBold,
+                        NunitoLight
+                    )
+                }
+            }
         }
     }
 }

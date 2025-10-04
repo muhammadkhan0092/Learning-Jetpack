@@ -1,5 +1,7 @@
 package com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,6 +11,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.Font
@@ -18,9 +21,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.learningjetpackcompose.R
 import com.example.learningjetpackcompose.presentation.models.DataSetting
+import com.example.learningjetpackcompose.presentation.shopping_ui.settings.NunitoLight
+import com.example.learningjetpackcompose.presentation.shopping_ui.settings.RalewayBold
+import com.example.learningjetpackcompose.presentation.shopping_ui.settings.RalewayRegular
+import com.example.learningjetpackcompose.presentation.shopping_ui.settings.RalewaySemiBold
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.common_views.SettingHeadings
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.common_views.SettingMenuItem
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.common_views.SpacerView
+import com.example.learningjetpackcompose.presentation.shopping_ui.settings.rememberDimensions
 
 @Composable
 fun SettingsMenu(
@@ -30,8 +38,11 @@ fun SettingsMenu(
     onSizeClicked: () -> Unit,
     onCurrencyClicked: () -> Unit,
     onShippingClicked: () -> Unit,
-    onAboutClicked: () -> Unit
+    onAboutClicked: () -> Unit,
+    onDeleteClicked:()-> Unit,
+    isDeleteClicked: Boolean
 ){
+    val dims = rememberDimensions(width, height)
     val size12V = height*0.0147f
     val size30V = height*0.0369f
     val size21V = height*0.025f
@@ -127,7 +138,9 @@ fun SettingsMenu(
             SpacerView(size1V)
         }
         Spacer(Modifier.height(size44V))
-        Text("Delete My Account", color = Color(0xFFD97474), fontSize = text13, fontFamily = FontFamily(ralewayBold))
+        Text("Delete My Account", color = Color(0xFFD97474), fontSize = text13, fontFamily = FontFamily(ralewayBold), modifier = Modifier.clickable{
+            onDeleteClicked()
+        })
         Spacer(Modifier.height(size30V))
         Text("Slada", fontSize = text20, fontFamily = FontFamily(ralewayExtraBold))
         Text("Version 1.0 April, 2020", fontSize = text12, fontFamily = FontFamily(nunitoRegular))

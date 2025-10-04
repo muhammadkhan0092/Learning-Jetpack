@@ -85,10 +85,10 @@ class MainActivity : ComponentActivity() {
             Density(baseDensity.density, 1f) // density, fontScale
         }
         val navController = rememberNavController()
-//        CompositionLocalProvider(
-//            LocalConfiguration provides fixedConfig,
-//            LocalDensity provides fixedDensity
-//        ) {
+        CompositionLocalProvider(
+            LocalConfiguration provides fixedConfig,
+            LocalDensity provides fixedDensity
+        ) {
             val effectiveScale = LocalDensity.current.fontScale
             Log.d("KHAN","SCALE IS ${effectiveScale}")
             NavHost(navController = navController, startDestination = MENU) {
@@ -125,7 +125,7 @@ class MainActivity : ComponentActivity() {
                 shoppingRoutes(this,navController)
                 mvvmRoutes(this,navController)
             }
-     //   }
+        }
     }
 
     @Composable
@@ -200,11 +200,11 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-//    override fun attachBaseContext(newBase: Context) {
-//        val configuration = Configuration(newBase.resources.configuration)
-//        configuration.densityDpi = DisplayMetrics.DENSITY_DEFAULT // Force default DPI (ignores "Display size")
-//        val context = newBase.createConfigurationContext(configuration)
-//        super.attachBaseContext(context)
-//    }
+    override fun attachBaseContext(newBase: Context) {
+        val configuration = Configuration(newBase.resources.configuration)
+        configuration.densityDpi = DisplayMetrics.DENSITY_LOW // Force default DPI (ignores "Display size")
+        val context = newBase.createConfigurationContext(configuration)
+        super.attachBaseContext(context)
+    }
 
 }
