@@ -40,7 +40,9 @@ fun SettingsMenu(
     onShippingClicked: () -> Unit,
     onAboutClicked: () -> Unit,
     onDeleteClicked:()-> Unit,
-    isDeleteClicked: Boolean
+    isDeleteClicked: Boolean,
+    onProfileClicked : ()-> Unit,
+    onPaymentClicked : ()-> Unit
 ){
     val dims = rememberDimensions(width, height)
     val size12V = height*0.0147f
@@ -103,7 +105,9 @@ fun SettingsMenu(
                 size16H,
                 size18V
             ) {
-                if (it == 1) onShippingClicked()
+                if(it==0) onProfileClicked()
+                else if(it == 1) onShippingClicked()
+                else onPaymentClicked()
             }
             SpacerView(size1V)
         }

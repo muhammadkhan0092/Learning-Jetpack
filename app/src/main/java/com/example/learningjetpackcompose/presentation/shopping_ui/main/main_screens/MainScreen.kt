@@ -40,6 +40,8 @@ import com.example.learningjetpackcompose.presentation.shopping_ui.constants.Scr
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTINGS_SIZE
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTING_ABOUT
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTING_CURRENCY
+import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTING_PAYMENT
+import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTING_PROFILE
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTING_SHIPPING_ADDRESS
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.NunitoLight
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.RalewayBold
@@ -48,6 +50,8 @@ import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsDelete
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsLanguage
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsMenu
+import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsPayment
+import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsProfile
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsShippingAddress
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsSizes
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.rememberDimensions
@@ -110,7 +114,13 @@ fun MainScreen() {
                                     isDeleteClicked.value = true
                                 }
                             },
-                            isDeleteClicked.value
+                            isDeleteClicked.value,
+                            {
+                                navController.navigate(SETTING_PROFILE)
+                            },
+                            {
+                                navController.navigate(SETTING_PAYMENT)
+                            }
                         )
                     }
                     composable(MAIN_WISHLIST) { MainProfile(width,height)}
@@ -122,9 +132,9 @@ fun MainScreen() {
                     composable (SETTINGS_SIZE){SettingsSizes(width,height)}
                     composable (SETTING_CURRENCY){ SettingsCurrency(width,height) }
                     composable (SETTING_SHIPPING_ADDRESS){ SettingsShippingAddress(width,height) }
-                    composable (SETTING_ABOUT){
-                        SettingsAbout(width,height)
-                    }
+                    composable (SETTING_ABOUT){ SettingsAbout(width,height) }
+                    composable (SETTING_PROFILE){ SettingsProfile(width,height) }
+                    composable (SETTING_PAYMENT){ SettingsPayment(width,height) }
                 }
           //  }
             if(isDeleteClicked.value) Box(modifier = Modifier.fillMaxSize().background(Color(0xB8E9E9E9)))
