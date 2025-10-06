@@ -12,22 +12,17 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
@@ -61,6 +56,7 @@ import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsShippingAddress
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.main_screens.SettingsSizes
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.rememberDimensions
+import com.example.learningjetpackcompose.presentation.shopping_ui.wishlist.main_screens.WishlistMain
 
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Preview
@@ -79,7 +75,7 @@ fun MainScreen() {
                     startDestination = MAIN_HOME,
                 ) {
                     composable(MAIN_HOME){MainHome(width,height) }
-                    composable(MAIN_WISHLIST) { MainHome(width,height)}
+                    composable(MAIN_WISHLIST) { WishlistMain(width,height) }
                     composable(SETTINGS_MENU) {
                         SettingsMenu(
                             width,
@@ -112,7 +108,7 @@ fun MainScreen() {
                             }
                         )
                     }
-                    composable(MAIN_WISHLIST) { MainProfile(width,height,{})}
+                    composable(MAIN_WISHLIST) { WishlistMain(width,height)}
                     composable(MAIN_CATEGORIES) {MainProfile(width,height,{})}
                     composable ( MAIN_CART){MainProfile(width,height,{})}
                     composable (MAIN_PROFILE){MainProfile(width,height,{

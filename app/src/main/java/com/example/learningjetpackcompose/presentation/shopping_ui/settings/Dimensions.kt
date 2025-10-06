@@ -33,6 +33,7 @@ data class Dimensions(
     val size16H: Dp,
     val size17H: Dp,
     val size10H: Dp,
+    val size50H: Dp,
     val text10: TextUnit,
     val text12: TextUnit,
     val text13: TextUnit,
@@ -48,7 +49,15 @@ data class Dimensions(
     val text7H: TextUnit,
     val text2H: TextUnit,
     val text1_5_H: TextUnit,
-    val text10H: TextUnit
+    val text10H: TextUnit,
+    val size6H : Dp,
+    val size35H : Dp,
+    val size129H : Dp,
+    val size25V : Dp,
+    val size29H : Dp,
+    val size13V : Dp,
+    val size28V : Dp,
+    val text22 : TextUnit,
 )
 
 @Composable
@@ -61,15 +70,15 @@ fun rememberDimensions(width: Dp, height: Dp): Dimensions {
             size16V = height * 0.019f,
             size30V = height * 0.0369f,
             size20V = height * 0.023f,
-            size22V = height*0.027f,
+            size22V = height * 0.027f,
             size18V = height * 0.0221f,
             size33V = height * 0.040f,
             size35V = height * 0.043f,
             size44V = height * 0.054f,
             size50V = height * 0.061f,
-            size89V = height*0.109f,
-            size92V = height*0.113f,
-            size103V = height*0.126f,
+            size89V = height * 0.109f,
+            size92V = height * 0.113f,
+            size103V = height * 0.126f,
             size155V = height * 0.190f,
             size10V = height * 0.012f,
             size14V = height * 0.017f,
@@ -82,6 +91,7 @@ fun rememberDimensions(width: Dp, height: Dp): Dimensions {
             size16H = width * 0.042f,
             size17H = width * 0.045f,
             size10H = width * 0.026f,
+            size50H = width * 0.133f,
             text10 = (height * 0.012f).value.sp,
             text12 = (height * 0.0147f).value.sp,
             text13 = (height * 0.0160f).value.sp,
@@ -98,6 +108,14 @@ fun rememberDimensions(width: Dp, height: Dp): Dimensions {
             text2H = (width * 0.0048f).value.sp,
             text1_5_H = (width * 0.004f).value.sp,
             text10H = (width * 0.026f).value.sp,
+            size35H = width*0.0933f,
+            size129H = width*0.344f,
+            size25V = height*0.0307f,
+            size29H = width*0.077f,
+            size13V = height*0.016f,
+            size28V = height*0.0344f,
+            text22 = (height*0.027f).value.sp,
+            size6H = width*0.016f
         )
     }
 }

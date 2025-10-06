@@ -23,7 +23,7 @@ import com.example.learningjetpackcompose.R
 
 @Composable
 fun ItemRoundedImage(img : Int,size : Dp = 50.dp){
-    val padding = dimensionResource(R.dimen.dp_5)
+    val padding = dimensionResource(R.dimen.dp_3)
     Box(
         modifier = Modifier
             .size(size)

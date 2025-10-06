@@ -7,6 +7,7 @@ import com.example.learningjetpackcompose.R
 val NunitoSemiBold = FontFamily(Font(R.font.nunito_semi_bold))
 val NunitoBold = FontFamily(Font(R.font.nunito_bold))
 val NunitoLight = FontFamily(Font(R.font.nunito_light))
+val NunitoRegular = FontFamily(Font(R.font.nunito_regular))
 val RalewayBold = FontFamily(Font(R.font.raleway_bold))
 val RalewaySemiBold = FontFamily(Font(R.font.raleway_semi_bold))
 val RalewayRegular = FontFamily(Font(R.font.raleway_regular))
