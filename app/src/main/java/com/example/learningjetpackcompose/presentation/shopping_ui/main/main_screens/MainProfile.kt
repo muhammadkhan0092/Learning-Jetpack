@@ -40,7 +40,7 @@ import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_vi
 
 @Composable
 fun MainProfile(width : Dp,height : Dp,onSettingsClicked : ()-> Unit) {
-    val paddingTop = dimensionResource(R.dimen.dp_71)
+    val paddingTop = dimensionResource(R.dimen.dp_20)
     val paddingBottom = dimensionResource(R.dimen.dp_19)
     val padding17 = dimensionResource(R.dimen.dp_17)
     val padding7 = dimensionResource(R.dimen.dp_7)
@@ -110,11 +110,11 @@ fun MainProfile(width : Dp,height : Dp,onSettingsClicked : ()-> Unit) {
                 color = Color.White
             )
             Spacer(Modifier.width(margin34))
-            ItemTopMenu(image = R.drawable.img_home_voucher, isSelected = true,{})
+            ItemTopMenu(image = R.drawable.ic_vouchers, isSelected = true,{})
             Spacer(Modifier.width(margin11))
-            ItemTopMenu(image = R.drawable.img_home_two,isSelected = false,{})
+            ItemTopMenu(image = R.drawable.ic_lines,isSelected = false,{})
             Spacer(Modifier.width(margin11))
-            ItemTopMenu(image = R.drawable.img_home_setting,isSelected = false,{
+            ItemTopMenu(image = R.drawable.ic_settings_blue,isSelected = false,{
                 Log.d("KHAN","ON SETTING CLICKED")
                 onSettingsClicked()
             })

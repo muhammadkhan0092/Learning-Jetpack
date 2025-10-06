@@ -43,7 +43,7 @@ fun SettingsAbout(width : Dp=375.dp,height : Dp = 812.dp){
             lineHeight = dims.text28,
             fontFamily = NunitoLight
         )
-        Spacer(Modifier.height(dims.size50V))
+        Spacer(Modifier.height(dims.size35V))
         Text(
             "If you need help or you have any questions, feel free to contact me by email.",
             fontSize = dims.text16,
