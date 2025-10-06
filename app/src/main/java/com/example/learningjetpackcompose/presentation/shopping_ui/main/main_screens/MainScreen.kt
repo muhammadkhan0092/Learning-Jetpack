@@ -7,10 +7,15 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -37,6 +42,7 @@ import com.example.learningjetpackcompose.presentation.shopping_ui.constants.Scr
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.MAIN_WISHLIST
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTINGS_COUNTRY
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTINGS_LANGUAGE
+import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTINGS_MENU
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTINGS_SIZE
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTING_ABOUT
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.SETTING_CURRENCY
@@ -61,37 +67,20 @@ import com.example.learningjetpackcompose.presentation.shopping_ui.settings.reme
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
-
-    Scaffold(
-        containerColor = Color.White,
-        contentColor = Color.Black,
-        bottomBar = {
-            CustomBottomBar(navController)
-        }
-    ) { innerPadding ->
-        BoxWithConstraints {
+    BoxWithConstraints(modifier = Modifier.fillMaxSize().background(Color.White)){
             val width = maxWidth
             val height = maxHeight
             val dims = rememberDimensions(width, height)
-            val config = LocalConfiguration.current
-            val metrics = LocalContext.current.resources.displayMetrics
-
-            // Get actual physical density (px / dp) from metrics
-            val physicalDensity = metrics.xdpi / 160f  // baseline Android formula
-
-            // Lock density & font scale
-            val fixedDensity = Density(
-                density = physicalDensity, // ignores system Display size
-                fontScale = 1f             // ignores font size
-            )
             val isDeleteClicked = remember { mutableStateOf(false) }
-           // CompositionLocalProvider(LocalDensity provides fixedDensity) {
+        Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.systemBars)){
+            Box(modifier = Modifier.weight(1f)) {
                 NavHost(
                     navController = navController,
                     startDestination = MAIN_HOME,
-                    modifier = Modifier.padding(innerPadding)
                 ) {
-                    composable(MAIN_HOME) {
+                    composable(MAIN_HOME){MainHome(width,height) }
+                    composable(MAIN_WISHLIST) { MainHome(width,height)}
+                    composable(SETTINGS_MENU) {
                         SettingsMenu(
                             width,
                             height,{
@@ -123,12 +112,14 @@ fun MainScreen() {
                             }
                         )
                     }
-                    composable(MAIN_WISHLIST) { MainProfile(width,height)}
-                    composable(MAIN_CATEGORIES) {MainProfile(width,height) }
-                    composable ( MAIN_CART){MainProfile(width,height)}
-                    composable (MAIN_PROFILE){MainProfile(width,height)}
+                    composable(MAIN_WISHLIST) { MainProfile(width,height,{})}
+                    composable(MAIN_CATEGORIES) {MainProfile(width,height,{})}
+                    composable ( MAIN_CART){MainProfile(width,height,{})}
+                    composable (MAIN_PROFILE){MainProfile(width,height,{
+                        navController.navigate(SETTINGS_MENU)
+                    })}
                     composable (SETTINGS_LANGUAGE){ SettingsLanguage(width,height) }
-                    composable (SETTINGS_COUNTRY){MainProfile(width,height)}
+                    composable (SETTINGS_COUNTRY){MainProfile(width,height,{})}
                     composable (SETTINGS_SIZE){SettingsSizes(width,height)}
                     composable (SETTING_CURRENCY){ SettingsCurrency(width,height) }
                     composable (SETTING_SHIPPING_ADDRESS){ SettingsShippingAddress(width,height) }
@@ -136,7 +127,9 @@ fun MainScreen() {
                     composable (SETTING_PROFILE){ SettingsProfile(width,height) }
                     composable (SETTING_PAYMENT){ SettingsPayment(width,height) }
                 }
-          //  }
+            }
+            CustomBottomBar(navController)
+        }
             if(isDeleteClicked.value) Box(modifier = Modifier.fillMaxSize().background(Color(0xB8E9E9E9)))
             if(isDeleteClicked.value){
                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center){
@@ -154,8 +147,8 @@ fun MainScreen() {
                         height*0.036f,
                         dims.text16,
                         dims.text25,
+                        dims.text18,
                         dims.text28,
-                        dims.text25,
                         dims.text13,
                         dims.text20,
                         RalewayBold,
@@ -164,7 +157,6 @@ fun MainScreen() {
                 }
             }
         }
-    }
 }
 @Composable
 fun CustomBottomBar(navController: NavController) {
@@ -185,7 +177,7 @@ fun CustomBottomBar(navController: NavController) {
     )
     val currentDestination = navController.currentBackStackEntryAsState().value?.destination?.route
     Row(
-        modifier = Modifier.fillMaxWidth().padding(bottom = 25.dp, top = 14.dp).background(Color.White),
+        modifier = Modifier.fillMaxWidth().background(Color.White).padding(top = 10.dp, bottom = 10.dp),
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically
     ){

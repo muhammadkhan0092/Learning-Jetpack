@@ -200,11 +200,11 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-    override fun attachBaseContext(newBase: Context) {
-        val configuration = Configuration(newBase.resources.configuration)
-        configuration.densityDpi = DisplayMetrics.DENSITY_LOW // Force default DPI (ignores "Display size")
-        val context = newBase.createConfigurationContext(configuration)
-        super.attachBaseContext(context)
-    }
+//    override fun attachBaseContext(newBase: Context) {
+//        val configuration = Configuration(newBase.resources.configuration)
+//        configuration.densityDpi = DisplayMetrics.DENSITY_LOW
+//        val context = newBase.createConfigurationContext(configuration)
+//        super.attachBaseContext(context)
+//    }
 
 }

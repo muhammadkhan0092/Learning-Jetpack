@@ -6,6 +6,7 @@ object ScreenDestinations {
     const val MAIN_CART = "MAIN CART"
     const val MAIN_CATEGORIES = "MAIN CATEGORIES"
     const val MAIN_WISHLIST = "MAIN WISHLIST"
+    const val SETTINGS_MENU = "SETTINGS MENU"
     const val SETTINGS_LANGUAGE = "SETTINGS_LANGUAGE"
     const val SETTINGS_COUNTRY = "SETTINGS COUNTRY"
     const val SETTINGS_SIZE = "SETTINGS SIZE"

@@ -1,12 +1,9 @@
 package com.example.learningjetpackcompose.presentation.shopping_ui.main.main_screens
 
-import android.widget.GridLayout
-import androidx.compose.foundation.Image
+import android.util.Log
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -14,32 +11,18 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.GridItemSpan
-import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -51,22 +34,18 @@ import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_vi
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemMyOrders
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemNewItem
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemRoundedImage
-import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemSquareImage
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemSquareImageWhiteBg
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemStories
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemTopMenu
 
 @Composable
-fun MainProfile(height: Dp = 812.dp,width : Dp = 375.dp) {
+fun MainProfile(width : Dp,height : Dp,onSettingsClicked : ()-> Unit) {
     val paddingTop = dimensionResource(R.dimen.dp_71)
     val paddingBottom = dimensionResource(R.dimen.dp_19)
-    val paddingStart = dimensionResource(R.dimen.dp_24)
-    val paddingEnd = dimensionResource(R.dimen.dp_20)
     val padding17 = dimensionResource(R.dimen.dp_17)
     val padding7 = dimensionResource(R.dimen.dp_7)
     val margin16 = dimensionResource(R.dimen.dp_16)
     val margin6 = dimensionResource(R.dimen.dp_6)
-    dimensionResource(R.dimen.dp_19)
     val margin20 = dimensionResource(R.dimen.dp_20)
     val margin34 = dimensionResource(R.dimen.dp_34)
     val margin11 = dimensionResource(R.dimen.dp_11)
@@ -131,11 +110,14 @@ fun MainProfile(height: Dp = 812.dp,width : Dp = 375.dp) {
                 color = Color.White
             )
             Spacer(Modifier.width(margin34))
-            ItemTopMenu(isSelected = true)
+            ItemTopMenu(image = R.drawable.img_home_voucher, isSelected = true,{})
             Spacer(Modifier.width(margin11))
-            ItemTopMenu(isSelected = false)
+            ItemTopMenu(image = R.drawable.img_home_two,isSelected = false,{})
             Spacer(Modifier.width(margin11))
-            ItemTopMenu(isSelected = false)
+            ItemTopMenu(image = R.drawable.img_home_setting,isSelected = false,{
+                Log.d("KHAN","ON SETTING CLICKED")
+                onSettingsClicked()
+            })
         }
         Spacer(Modifier.height(margin20))
         Text("Hello, Romina!", fontSize = text28, lineHeight = text36, fontFamily = FontFamily(raleway))
