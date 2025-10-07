@@ -160,7 +160,7 @@ fun CustomBottomBar(navController: NavController) {
     val selectedIcons = listOf(
         R.drawable.ic_selected_home,
         R.drawable.ic_selected_wishlist,
-        R.drawable.ic_unselected_categories,
+        R.drawable.ic_selected_categories,
         R.drawable.ic_selected_cart,
         R.drawable.ic_selected_profile
     )
