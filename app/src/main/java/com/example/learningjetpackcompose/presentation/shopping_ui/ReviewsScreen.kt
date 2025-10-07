@@ -18,7 +18,6 @@ import com.example.learningjetpackcompose.presentation.shopping_ui.settings.Rale
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.RalewaySemiBold
 import com.example.learningjetpackcompose.presentation.shopping_ui.settings.rememberDimensions
 
-@Preview(showSystemUi = true)
 @Composable
 fun ReviewsScreen(width : Dp = 375.dp,height : Dp = 812.dp){
     val dims = rememberDimensions(width,height)

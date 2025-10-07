@@ -51,7 +51,9 @@ data class Dimensions(
     val text1_5_H: TextUnit,
     val text10H: TextUnit,
     val size6H : Dp,
+    val size30H : Dp,
     val size35H : Dp,
+    val size109V : Dp,
     val size129H : Dp,
     val size25V : Dp,
     val size29H : Dp,
@@ -108,14 +110,16 @@ fun rememberDimensions(width: Dp, height: Dp): Dimensions {
             text2H = (width * 0.0048f).value.sp,
             text1_5_H = (width * 0.004f).value.sp,
             text10H = (width * 0.026f).value.sp,
-            size35H = width*0.0933f,
-            size129H = width*0.344f,
-            size25V = height*0.0307f,
-            size29H = width*0.077f,
-            size13V = height*0.016f,
-            size28V = height*0.0344f,
-            text22 = (height*0.027f).value.sp,
-            size6H = width*0.016f
+            size35H = width * 0.0933f,
+            size129H = width * 0.344f,
+            size25V = height * 0.0307f,
+            size29H = width * 0.077f,
+            size13V = height * 0.016f,
+            size28V = height * 0.0344f,
+            text22 = (height * 0.027f).value.sp,
+            size6H = width * 0.016f,
+            size30H = width*0.08f,
+            size109V = height*0.134f
         )
     }
 }
