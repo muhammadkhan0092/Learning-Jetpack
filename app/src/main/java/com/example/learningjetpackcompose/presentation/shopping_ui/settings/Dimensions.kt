@@ -60,6 +60,9 @@ data class Dimensions(
     val size13V : Dp,
     val size28V : Dp,
     val text22 : TextUnit,
+    val size60H: Dp,
+    val  size25H: Dp,
+    val size9H : Dp,
 )
 
 @Composable
@@ -118,8 +121,11 @@ fun rememberDimensions(width: Dp, height: Dp): Dimensions {
             size28V = height * 0.0344f,
             text22 = (height * 0.027f).value.sp,
             size6H = width * 0.016f,
-            size30H = width*0.08f,
-            size109V = height*0.134f
+            size30H = width * 0.08f,
+            size109V = height * 0.134f,
+            size60H = width*0.16f,
+            size25H = width*0.066f,
+            size9H = width*0.024f
         )
     }
 }

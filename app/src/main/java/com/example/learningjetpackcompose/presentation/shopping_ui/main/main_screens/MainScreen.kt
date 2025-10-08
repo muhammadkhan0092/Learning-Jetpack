@@ -30,6 +30,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.learningjetpackcompose.R
+import com.example.learningjetpackcompose.presentation.shopping_ui.cart.CartScreen
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.MAIN_CART
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.MAIN_CATEGORIES
 import com.example.learningjetpackcompose.presentation.shopping_ui.constants.ScreenDestinations.MAIN_HOME
@@ -110,7 +111,7 @@ fun MainScreen() {
                     }
                     composable(MAIN_WISHLIST) { WishlistMain(width,height)}
                     composable(MAIN_CATEGORIES) {MainProfile(width,height,{})}
-                    composable ( MAIN_CART){MainProfile(width,height,{})}
+                    composable ( MAIN_CART){ CartScreen(width,height) }
                     composable (MAIN_PROFILE){MainProfile(width,height,{
                         navController.navigate(SETTINGS_MENU)
                     })}
