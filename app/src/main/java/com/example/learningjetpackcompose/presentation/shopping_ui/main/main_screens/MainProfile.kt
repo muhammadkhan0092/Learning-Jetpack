@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -37,9 +38,10 @@ import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_vi
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemSquareImageWhiteBg
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemStories
 import com.example.learningjetpackcompose.presentation.shopping_ui.main.other_views.ItemTopMenu
+@Preview
 
 @Composable
-fun MainProfile(width : Dp,height : Dp,onSettingsClicked : ()-> Unit) {
+fun MainProfile(width : Dp=375.dp,height : Dp=812.dp,onSettingsClicked : ()-> Unit={}) {
     val paddingTop = dimensionResource(R.dimen.dp_20)
     val paddingBottom = dimensionResource(R.dimen.dp_19)
     val padding17 = dimensionResource(R.dimen.dp_17)
